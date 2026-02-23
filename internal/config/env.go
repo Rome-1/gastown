@@ -124,6 +124,22 @@ func AgentEnv(cfg AgentEnvConfig) map[string]string {
 	// this empty value with intentional settings like --max-old-space-size.
 	env["NODE_OPTIONS"] = ""
 
+	// Pass through cloud API credentials from parent shell for AWS Bedrock, Azure/Microsoft Foundry, and Google Vertex AI.
+	// AWS Bedrock: AWS_REGION, AWS_PROFILE, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_SESSION_TOKEN, CLAUDE_CODE_USE_BEDROCK
+	// Anthropic API: ANTHROPIC_BASE_URL, ANTHROPIC_API_KEY
+	// Microsoft Foundry: AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT
+	// Google Vertex AI: GOOGLE_APPLICATION_CREDENTIALS, GOOGLE_CLOUD_PROJECT, VERTEX_PROJECT, VERTEX_LOCATION
+	for _, key := range []string{
+		"AWS_REGION", "AWS_PROFILE", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN",
+		"CLAUDE_CODE_USE_BEDROCK", "ANTHROPIC_BASE_URL", "ANTHROPIC_API_KEY",
+		"AZURE_OPENAI_API_KEY", "AZURE_OPENAI_ENDPOINT",
+		"GOOGLE_APPLICATION_CREDENTIALS", "GOOGLE_CLOUD_PROJECT", "VERTEX_PROJECT", "VERTEX_LOCATION",
+	} {
+		if val := os.Getenv(key); val != "" {
+			env[key] = val
+		}
+	}
+
 	return env
 }
 
