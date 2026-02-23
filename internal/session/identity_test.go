@@ -120,6 +120,27 @@ func TestParseSessionName(t *testing.T) {
 			wantName: "boot",
 		},
 
+		// Numbered tmux session prefix (e.g. "17-gt-raftercli-refinery")
+		// tmux can prepend a number-hyphen in some client configurations.
+		{
+			name:     "numbered prefix refinery",
+			session:  "17-gt-raftercli-refinery",
+			wantRole: RoleRefinery,
+			wantRig:  "raftercli",
+		},
+		{
+			name:     "numbered prefix crew",
+			session:  "5-gt-raftercli-crew-helen",
+			wantRole: RoleCrew,
+			wantRig:  "raftercli",
+			wantName: "helen",
+		},
+		{
+			name:     "numbered prefix mayor",
+			session:  "3-hq-mayor",
+			wantRole: RoleMayor,
+		},
+
 		// Error cases
 		{
 			name:    "missing prefix",

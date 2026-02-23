@@ -593,6 +593,10 @@ func buildRestartCommand(sessionName string) (string, error) {
 // sessionWorkDir returns the correct working directory for a session.
 // This is the canonical home for each role type.
 func sessionWorkDir(sessionName, townRoot string) (string, error) {
+	// Normalize: strip numeric tmux prefix before all string matching
+	// (e.g. "17-gt-raftercli-refinery" → "gt-raftercli-refinery")
+	sessionName = session.NormalizeSessionName(sessionName)
+
 	// Get session names for comparison
 	mayorSession := getMayorSessionName()
 	deaconSession := getDeaconSessionName()

@@ -3,8 +3,13 @@ package session
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 )
+
+// numberedSessionRe matches a leading numeric prefix on tmux session names.
+// tmux can prepend a number and hyphen (e.g. "17-") in some client configurations.
+var numberedSessionRe = regexp.MustCompile(`^\d+-`)
 
 // Role represents the type of Gas Town agent.
 type Role string
@@ -91,7 +96,23 @@ func ParseAddress(address string) (*AgentIdentity, error) {
 // For polecat sessions without a crew marker, the last segment after the rig
 // is assumed to be the polecat name. This works for simple rig names but may
 // be ambiguous for rig names containing hyphens.
+// NormalizeSessionName strips any leading numeric tmux prefix from a session name.
+// For example, "17-gt-raftercli-refinery" → "gt-raftercli-refinery".
+// The numeric prefix is only removed when the remainder starts with a known Gas Town prefix.
+func NormalizeSessionName(name string) string {
+	if numberedSessionRe.MatchString(name) {
+		stripped := numberedSessionRe.ReplaceAllString(name, "")
+		if strings.HasPrefix(stripped, HQPrefix) || strings.HasPrefix(stripped, Prefix) {
+			return stripped
+		}
+	}
+	return name
+}
+
 func ParseSessionName(session string) (*AgentIdentity, error) {
+	// Strip leading numeric tmux prefix (e.g. "17-gt-raftercli-refinery" → "gt-raftercli-refinery").
+	session = NormalizeSessionName(session)
+
 	// Check for town-level roles (hq- prefix)
 	if strings.HasPrefix(session, HQPrefix) {
 		suffix := strings.TrimPrefix(session, HQPrefix)
