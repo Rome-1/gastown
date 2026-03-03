@@ -57,7 +57,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	caPEM, err := os.ReadFile(caFile)
+	caPEM, err := os.ReadFile(caFile) //nolint:gosec // G304: caFile from trusted GT_PROXY_CA env var
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "gt-proxy-client: read CA: %v\n", err)
 		os.Exit(1)
@@ -90,12 +90,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	resp, err := httpClient.Post(proxyURL+"/v1/exec", "application/json", bytes.NewReader(body))
+	resp, err := httpClient.Post(proxyURL+"/v1/exec", "application/json", bytes.NewReader(body)) //nolint:gosec // G704: proxyURL from trusted GT_PROXY_URL env var
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "gt-proxy-client: proxy request failed: %v\n", err)
 		os.Exit(1)
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close() //nolint:errcheck
 
 	if resp.StatusCode != http.StatusOK {
 		msg, _ := io.ReadAll(resp.Body)
@@ -110,10 +110,10 @@ func main() {
 	}
 
 	if result.Stdout != "" {
-		fmt.Fprint(os.Stdout, result.Stdout)
+		_, _ = fmt.Fprint(os.Stdout, result.Stdout)
 	}
 	if result.Stderr != "" {
-		fmt.Fprint(os.Stderr, result.Stderr)
+		_, _ = fmt.Fprint(os.Stderr, result.Stderr)
 	}
 	os.Exit(result.ExitCode)
 }
@@ -129,7 +129,7 @@ func execReal() {
 	if realBin == "" {
 		realBin = "/usr/local/bin/gt.real"
 	}
-	if err := syscall.Exec(realBin, os.Args, os.Environ()); err != nil {
+	if err := syscall.Exec(realBin, os.Args, os.Environ()); err != nil { //nolint:gosec // G204: realBin from trusted GT_REAL_BIN env var or hardcoded default
 		fmt.Fprintf(os.Stderr, "gt-proxy-client: exec %s: %v\n", realBin, err)
 		os.Exit(1)
 	}

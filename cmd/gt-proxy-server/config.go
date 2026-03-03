@@ -62,7 +62,7 @@ type ProxyConfig struct {
 // If the file does not exist, an empty ProxyConfig is returned (not an error).
 // JSON parse errors are returned as errors.
 func loadConfig(path string) (ProxyConfig, error) {
-	data, err := os.ReadFile(path)
+	data, err := os.ReadFile(path) //nolint:gosec // G304: path is operator-provided config file
 	if errors.Is(err, os.ErrNotExist) {
 		return ProxyConfig{}, nil
 	}
