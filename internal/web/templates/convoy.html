@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script src="https://unpkg.com/idiomorph@0.3.0/dist/idiomorph-ext.min.js"></script>
     <link rel="stylesheet" href="/static/dashboard.css">
+    <link rel="stylesheet" href="/static/pixel-agents.css">
 </head>
 <body>
     <div class="dashboard" id="dashboard-main" hx-get="/" hx-trigger="sse:dashboard-update, every 30s [!window.pauseRefresh && !window.sseConnected]" hx-swap="morph:outerHTML" hx-ext="morph">
@@ -262,6 +263,7 @@
                     <table id="crew-table" style="display: none;">
                         <thead>
                             <tr>
+                                <th class="pixel-agent-cell"></th>
                                 <th>Name</th>
                                 <th>Rig</th>
                                 <th>State</th>
@@ -293,6 +295,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <th class="pixel-agent-cell"></th>
                                 <th>Worker</th>
                                 <th>Type</th>
                                 <th>Rig</th>
@@ -304,6 +307,7 @@
                         <tbody>
                             {{range .Workers}}
                             <tr class="{{polecatStatusClass .WorkStatus}}">
+                                <td class="pixel-agent-cell"><canvas class="pixel-agent-canvas" id="pa-{{.Rig}}-{{.Name}}" data-pixel-agent="{{.Rig}}-{{.Name}}" data-pixel-state="{{.WorkStatus}}"></canvas></td>
                                 <td><span class="polecat-name">{{.Name}}</span></td>
                                 <td>{{if eq .AgentType "refinery"}}<span class="badge badge-blue">refinery</span>{{else}}<span class="badge badge-muted">polecat</span>{{end}}</td>
                                 <td><span class="polecat-rig">{{.Rig}}</span></td>
@@ -1038,6 +1042,7 @@
         <div id="output-panel-content" class="output-panel-content"></div>
     </div>
 
+    <script src="/static/pixel-agents.js?v=1"></script>
     <script src="/static/dashboard.js?v=3"></script>
 </body>
 </html>

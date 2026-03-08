@@ -1,0 +1,14 @@
+/* Pixel Agents - Inline sprite styling */
+
+.pixel-agent-cell {
+    width: 36px;
+    min-width: 36px;
+    padding: 2px 4px !important;
+    vertical-align: middle;
+}
+
+.pixel-agent-canvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}

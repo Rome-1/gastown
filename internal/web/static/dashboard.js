@@ -150,6 +150,8 @@
         if (window.refreshReadyPanel) window.refreshReadyPanel();
         // Update connection status indicator after morph
         updateConnectionStatus(window.sseConnected ? 'live' : 'reconnecting');
+        // Re-sync pixel agent sprites after morph
+        if (window.PixelAgents) window.PixelAgents.resync();
     });
 
     // ============================================
@@ -1076,7 +1078,16 @@
                             attachCmd = 'gt witness attach';
                         }
 
+                        // Map crew state to pixel agent animation state
+                        var pixelState = 'idle';
+                        if (member.state === 'spinning') pixelState = 'working';
+                        else if (member.state === 'questions') pixelState = 'stuck';
+                        else if (member.state === 'finished') pixelState = 'idle';
+                        else if (member.state === 'ready') pixelState = 'idle';
+                        var canvasId = 'pa-crew-' + member.rig + '-' + member.name;
+
                         tr.innerHTML =
+                            '<td class="pixel-agent-cell"><canvas class="pixel-agent-canvas" id="' + canvasId + '" data-pixel-agent="' + escapeHtml(member.rig + '-' + member.name) + '" data-pixel-state="' + pixelState + '"></canvas></td>' +
                             '<td><span class="crew-name">' + escapeHtml(member.name) + '</span></td>' +
                             '<td><span class="crew-rig">' + escapeHtml(member.rig) + '</span></td>' +
                             '<td><span class="' + stateClass + '">' + stateIcon + stateText + '</span></td>' +
@@ -1088,6 +1099,8 @@
                     });
 
                     if (count) count.textContent = data.total;
+                    // Init pixel agents for crew members
+                    if (window.PixelAgents) window.PixelAgents.resync();
                 } else {
                     table.style.display = 'none';
                     empty.style.display = 'block';
