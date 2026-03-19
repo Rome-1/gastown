@@ -445,15 +445,22 @@ func isQualityGateHeader(header string) bool {
 	h := strings.TrimSpace(strings.TrimLeft(header, "#"))
 	h = strings.ToLower(h)
 
-	gateHeaders := []string{
+	// Exact-match headers (short strings that could be substrings of other words)
+	exactHeaders := []string{"ci", "build", "lint", "tests"}
+	for _, eh := range exactHeaders {
+		if h == eh {
+			return true
+		}
+	}
+
+	// Substring-match headers (long enough to be unambiguous)
+	containsHeaders := []string{
 		"quality gate", "quality-gate", "qualitygate",
 		"definition of done",
-		"ci", "continuous integration",
-		"testing", "tests",
-		"building", "build",
-		"linting", "lint",
+		"continuous integration",
+		"testing", "building", "linting",
 	}
-	for _, gh := range gateHeaders {
+	for _, gh := range containsHeaders {
 		if strings.Contains(h, gh) {
 			return true
 		}
@@ -485,12 +492,18 @@ func classifyAndAssign(mq *MergeQueueConfig, cmd string) bool {
 	}
 
 	// Typecheck commands (check before build to avoid "tsc" matching build)
-	typecheckPatterns := []string{"tsc", "mypy", "pyright", "pytype"}
+	// Use word-boundary-aware matching for short patterns like "tsc"
+	typecheckPatterns := []string{"tsc --", "tsc\n", "mypy", "pyright", "pytype", "npx tsc"}
 	for _, p := range typecheckPatterns {
 		if strings.Contains(lower, p) && mq.TypecheckCommand == "" {
 			mq.TypecheckCommand = cmd
 			return true
 		}
+	}
+	// Also match "tsc" as the entire command (standalone)
+	if strings.TrimSpace(lower) == "tsc" && mq.TypecheckCommand == "" {
+		mq.TypecheckCommand = cmd
+		return true
 	}
 
 	// Build commands
