@@ -849,6 +849,9 @@
 {"issue_id":"gt-e4g","label":"msg-type:task"}
 {"issue_id":"gt-e4g","label":"read"}
 {"issue_id":"gt-e4g","label":"thread:thread-a13c33eabb32"}
+{"issue_id":"gt-e99","label":"from:crucible/charlie"}
+{"issue_id":"gt-e99","label":"gt:message"}
+{"issue_id":"gt-e99","label":"read"}
 {"issue_id":"gt-e9r","label":"delivery-acked-at:2026-03-25T16:31:01Z"}
 {"issue_id":"gt-e9r","label":"delivery-acked-by:deacon/dogs/alpha"}
 {"issue_id":"gt-e9r","label":"delivery:acked"}
@@ -1277,6 +1280,11 @@
 {"issue_id":"gt-wisp-c0b5","label":"plugin:session-hygiene"}
 {"issue_id":"gt-wisp-c0b5","label":"result:success"}
 {"issue_id":"gt-wisp-c0b5","label":"type:plugin-run"}
+{"issue_id":"gt-wisp-c3pp","label":"delivery:pending"}
+{"issue_id":"gt-wisp-c3pp","label":"from:secbolt/crew/mike"}
+{"issue_id":"gt-wisp-c3pp","label":"gt:message"}
+{"issue_id":"gt-wisp-c3pp","label":"msg-type:notification"}
+{"issue_id":"gt-wisp-c3pp","label":"thread:thread-e008d3b48fdc"}
 {"issue_id":"gt-wisp-c83m","label":"plugin:stuck-agent-dog"}
 {"issue_id":"gt-wisp-c83m","label":"result:success"}
 {"issue_id":"gt-wisp-c83m","label":"type:plugin-run"}
@@ -1352,6 +1360,15 @@
 {"issue_id":"gt-wisp-s9lh","label":"plugin:github-sheriff"}
 {"issue_id":"gt-wisp-s9lh","label":"result:success"}
 {"issue_id":"gt-wisp-s9lh","label":"type:plugin-run"}
+{"issue_id":"gt-wisp-svsg","label":"delivery-acked-at:2026-03-25T18:48:55Z"}
+{"issue_id":"gt-wisp-svsg","label":"delivery-acked-by:secbolt/mike"}
+{"issue_id":"gt-wisp-svsg","label":"delivery:acked"}
+{"issue_id":"gt-wisp-svsg","label":"delivery:pending"}
+{"issue_id":"gt-wisp-svsg","label":"from:raftercli/crew/lucy"}
+{"issue_id":"gt-wisp-svsg","label":"gt:message"}
+{"issue_id":"gt-wisp-svsg","label":"msg-type:notification"}
+{"issue_id":"gt-wisp-svsg","label":"read"}
+{"issue_id":"gt-wisp-svsg","label":"thread:thread-c70c0762329c"}
 {"issue_id":"gt-wisp-tiph","label":"plugin:compactor-dog"}
 {"issue_id":"gt-wisp-tiph","label":"result:success"}
 {"issue_id":"gt-wisp-tiph","label":"type:plugin-run"}

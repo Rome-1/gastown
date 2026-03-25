@@ -136,7 +136,9 @@
 {"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-25T12:30:15Z","event_type":"label_added","id":70,"issue_id":"gt-bdb","new_value":null,"old_value":null}
 {"actor":"secbolt/crew/mike","comment":"","created_at":"2026-03-25T18:41:03Z","event_type":"created","id":70,"issue_id":"gt-wisp-gkw3","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-7f0bdbf6f592","created_at":"2026-03-25T12:30:15Z","event_type":"label_added","id":71,"issue_id":"gt-bdb","new_value":null,"old_value":null}
+{"actor":"raftercli/crew/lucy","comment":"","created_at":"2026-03-25T18:48:52Z","event_type":"created","id":71,"issue_id":"gt-wisp-svsg","new_value":"","old_value":""}
 {"actor":"daemon","comment":null,"created_at":"2026-03-25T12:33:34Z","event_type":"created","id":72,"issue_id":"gt-2w9","new_value":"","old_value":""}
+{"actor":"secbolt/crew/mike","comment":"","created_at":"2026-03-25T18:55:11Z","event_type":"created","id":72,"issue_id":"gt-wisp-c3pp","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-25T12:33:34Z","event_type":"label_added","id":73,"issue_id":"gt-2w9","new_value":null,"old_value":null}
 {"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-25T12:33:34Z","event_type":"label_added","id":74,"issue_id":"gt-2w9","new_value":null,"old_value":null}
 {"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-25T12:33:34Z","event_type":"label_added","id":75,"issue_id":"gt-2w9","new_value":null,"old_value":null}
@@ -985,3 +987,7 @@
 {"actor":"crucible/crew/charlie","comment":null,"created_at":"2026-03-25T18:42:45Z","event_type":"created","id":918,"issue_id":"gt-ahv","new_value":"","old_value":""}
 {"actor":"crucible/crew/charlie","comment":null,"created_at":"2026-03-25T18:43:03Z","event_type":"created","id":919,"issue_id":"gt-uk0","new_value":"","old_value":""}
 {"actor":"crucible/crew/charlie","comment":null,"created_at":"2026-03-25T18:43:34Z","event_type":"created","id":920,"issue_id":"hq-cv-24rti","new_value":"","old_value":""}
+{"actor":"crucible/charlie","comment":null,"created_at":"2026-03-25T19:06:15Z","event_type":"created","id":921,"issue_id":"gt-e99","new_value":"","old_value":""}
+{"actor":"crucible/charlie","comment":"Added label: from:crucible/charlie","created_at":"2026-03-25T19:06:15Z","event_type":"label_added","id":922,"issue_id":"gt-e99","new_value":null,"old_value":null}
+{"actor":"crucible/charlie","comment":"Added label: gt:message","created_at":"2026-03-25T19:06:15Z","event_type":"label_added","id":923,"issue_id":"gt-e99","new_value":null,"old_value":null}
+{"actor":"crucible/crew/charlie","comment":null,"created_at":"2026-03-25T19:06:15Z","event_type":"status_changed","id":924,"issue_id":"gt-e99","new_value":"{\"assignee\":\"crucible/charlie\",\"status\":\"hooked\"}","old_value":"{\"id\":\"gt-e99\",\"title\":\"🤝 HANDOFF: Session cycling\",\"description\":\"Context cycling. Check bd ready for pending work.\",\"status\":\"open\",\"priority\":1,\"issue_type\":\"task\",\"assignee\":\"crucible/charlie\",\"owner\":\"romethorstenson@gmail.com\",\"created_at\":\"2026-03-25T19:06:15Z\",\"created_by\":\"crucible/charlie\",\"updated_at\":\"2026-03-25T19:06:15Z\"}"}
