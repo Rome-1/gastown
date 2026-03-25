@@ -52,6 +52,9 @@
 {"issue_id":"gt-0qo","label":"msg-type:task"}
 {"issue_id":"gt-0qo","label":"read"}
 {"issue_id":"gt-0qo","label":"thread:thread-b661b1387b8d"}
+{"issue_id":"gt-0td","label":"from:foundry/einstein"}
+{"issue_id":"gt-0td","label":"gt:message"}
+{"issue_id":"gt-0td","label":"read"}
 {"issue_id":"gt-0vj","label":"delivery-acked-at:2026-03-25T13:04:51Z"}
 {"issue_id":"gt-0vj","label":"delivery-acked-by:deacon/dogs/alpha"}
 {"issue_id":"gt-0vj","label":"delivery:acked"}
