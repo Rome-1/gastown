@@ -7,6 +7,9 @@
 {"issue_id":"gt-0ci","label":"msg-type:task"}
 {"issue_id":"gt-0ci","label":"read"}
 {"issue_id":"gt-0ci","label":"thread:thread-581e00d2b0c2"}
+{"issue_id":"gt-0fv","label":"from:evo2/alice"}
+{"issue_id":"gt-0fv","label":"gt:message"}
+{"issue_id":"gt-0fv","label":"read"}
 {"issue_id":"gt-0gy","label":"delivery-acked-at:2026-03-25T15:21:10Z"}
 {"issue_id":"gt-0gy","label":"delivery-acked-by:deacon/dogs/alpha"}
 {"issue_id":"gt-0gy","label":"delivery:acked"}
@@ -1501,3 +1504,6 @@
 {"issue_id":"gt-ze9","label":"msg-type:task"}
 {"issue_id":"gt-ze9","label":"read"}
 {"issue_id":"gt-ze9","label":"thread:thread-9464664f1154"}
+{"issue_id":"gt-zg5","label":"from:getresearch/alice"}
+{"issue_id":"gt-zg5","label":"gt:message"}
+{"issue_id":"gt-zg5","label":"read"}
