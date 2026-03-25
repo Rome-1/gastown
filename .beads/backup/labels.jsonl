@@ -1299,6 +1299,7 @@
 {"issue_id":"gt-wisp-c3pp","label":"from:secbolt/crew/mike"}
 {"issue_id":"gt-wisp-c3pp","label":"gt:message"}
 {"issue_id":"gt-wisp-c3pp","label":"msg-type:notification"}
+{"issue_id":"gt-wisp-c3pp","label":"read"}
 {"issue_id":"gt-wisp-c3pp","label":"thread:thread-e008d3b48fdc"}
 {"issue_id":"gt-wisp-c83m","label":"plugin:stuck-agent-dog"}
 {"issue_id":"gt-wisp-c83m","label":"result:success"}
