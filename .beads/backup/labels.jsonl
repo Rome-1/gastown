@@ -888,6 +888,9 @@
 {"issue_id":"gt-ey9","label":"msg-type:task"}
 {"issue_id":"gt-ey9","label":"read"}
 {"issue_id":"gt-ey9","label":"thread:thread-b9f59acdb182"}
+{"issue_id":"gt-f0r","label":"from:evo2/alice"}
+{"issue_id":"gt-f0r","label":"gt:message"}
+{"issue_id":"gt-f0r","label":"read"}
 {"issue_id":"gt-fqt","label":"delivery-acked-at:2026-03-25T13:32:44Z"}
 {"issue_id":"gt-fqt","label":"delivery-acked-by:deacon/dogs/bravo"}
 {"issue_id":"gt-fqt","label":"delivery:acked"}
