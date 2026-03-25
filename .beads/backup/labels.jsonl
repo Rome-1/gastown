@@ -634,6 +634,7 @@
 {"issue_id":"gt-9ue","label":"thread:thread-64d359ca2cfc"}
 {"issue_id":"gt-aks","label":"from:moesup/alice"}
 {"issue_id":"gt-aks","label":"gt:message"}
+{"issue_id":"gt-aks","label":"read"}
 {"issue_id":"gt-aoc","label":"delivery-acked-at:2026-03-25T13:47:31Z"}
 {"issue_id":"gt-aoc","label":"delivery-acked-by:deacon/dogs/charlie"}
 {"issue_id":"gt-aoc","label":"delivery:acked"}
