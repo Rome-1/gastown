@@ -1043,6 +1043,7 @@
 {"issue_id":"gt-me3","label":"thread:thread-e507c5effb9d"}
 {"issue_id":"gt-mf80","label":"from:crucible/charlie"}
 {"issue_id":"gt-mf80","label":"gt:message"}
+{"issue_id":"gt-mf80","label":"read"}
 {"issue_id":"gt-mrq","label":"delivery-acked-at:2026-03-25T14:04:22Z"}
 {"issue_id":"gt-mrq","label":"delivery-acked-by:deacon/dogs/alpha"}
 {"issue_id":"gt-mrq","label":"delivery:acked"}
