@@ -888,6 +888,9 @@
 {"issue_id":"gt-ejg","label":"msg-type:task"}
 {"issue_id":"gt-ejg","label":"read"}
 {"issue_id":"gt-ejg","label":"thread:thread-7b15645dc628"}
+{"issue_id":"gt-eqwc","label":"from:raftercli/lucy"}
+{"issue_id":"gt-eqwc","label":"gt:message"}
+{"issue_id":"gt-eqwc","label":"read"}
 {"issue_id":"gt-ey9","label":"delivery-acked-at:2026-03-25T16:37:39Z"}
 {"issue_id":"gt-ey9","label":"delivery-acked-by:deacon/dogs/alpha"}
 {"issue_id":"gt-ey9","label":"delivery:acked"}
