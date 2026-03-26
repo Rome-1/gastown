@@ -1096,6 +1096,9 @@
 {"issue_id":"gt-p0q","label":"msg-type:task"}
 {"issue_id":"gt-p0q","label":"read"}
 {"issue_id":"gt-p0q","label":"thread:thread-dc517ab7aaa2"}
+{"issue_id":"gt-poqh","label":"from:evo2/alice"}
+{"issue_id":"gt-poqh","label":"gt:message"}
+{"issue_id":"gt-poqh","label":"read"}
 {"issue_id":"gt-ql9","label":"delivery-acked-at:2026-03-25T13:50:59Z"}
 {"issue_id":"gt-ql9","label":"delivery-acked-by:deacon/dogs/alpha"}
 {"issue_id":"gt-ql9","label":"delivery:acked"}
@@ -1263,6 +1266,16 @@
 {"issue_id":"gt-wes","label":"msg-type:task"}
 {"issue_id":"gt-wes","label":"read"}
 {"issue_id":"gt-wes","label":"thread:thread-6e84e3d35525"}
+{"issue_id":"gt-wisp-0iix","label":"delivery-acked-at:2026-03-26T18:16:20Z"}
+{"issue_id":"gt-wisp-0iix","label":"delivery-acked-by:secbolt/mike"}
+{"issue_id":"gt-wisp-0iix","label":"delivery:acked"}
+{"issue_id":"gt-wisp-0iix","label":"delivery:pending"}
+{"issue_id":"gt-wisp-0iix","label":"from:raftercli/crew/lucy"}
+{"issue_id":"gt-wisp-0iix","label":"gt:message"}
+{"issue_id":"gt-wisp-0iix","label":"msg-type:reply"}
+{"issue_id":"gt-wisp-0iix","label":"read"}
+{"issue_id":"gt-wisp-0iix","label":"reply-to:gt-wisp-3onh"}
+{"issue_id":"gt-wisp-0iix","label":"thread:thread-ca8068d4c4ce"}
 {"issue_id":"gt-wisp-3onh","label":"delivery-acked-at:2026-03-26T18:11:44Z"}
 {"issue_id":"gt-wisp-3onh","label":"delivery-acked-by:raftercli/lucy"}
 {"issue_id":"gt-wisp-3onh","label":"delivery:acked"}
