@@ -31,15 +31,43 @@ import (
 // resolveBeadDir returns the directory to run bd commands for a given bead ID.
 // Uses prefix-based routing to find the correct rig directory.
 // Falls back to rigs.json prefix mapping, then town root.
-func resolveBeadDir(_ string) string {
-	// Always return town root. bd's own prefix routing (routes.jsonl at town
-	// level) handles dispatching to the correct rig database. Returning the
-	// rig path caused bd to discover rig-local .beads/ with broken nested
-	// routing, leading to "bead not found" errors for valid sc-/st-/etc IDs.
+func resolveBeadDir(beadID string) string {
 	townRoot, err := workspace.FindFromCwd()
 	if err != nil {
 		return "."
 	}
+
+	// Extract prefix (e.g., "se-" from "se-fckj")
+	parts := strings.SplitN(beadID, "-", 2)
+	if len(parts) < 2 {
+		return townRoot
+	}
+	prefix := parts[0] + "-"
+
+	// Check if the town root's routes.jsonl handles this prefix.
+	routesPath := filepath.Join(townRoot, ".beads", "routes.jsonl")
+	if data, err := os.ReadFile(routesPath); err == nil {
+		for _, line := range strings.Split(string(data), "\n") {
+			line = strings.TrimSpace(line)
+			if line == "" {
+				continue
+			}
+			var route struct {
+				Prefix string `json:"prefix"`
+			}
+			if json.Unmarshal([]byte(line), &route) == nil && route.Prefix == prefix {
+				return townRoot // Town root can route this prefix
+			}
+		}
+	}
+
+	// Town root can't route this prefix — try rigs.json to find the rig
+	// that owns this prefix. This handles sub-towns (e.g., secbolt under
+	// gastown) where the bead lives in a nested workspace.
+	if rigDir := resolveBeadDirFromRigsJSON(townRoot, prefix); rigDir != "" {
+		return rigDir
+	}
+
 	return townRoot
 }
 
