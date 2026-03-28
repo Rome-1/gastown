@@ -1448,6 +1448,9 @@
 {"issue_id":"gt-r65","label":"rig:gastown"}
 {"issue_id":"gt-r65","label":"type:plugin-run"}
 {"issue_id":"gt-rig-gastown","label":"gt:rig"}
+{"issue_id":"gt-riie","label":"from:moesup/alice"}
+{"issue_id":"gt-riie","label":"gt:message"}
+{"issue_id":"gt-riie","label":"read"}
 {"issue_id":"gt-rs3","label":"delivery-acked-at:2026-03-25T13:40:00Z"}
 {"issue_id":"gt-rs3","label":"delivery-acked-by:deacon/dogs/charlie"}
 {"issue_id":"gt-rs3","label":"delivery:acked"}
@@ -1677,6 +1680,15 @@
 {"issue_id":"gt-wisp-kewu","label":"plugin:session-hygiene"}
 {"issue_id":"gt-wisp-kewu","label":"result:success"}
 {"issue_id":"gt-wisp-kewu","label":"type:plugin-run"}
+{"issue_id":"gt-wisp-kot2","label":"delivery-acked-at:2026-03-28T03:36:10Z"}
+{"issue_id":"gt-wisp-kot2","label":"delivery-acked-by:mayor/"}
+{"issue_id":"gt-wisp-kot2","label":"delivery:acked"}
+{"issue_id":"gt-wisp-kot2","label":"delivery:pending"}
+{"issue_id":"gt-wisp-kot2","label":"from:crucible/crew/sierra"}
+{"issue_id":"gt-wisp-kot2","label":"gt:message"}
+{"issue_id":"gt-wisp-kot2","label":"msg-type:notification"}
+{"issue_id":"gt-wisp-kot2","label":"read"}
+{"issue_id":"gt-wisp-kot2","label":"thread:thread-5949f20cf1df"}
 {"issue_id":"gt-wisp-lkhx","label":"delivery-acked-at:2026-03-27T20:02:31Z"}
 {"issue_id":"gt-wisp-lkhx","label":"delivery-acked-by:mayor/"}
 {"issue_id":"gt-wisp-lkhx","label":"delivery:acked"}
