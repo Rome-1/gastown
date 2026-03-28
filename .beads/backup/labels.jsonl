@@ -1246,6 +1246,9 @@
 {"issue_id":"gt-jjdj","label":"msg-type:task"}
 {"issue_id":"gt-jjdj","label":"read"}
 {"issue_id":"gt-jjdj","label":"thread:thread-5e962dae9230"}
+{"issue_id":"gt-kdwh","label":"from:pgolf/nova"}
+{"issue_id":"gt-kdwh","label":"gt:message"}
+{"issue_id":"gt-kdwh","label":"read"}
 {"issue_id":"gt-kk9s","label":"delivery-acked-at:2026-03-27T20:01:31Z"}
 {"issue_id":"gt-kk9s","label":"delivery-acked-by:deacon/dogs/charlie"}
 {"issue_id":"gt-kk9s","label":"delivery:acked"}
