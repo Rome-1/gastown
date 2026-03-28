@@ -1398,6 +1398,9 @@
 {"issue_id":"gt-p0q","label":"msg-type:task"}
 {"issue_id":"gt-p0q","label":"read"}
 {"issue_id":"gt-p0q","label":"thread:thread-dc517ab7aaa2"}
+{"issue_id":"gt-p8eu","label":"from:raftercli/lucy"}
+{"issue_id":"gt-p8eu","label":"gt:message"}
+{"issue_id":"gt-p8eu","label":"read"}
 {"issue_id":"gt-poqh","label":"from:evo2/alice"}
 {"issue_id":"gt-poqh","label":"gt:message"}
 {"issue_id":"gt-poqh","label":"read"}
