@@ -1311,6 +1311,9 @@
 {"issue_id":"gt-lcir","label":"gt:message"}
 {"issue_id":"gt-lcir","label":"msg-type:task"}
 {"issue_id":"gt-lcir","label":"thread:thread-da83d58adeb1"}
+{"issue_id":"gt-lhsz","label":"from:dimensional/ember"}
+{"issue_id":"gt-lhsz","label":"gt:message"}
+{"issue_id":"gt-lhsz","label":"read"}
 {"issue_id":"gt-mab","label":"delivery-acked-at:2026-03-25T15:27:58Z"}
 {"issue_id":"gt-mab","label":"delivery-acked-by:deacon/dogs/alpha"}
 {"issue_id":"gt-mab","label":"delivery:acked"}
