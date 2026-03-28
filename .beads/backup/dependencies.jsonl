@@ -7,6 +7,7 @@
 {"created_at":"2026-03-27T16:31:00Z","created_by":"option11/crew/alice","depends_on_id":"external:option11:op-13y","issue_id":"hq-cv-fogyi","type":"tracks"}
 {"created_at":"2026-03-25T23:16:15Z","created_by":"mayor","depends_on_id":"external:reservagent:re-u1k","issue_id":"hq-cv-jqzgg","type":"tracks"}
 {"created_at":"2026-03-27T16:22:08Z","created_by":"raftercli/crew/jack","depends_on_id":"gt-691p","issue_id":"hq-cv-lbmxy","type":"tracks"}
+{"created_at":"2026-03-28T00:49:27Z","created_by":"pgolf/crew/nova","depends_on_id":"external:pgolf:pg-3dt","issue_id":"hq-cv-nbd66","type":"tracks"}
 {"created_at":"2026-03-26T17:59:10Z","created_by":"gastown/crew/charlie","depends_on_id":"gt-65o2","issue_id":"hq-cv-pctrm","type":"tracks"}
 {"created_at":"2026-03-27T16:15:04Z","created_by":"foundry/crew/einstein","depends_on_id":"external:foundry:fo-m2y","issue_id":"hq-cv-xkhhk","type":"tracks"}
 {"created_at":"2026-03-27T16:33:31Z","created_by":"obsidian/crew/alice","depends_on_id":"gt-83et","issue_id":"hq-cv-zr4oi","type":"tracks"}

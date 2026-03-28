@@ -1077,6 +1077,9 @@
 {"issue_id":"gt-f49o","label":"msg-type:task"}
 {"issue_id":"gt-f49o","label":"read"}
 {"issue_id":"gt-f49o","label":"thread:thread-07db8dccbf52"}
+{"issue_id":"gt-fnke","label":"from:raftercli/zen"}
+{"issue_id":"gt-fnke","label":"gt:message"}
+{"issue_id":"gt-fnke","label":"read"}
 {"issue_id":"gt-fqt","label":"delivery-acked-at:2026-03-25T13:32:44Z"}
 {"issue_id":"gt-fqt","label":"delivery-acked-by:deacon/dogs/bravo"}
 {"issue_id":"gt-fqt","label":"delivery:acked"}
