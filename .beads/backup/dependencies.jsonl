@@ -3,6 +3,7 @@
 {"created_at":"2026-03-18T22:18:39Z","created_by":"mayor","depends_on_id":"gt-wisp-izjw","issue_id":"gt-r8u","type":"blocks"}
 {"created_at":"2026-03-25T18:43:35Z","created_by":"crucible/crew/charlie","depends_on_id":"gt-uk0","issue_id":"hq-cv-24rti","type":"tracks"}
 {"created_at":"2026-03-28T01:35:24Z","created_by":"reservagent/crew/marco","depends_on_id":"external:reservagent:re-bd7","issue_id":"hq-cv-6sdbe","type":"tracks"}
+{"created_at":"2026-03-29T03:26:35Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-j4n","issue_id":"hq-cv-cogqa","type":"tracks"}
 {"created_at":"2026-03-27T15:42:59Z","created_by":"foundry/crew/einstein","depends_on_id":"gt-m6ey","issue_id":"hq-cv-f733q","type":"tracks"}
 {"created_at":"2026-03-25T21:24:39Z","created_by":"mayor","depends_on_id":"external:rivehmi:ri-g9s","issue_id":"hq-cv-ffyuu","type":"tracks"}
 {"created_at":"2026-03-27T16:31:00Z","created_by":"option11/crew/alice","depends_on_id":"external:option11:op-13y","issue_id":"hq-cv-fogyi","type":"tracks"}
@@ -21,9 +22,11 @@
 {"created_at":"2026-03-26T17:59:10Z","created_by":"gastown/crew/charlie","depends_on_id":"gt-65o2","issue_id":"hq-cv-pctrm","type":"tracks"}
 {"created_at":"2026-03-28T20:39:51Z","created_by":"securable/crew/ivan","depends_on_id":"external:securable:sb-c6p","issue_id":"hq-cv-pn4sg","type":"tracks"}
 {"created_at":"2026-03-28T19:20:40Z","created_by":"rcabench/crew/atlas","depends_on_id":"external:rcabench:rc-xlk","issue_id":"hq-cv-r7ogc","type":"tracks"}
+{"created_at":"2026-03-29T03:26:47Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-ktx","issue_id":"hq-cv-s2zay","type":"tracks"}
 {"created_at":"2026-03-29T02:33:36Z","created_by":"crucible/crew/charlie","depends_on_id":"external:crucible:cr-xrg","issue_id":"hq-cv-svulo","type":"tracks"}
 {"created_at":"2026-03-29T00:02:28Z","created_by":"pgolf/crew/nova","depends_on_id":"external:pgolf:pg-2e4","issue_id":"hq-cv-tvmms","type":"tracks"}
 {"created_at":"2026-03-28T21:06:33Z","created_by":"secbolt/crew/nora","depends_on_id":"external:secbolt:se-r0nh","issue_id":"hq-cv-uvfa6","type":"tracks"}
 {"created_at":"2026-03-28T19:20:01Z","created_by":"rcabench/crew/atlas","depends_on_id":"external:rcabench:rc-1vc","issue_id":"hq-cv-vk6j2","type":"tracks"}
+{"created_at":"2026-03-29T03:26:10Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-u93","issue_id":"hq-cv-wf6d6","type":"tracks"}
 {"created_at":"2026-03-27T16:15:04Z","created_by":"foundry/crew/einstein","depends_on_id":"external:foundry:fo-m2y","issue_id":"hq-cv-xkhhk","type":"tracks"}
 {"created_at":"2026-03-27T16:33:31Z","created_by":"obsidian/crew/alice","depends_on_id":"gt-83et","issue_id":"hq-cv-zr4oi","type":"tracks"}
