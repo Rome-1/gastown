@@ -96,6 +96,29 @@ When dispatching work to polecats, **always specify the target rig**:
 **Do NOT** self-sling (`{{ cmd }} sling <bead>` with no target) unless you intend
 to work on it yourself right now. Slinging without a target hooks it to you.
 
+### Polecat Supervision: YOUR Responsibility
+
+**Assume the rig is docked** (no Witness, no Refinery) unless you have evidence
+otherwise. That means nobody is watching your polecats — YOU are.
+
+When you sling work to a polecat:
+1. **Check on it proactively.** Don't fire-and-forget. Run `{{ cmd }} polecat list {{ .RigName }}`
+   regularly to see if your polecats are still running, done, or stuck.
+2. **Follow up on completions.** When a polecat finishes (`done` status), review
+   its work — check the diff, verify it pushed, close the bead if appropriate.
+3. **Detect failures early.** If a polecat dies or stalls (no progress, session
+   gone), nuke it and re-sling or handle the work yourself.
+4. **Merge the work.** With no Refinery running, polecat MRs won't auto-merge.
+   Review and merge them yourself — don't leave MRs rotting in a queue.
+
+**Anti-pattern:** Slinging 5 beads, then sitting idle waiting for nudges that
+never come because the Witness isn't running. **You must poll.**
+
+```bash
+{{ cmd }} polecat list {{ .RigName }}        # Are they alive? Done? Stuck?
+{{ cmd }} polecat status {{ .RigName }}/<name>  # Detailed status of one polecat
+```
+
 ### Hooking: Only What You're Running
 
 Your hook means "I am actively working on this." Don't hook beads you're
