@@ -37,6 +37,7 @@
 {"created_at":"2026-03-28T21:06:33Z","created_by":"secbolt/crew/nora","depends_on_id":"external:secbolt:se-r0nh","issue_id":"hq-cv-uvfa6","type":"tracks"}
 {"created_at":"2026-03-28T19:20:01Z","created_by":"rcabench/crew/atlas","depends_on_id":"external:rcabench:rc-1vc","issue_id":"hq-cv-vk6j2","type":"tracks"}
 {"created_at":"2026-03-29T03:26:10Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-u93","issue_id":"hq-cv-wf6d6","type":"tracks"}
+{"created_at":"2026-03-29T21:18:03Z","created_by":"mayor","depends_on_id":"external:anteroom:an-opq","issue_id":"hq-cv-wi6ec","type":"tracks"}
 {"created_at":"2026-03-27T16:15:04Z","created_by":"foundry/crew/einstein","depends_on_id":"external:foundry:fo-m2y","issue_id":"hq-cv-xkhhk","type":"tracks"}
 {"created_at":"2026-03-29T07:24:17Z","created_by":"Rome-1","depends_on_id":"external:getresearch:ge-x15","issue_id":"hq-cv-ziyxk","type":"tracks"}
 {"created_at":"2026-03-27T16:33:31Z","created_by":"obsidian/crew/alice","depends_on_id":"gt-83et","issue_id":"hq-cv-zr4oi","type":"tracks"}
