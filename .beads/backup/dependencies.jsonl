@@ -2,6 +2,7 @@
 {"created_at":"2026-03-19T02:45:42Z","created_by":"mayor","depends_on_id":"gt-wisp-ci31","issue_id":"gt-7k9","type":"blocks"}
 {"created_at":"2026-03-18T22:18:39Z","created_by":"mayor","depends_on_id":"gt-wisp-izjw","issue_id":"gt-r8u","type":"blocks"}
 {"created_at":"2026-03-25T18:43:35Z","created_by":"crucible/crew/charlie","depends_on_id":"gt-uk0","issue_id":"hq-cv-24rti","type":"tracks"}
+{"created_at":"2026-03-30T01:33:28Z","created_by":"obsidian/crew/alice","depends_on_id":"external:crucible:cr-p3e","issue_id":"hq-cv-37yva","type":"tracks"}
 {"created_at":"2026-03-29T20:09:58Z","created_by":"Rome-1","depends_on_id":"external:rcabench:rc-s9j","issue_id":"hq-cv-3ncwy","type":"tracks"}
 {"created_at":"2026-03-29T08:34:16Z","created_by":"Rome-1","depends_on_id":"external:rcabench:rc-unb","issue_id":"hq-cv-3xtmm","type":"tracks"}
 {"created_at":"2026-03-30T00:24:43Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-u1k","issue_id":"hq-cv-4gt5q","type":"tracks"}
