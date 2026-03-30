@@ -31,6 +31,7 @@
 {"created_at":"2026-03-28T00:49:27Z","created_by":"pgolf/crew/nova","depends_on_id":"external:pgolf:pg-3dt","issue_id":"hq-cv-nbd66","type":"tracks"}
 {"created_at":"2026-03-29T00:53:23Z","created_by":"rcabench/crew/atlas","depends_on_id":"external:rcabench:rc-9hg","issue_id":"hq-cv-nzl7g","type":"tracks"}
 {"created_at":"2026-03-30T00:24:28Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-yru","issue_id":"hq-cv-o2wwo","type":"tracks"}
+{"created_at":"2026-03-30T07:43:29Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-fts","issue_id":"hq-cv-o6wxq","type":"tracks"}
 {"created_at":"2026-03-29T02:34:55Z","created_by":"crucible/crew/sierra","depends_on_id":"external:crucible:cr-5ot","issue_id":"hq-cv-ogswc","type":"tracks"}
 {"created_at":"2026-03-30T00:21:20Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-axu","issue_id":"hq-cv-onomi","type":"tracks"}
 {"created_at":"2026-03-30T04:08:58Z","created_by":"Rome-1","depends_on_id":"external:rcabench:rc-28m","issue_id":"hq-cv-p7tym","type":"tracks"}
