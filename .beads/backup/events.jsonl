@@ -6884,9 +6884,13 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-30T12:23:02Z","event_type":"created","id":3523,"issue_id":"gt-wisp-5r5tl8","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-b416c819cab6","created_at":"2026-03-30T17:07:59Z","event_type":"label_added","id":3524,"issue_id":"gt-2s9c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T12:23:02Z","event_type":"created","id":3524,"issue_id":"gt-wisp-1d8uqc","new_value":"","old_value":""}
+{"actor":"evo2/alice","comment":null,"created_at":"2026-03-30T18:33:32Z","event_type":"created","id":3525,"issue_id":"gt-1cuc","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T12:23:03Z","event_type":"created","id":3525,"issue_id":"gt-wisp-487ahe","new_value":"","old_value":""}
+{"actor":"evo2/alice","comment":"Added label: from:evo2/alice","created_at":"2026-03-30T18:33:32Z","event_type":"label_added","id":3526,"issue_id":"gt-1cuc","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T12:23:03Z","event_type":"created","id":3526,"issue_id":"gt-wisp-16zsui","new_value":"","old_value":""}
+{"actor":"evo2/alice","comment":"Added label: gt:message","created_at":"2026-03-30T18:33:32Z","event_type":"label_added","id":3527,"issue_id":"gt-1cuc","new_value":null,"old_value":null}
 {"actor":"dog","comment":"","created_at":"2026-03-30T12:26:34Z","event_type":"created","id":3527,"issue_id":"gt-wisp-0fzio3","new_value":"","old_value":""}
+{"actor":"evo2/crew/alice","comment":null,"created_at":"2026-03-30T18:33:32Z","event_type":"status_changed","id":3528,"issue_id":"gt-1cuc","new_value":"{\"assignee\":\"evo2/alice\",\"status\":\"hooked\"}","old_value":"{\"id\":\"gt-1cuc\",\"title\":\"HANDOFF: Session cycling\",\"description\":\"Done this session: Built full 5.8S and 16S rRNA pipeline — data gen scripts, contacts module (5.8S), configs (pos_means, Jacobian, structure map), mmCIF parser for ribosome PDBs. Ran on Modal: 5.8S Jacobian (1 example, 474 passes), pos_means 32 layers for both, structure mapping for both. Fixed CIF quote parsing bug, 6T4Q chain ID (C3 not L5). 16S best layer 17 RMSD 76.85A, 5.8S best layer 1 RMSD 40.48A.\\n\\nNext session should: Work ev-508 (5.8S data gen only 1 example — try broadened NCBI search already committed, or pivot to Rfam/SILVA/BLAST approach) and ev-erz (16S length filter too strict, 7/51 usable). After fixing data gen, re-run on Modal: regenerate data, re-run pos_means + Jacobian + structure mapping with better data. User approved continuing on these.\\n\\nModal is STOPPED and confirmed (killed modal run PID, verified zero containers). Git clean on rome branch, all pushed.\",\"status\":\"open\",\"priority\":1,\"issue_type\":\"task\",\"assignee\":\"evo2/alice\",\"owner\":\"romethorstenson@gmail.com\",\"created_at\":\"2026-03-30T18:33:33Z\",\"created_by\":\"evo2/alice\",\"updated_at\":\"2026-03-30T18:33:33Z\"}"}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T12:27:08Z","event_type":"created","id":3528,"issue_id":"gt-wisp-novyd3","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T12:27:09Z","event_type":"created","id":3529,"issue_id":"gt-wisp-9kixxv","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T12:27:10Z","event_type":"created","id":3530,"issue_id":"gt-wisp-2azmeq","new_value":"","old_value":""}
@@ -7578,3 +7582,27 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-30T18:25:30Z","event_type":"created","id":4216,"issue_id":"gt-wisp-e0grlg","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T18:25:30Z","event_type":"created","id":4217,"issue_id":"gt-wisp-22v4e3","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T18:25:31Z","event_type":"created","id":4218,"issue_id":"gt-wisp-hlesor","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:52Z","event_type":"created","id":4219,"issue_id":"gt-wisp-dc9fs1","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:53Z","event_type":"created","id":4220,"issue_id":"gt-wisp-oajuqm","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:53Z","event_type":"created","id":4221,"issue_id":"gt-wisp-7pyxdu","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:54Z","event_type":"created","id":4222,"issue_id":"gt-wisp-qyjcab","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:54Z","event_type":"created","id":4223,"issue_id":"gt-wisp-okrd5a","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:55Z","event_type":"created","id":4224,"issue_id":"gt-wisp-s109ca","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:55Z","event_type":"created","id":4225,"issue_id":"gt-wisp-rtxefj","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:29:56Z","event_type":"created","id":4226,"issue_id":"gt-wisp-pr9x6n","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:23Z","event_type":"created","id":4227,"issue_id":"gt-wisp-7fw0am","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:24Z","event_type":"created","id":4228,"issue_id":"gt-wisp-cpdg7w","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:24Z","event_type":"created","id":4229,"issue_id":"gt-wisp-n7ch1v","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:25Z","event_type":"created","id":4230,"issue_id":"gt-wisp-b6sxb6","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:25Z","event_type":"created","id":4231,"issue_id":"gt-wisp-3s4ue7","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:25Z","event_type":"created","id":4232,"issue_id":"gt-wisp-jiplse","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:26Z","event_type":"created","id":4233,"issue_id":"gt-wisp-pzddat","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:34:26Z","event_type":"created","id":4234,"issue_id":"gt-wisp-uwe8ut","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:43Z","event_type":"created","id":4235,"issue_id":"gt-wisp-eofqg5","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:44Z","event_type":"created","id":4236,"issue_id":"gt-wisp-igfr37","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:45Z","event_type":"created","id":4237,"issue_id":"gt-wisp-u31zu5","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:46Z","event_type":"created","id":4238,"issue_id":"gt-wisp-ukk0ox","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:47Z","event_type":"created","id":4239,"issue_id":"gt-wisp-n7sxif","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:47Z","event_type":"created","id":4240,"issue_id":"gt-wisp-xpsu4g","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:48Z","event_type":"created","id":4241,"issue_id":"gt-wisp-mshvwj","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T18:38:48Z","event_type":"created","id":4242,"issue_id":"gt-wisp-om6mot","new_value":"","old_value":""}
