@@ -7114,43 +7114,81 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:22:41Z","event_type":"created","id":3638,"issue_id":"gt-wisp-4h7p9z","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-2cf0cb7208a0","created_at":"2026-03-30T20:24:26Z","event_type":"label_added","id":3639,"issue_id":"gt-dpzh","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:22:41Z","event_type":"created","id":3639,"issue_id":"gt-wisp-32d0iy","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-30T20:28:53Z","event_type":"created","id":3640,"issue_id":"gt-6329","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:22:42Z","event_type":"created","id":3640,"issue_id":"gt-wisp-uyuf5o","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-30T20:28:53Z","event_type":"label_added","id":3641,"issue_id":"gt-6329","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:22:43Z","event_type":"created","id":3641,"issue_id":"gt-wisp-ikcuv8","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-30T20:28:53Z","event_type":"label_added","id":3642,"issue_id":"gt-6329","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:22:44Z","event_type":"created","id":3642,"issue_id":"gt-wisp-p7rukv","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-30T20:28:53Z","event_type":"label_added","id":3643,"issue_id":"gt-6329","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:48Z","event_type":"created","id":3643,"issue_id":"gt-wisp-04dfl7","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-30T20:28:53Z","event_type":"label_added","id":3644,"issue_id":"gt-6329","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:49Z","event_type":"created","id":3644,"issue_id":"gt-wisp-sqa6sw","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-0c1c008b50dc","created_at":"2026-03-30T20:28:53Z","event_type":"label_added","id":3645,"issue_id":"gt-6329","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:49Z","event_type":"created","id":3645,"issue_id":"gt-wisp-se4g5s","new_value":"","old_value":""}
+{"actor":"deacon/dogs/alpha","comment":null,"created_at":"2026-03-30T20:29:54Z","event_type":"created","id":3646,"issue_id":"gt-s37c","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:50Z","event_type":"created","id":3646,"issue_id":"gt-wisp-l7iqgw","new_value":"","old_value":""}
+{"actor":"deacon/dogs/alpha","comment":"Added label: gt:message","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3647,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:50Z","event_type":"created","id":3647,"issue_id":"gt-wisp-44ovf7","new_value":"","old_value":""}
+{"actor":"deacon/dogs/alpha","comment":"Added label: gt:escalation","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3648,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:51Z","event_type":"created","id":3648,"issue_id":"gt-wisp-1hmg12","new_value":"","old_value":""}
+{"actor":"deacon/dogs/alpha","comment":"Added label: from:deacon/dogs/alpha","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3649,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:51Z","event_type":"created","id":3649,"issue_id":"gt-wisp-4mpsrb","new_value":"","old_value":""}
+{"actor":"deacon/dogs/alpha","comment":"Added label: msg-type:escalation","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3650,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:26:51Z","event_type":"created","id":3650,"issue_id":"gt-wisp-op447r","new_value":"","old_value":""}
+{"actor":"deacon/dogs/alpha","comment":"Added label: delivery:pending","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3651,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:30:58Z","event_type":"created","id":3651,"issue_id":"gt-wisp-k6emc8","new_value":"","old_value":""}
+{"actor":"deacon/dogs/alpha","comment":"Added label: thread:gt-wisp-9qn3pb","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3652,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:30:59Z","event_type":"created","id":3652,"issue_id":"gt-wisp-yisjv6","new_value":"","old_value":""}
+{"actor":"dog","comment":"Added label: severity:high","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3653,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:30:59Z","event_type":"created","id":3653,"issue_id":"gt-wisp-0j38cw","new_value":"","old_value":""}
+{"actor":"dog","comment":"Added label: escalation:gt-wisp-9qn3pb","created_at":"2026-03-30T20:29:54Z","event_type":"label_added","id":3654,"issue_id":"gt-s37c","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:31:00Z","event_type":"created","id":3654,"issue_id":"gt-wisp-rfhvzb","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-30T20:33:28Z","event_type":"created","id":3655,"issue_id":"gt-q9dg","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:31:00Z","event_type":"created","id":3655,"issue_id":"gt-wisp-xdpgn4","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-30T20:33:28Z","event_type":"label_added","id":3656,"issue_id":"gt-q9dg","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:31:01Z","event_type":"created","id":3656,"issue_id":"gt-wisp-mxdgam","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-30T20:33:28Z","event_type":"label_added","id":3657,"issue_id":"gt-q9dg","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:31:01Z","event_type":"created","id":3657,"issue_id":"gt-wisp-m83sgy","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-30T20:33:28Z","event_type":"label_added","id":3658,"issue_id":"gt-q9dg","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:31:01Z","event_type":"created","id":3658,"issue_id":"gt-wisp-0dnlnk","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-30T20:33:28Z","event_type":"label_added","id":3659,"issue_id":"gt-q9dg","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:04Z","event_type":"created","id":3659,"issue_id":"gt-wisp-qw86fw","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-f3ca9e8b1b17","created_at":"2026-03-30T20:33:28Z","event_type":"label_added","id":3660,"issue_id":"gt-q9dg","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:05Z","event_type":"created","id":3660,"issue_id":"gt-wisp-v06hcq","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-30T20:38:06Z","event_type":"created","id":3661,"issue_id":"gt-d3iq","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:05Z","event_type":"created","id":3661,"issue_id":"gt-wisp-sjmvmi","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-30T20:38:06Z","event_type":"label_added","id":3662,"issue_id":"gt-d3iq","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:06Z","event_type":"created","id":3662,"issue_id":"gt-wisp-itfrvd","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-30T20:38:06Z","event_type":"label_added","id":3663,"issue_id":"gt-d3iq","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:07Z","event_type":"created","id":3663,"issue_id":"gt-wisp-o0rkxi","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-30T20:38:06Z","event_type":"label_added","id":3664,"issue_id":"gt-d3iq","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:07Z","event_type":"created","id":3664,"issue_id":"gt-wisp-3pwg7i","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-30T20:38:06Z","event_type":"label_added","id":3665,"issue_id":"gt-d3iq","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:08Z","event_type":"created","id":3665,"issue_id":"gt-wisp-smhrwi","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-0c2fa9220fca","created_at":"2026-03-30T20:38:06Z","event_type":"label_added","id":3666,"issue_id":"gt-d3iq","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:35:09Z","event_type":"created","id":3666,"issue_id":"gt-wisp-cyed61","new_value":"","old_value":""}
+{"actor":"deacon/","comment":null,"created_at":"2026-03-30T20:39:54Z","event_type":"created","id":3667,"issue_id":"gt-kybk","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:13Z","event_type":"created","id":3667,"issue_id":"gt-wisp-86k66w","new_value":"","old_value":""}
+{"actor":"deacon/","comment":"Added label: from:deacon/","created_at":"2026-03-30T20:39:54Z","event_type":"label_added","id":3668,"issue_id":"gt-kybk","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:13Z","event_type":"created","id":3668,"issue_id":"gt-wisp-t1cwns","new_value":"","old_value":""}
+{"actor":"deacon/","comment":"Added label: gt:message","created_at":"2026-03-30T20:39:54Z","event_type":"label_added","id":3669,"issue_id":"gt-kybk","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:14Z","event_type":"created","id":3669,"issue_id":"gt-wisp-3bzfag","new_value":"","old_value":""}
+{"actor":"deacon","comment":null,"created_at":"2026-03-30T20:39:54Z","event_type":"status_changed","id":3670,"issue_id":"gt-kybk","new_value":"{\"assignee\":\"deacon/\",\"status\":\"hooked\"}","old_value":"{\"id\":\"gt-kybk\",\"title\":\"🤝 HANDOFF: Routine cycle\",\"description\":\"Completed 14 patrols (7-20), zero incidents. Dolt healthy 607MB. 22 sessions, 4 dogs idle, all rigs stopped. Inbox clean throughout. Quiet shift.\",\"status\":\"open\",\"priority\":1,\"issue_type\":\"task\",\"assignee\":\"deacon/\",\"owner\":\"romethorstenson@gmail.com\",\"created_at\":\"2026-03-30T20:39:55Z\",\"created_by\":\"deacon/\",\"updated_at\":\"2026-03-30T20:39:55Z\"}"}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:15Z","event_type":"created","id":3670,"issue_id":"gt-wisp-km8y6v","new_value":"","old_value":""}
+{"actor":"deacon","comment":null,"created_at":"2026-03-30T20:40:21Z","event_type":"closed","id":3671,"issue_id":"gt-kybk","new_value":"Closed","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:16Z","event_type":"created","id":3671,"issue_id":"gt-wisp-kbcs4f","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-30T20:42:46Z","event_type":"created","id":3672,"issue_id":"gt-2fx8","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:16Z","event_type":"created","id":3672,"issue_id":"gt-wisp-8yq6tu","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-30T20:42:46Z","event_type":"label_added","id":3673,"issue_id":"gt-2fx8","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:17Z","event_type":"created","id":3673,"issue_id":"gt-wisp-g9ngt6","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-30T20:42:46Z","event_type":"label_added","id":3674,"issue_id":"gt-2fx8","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:39:17Z","event_type":"created","id":3674,"issue_id":"gt-wisp-2st3qn","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-30T20:42:46Z","event_type":"label_added","id":3675,"issue_id":"gt-2fx8","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:43:23Z","event_type":"created","id":3675,"issue_id":"gt-wisp-yusddr","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-30T20:42:46Z","event_type":"label_added","id":3676,"issue_id":"gt-2fx8","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:43:24Z","event_type":"created","id":3676,"issue_id":"gt-wisp-jdpuf6","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-8eafc0d8c08c","created_at":"2026-03-30T20:42:46Z","event_type":"label_added","id":3677,"issue_id":"gt-2fx8","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:43:24Z","event_type":"created","id":3677,"issue_id":"gt-wisp-9rudk6","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:43:25Z","event_type":"created","id":3678,"issue_id":"gt-wisp-hgpg0r","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T13:43:25Z","event_type":"created","id":3679,"issue_id":"gt-wisp-6ikr9w","new_value":"","old_value":""}
@@ -7914,3 +7952,44 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:25:30Z","event_type":"created","id":4437,"issue_id":"gt-wisp-2960j5","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:25:31Z","event_type":"created","id":4438,"issue_id":"gt-wisp-uj8dqr","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:25:31Z","event_type":"created","id":4439,"issue_id":"gt-wisp-p8d25o","new_value":"","old_value":""}
+{"actor":"dog","comment":"","created_at":"2026-03-30T20:29:53Z","event_type":"created","id":4440,"issue_id":"gt-wisp-9qn3pb","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:05Z","event_type":"created","id":4441,"issue_id":"gt-wisp-1tbbvq","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:06Z","event_type":"created","id":4442,"issue_id":"gt-wisp-yd7jq3","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:07Z","event_type":"created","id":4443,"issue_id":"gt-wisp-3emkpi","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:07Z","event_type":"created","id":4444,"issue_id":"gt-wisp-co4l1o","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:08Z","event_type":"created","id":4445,"issue_id":"gt-wisp-ok9cxa","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:09Z","event_type":"created","id":4446,"issue_id":"gt-wisp-eo4xyr","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:09Z","event_type":"created","id":4447,"issue_id":"gt-wisp-k1gbkr","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:30:10Z","event_type":"created","id":4448,"issue_id":"gt-wisp-i3swes","new_value":"","old_value":""}
+{"actor":"mayor","comment":"","created_at":"2026-03-30T20:30:28Z","event_type":"closed","id":4449,"issue_id":"gt-wisp-9qn3pb","new_value":"Deacon Claude session had died — raw nudge text was hitting bare bash. Restarted deacon session.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:30:37Z","event_type":"closed","id":4450,"issue_id":"gt-wisp-sxyeoo","new_value":"burned: replaced by new patrol cycle","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:33:00Z","event_type":"closed","id":4451,"issue_id":"gt-wisp-1nbxe7","new_value":"patrol cycle complete: Cycle 7: All rigs stopped, Dolt healthy (602MB, 21 conns, 0 zombies), 4 dogs idle, 29 convoys active, 150 wisps within TTL, inbox clean. No incidents.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:33:54Z","event_type":"closed","id":4452,"issue_id":"gt-wisp-yw826i","new_value":"patrol cycle complete: Cycle 8: Dolt healthy (602MB, 22 conns), 4 dogs (1 working), all rigs stopped, inbox clean. No incidents.","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:47Z","event_type":"created","id":4453,"issue_id":"gt-wisp-0uuf2z","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:48Z","event_type":"created","id":4454,"issue_id":"gt-wisp-v5iuk9","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:48Z","event_type":"created","id":4455,"issue_id":"gt-wisp-v56kyq","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:49Z","event_type":"created","id":4456,"issue_id":"gt-wisp-fmm6fw","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:49Z","event_type":"created","id":4457,"issue_id":"gt-wisp-5i9bv0","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:50Z","event_type":"created","id":4458,"issue_id":"gt-wisp-ssj0ca","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:50Z","event_type":"created","id":4459,"issue_id":"gt-wisp-w46pyd","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:34:50Z","event_type":"created","id":4460,"issue_id":"gt-wisp-sw6uft","new_value":"","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:34:59Z","event_type":"closed","id":4461,"issue_id":"gt-wisp-j8rrh7","new_value":"patrol cycle complete: Cycle 9: Quiet. Dolt healthy (603MB, 22 conns), 4 dogs idle, 29 convoys, inbox clean. No incidents.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:35:38Z","event_type":"closed","id":4462,"issue_id":"gt-wisp-rzi29r","new_value":"patrol cycle complete: Cycle 10: Quiet. Dolt 604MB/19 conns/0 zombies. 22 claude sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:36:10Z","event_type":"closed","id":4463,"issue_id":"gt-wisp-grtmgi","new_value":"patrol cycle complete: Cycle 11: Quiet. Dolt 604MB/19 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:36:45Z","event_type":"closed","id":4464,"issue_id":"gt-wisp-shyedv","new_value":"patrol cycle complete: Cycle 12: Quiet. Dolt 605MB/21 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:37:15Z","event_type":"closed","id":4465,"issue_id":"gt-wisp-ywfv15","new_value":"patrol cycle complete: Cycle 13: Quiet. Dolt 605MB/19 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:37:42Z","event_type":"closed","id":4466,"issue_id":"gt-wisp-cqugnx","new_value":"patrol cycle complete: Cycle 14: Quiet. Dolt 605MB/20 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:38:09Z","event_type":"closed","id":4467,"issue_id":"gt-wisp-i7nxkx","new_value":"patrol cycle complete: Cycle 15: Quiet. Dolt 605MB/20 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:38:33Z","event_type":"closed","id":4468,"issue_id":"gt-wisp-60sdvn","new_value":"patrol cycle complete: Cycle 16: 24 sessions (+2). Dolt 605MB/24 conns. 3 dogs idle, 1 working. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:38:55Z","event_type":"closed","id":4469,"issue_id":"gt-wisp-6j7psz","new_value":"patrol cycle complete: Cycle 17: Quiet. Dolt 606MB/24 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:39:12Z","event_type":"closed","id":4470,"issue_id":"gt-wisp-w4s3mw","new_value":"patrol cycle complete: Cycle 18: Quiet. Dolt 606MB/22 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:22Z","event_type":"created","id":4471,"issue_id":"gt-wisp-b80elm","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:23Z","event_type":"created","id":4472,"issue_id":"gt-wisp-1kc6mv","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:23Z","event_type":"created","id":4473,"issue_id":"gt-wisp-9ch6jz","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:24Z","event_type":"created","id":4474,"issue_id":"gt-wisp-2qw6dy","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:24Z","event_type":"created","id":4475,"issue_id":"gt-wisp-6abomz","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:25Z","event_type":"created","id":4476,"issue_id":"gt-wisp-e5udg8","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:25Z","event_type":"created","id":4477,"issue_id":"gt-wisp-1ckz0u","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-30T20:39:26Z","event_type":"created","id":4478,"issue_id":"gt-wisp-9dglj7","new_value":"","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:39:32Z","event_type":"closed","id":4479,"issue_id":"gt-wisp-thm95d","new_value":"patrol cycle complete: Cycle 19: Quiet. Dolt 606MB/22 conns. 22 sessions. 4 dogs idle. Inbox clean.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-30T20:40:21Z","event_type":"closed","id":4480,"issue_id":"gt-wisp-pr4gtj","new_value":"burned: replaced by new patrol cycle","old_value":""}
