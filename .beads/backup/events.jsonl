@@ -8660,9 +8660,13 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:11:58Z","event_type":"created","id":4411,"issue_id":"gt-wisp-hnpohk","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-39be7ae9eeb3","created_at":"2026-03-31T03:42:59Z","event_type":"label_added","id":4412,"issue_id":"gt-iyjo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:11:59Z","event_type":"created","id":4412,"issue_id":"gt-wisp-kwp1z4","new_value":"","old_value":""}
+{"actor":"deacon/","comment":null,"created_at":"2026-03-31T04:19:06Z","event_type":"created","id":4413,"issue_id":"gt-v8f0","new_value":"","old_value":""}
 {"actor":"dog","comment":"","created_at":"2026-03-30T20:13:16Z","event_type":"created","id":4413,"issue_id":"gt-wisp-v469gn","new_value":"","old_value":""}
+{"actor":"deacon/","comment":"Added label: from:deacon/","created_at":"2026-03-31T04:19:06Z","event_type":"label_added","id":4414,"issue_id":"gt-v8f0","new_value":null,"old_value":null}
 {"actor":"mayor","comment":"","created_at":"2026-03-30T20:13:50Z","event_type":"closed","id":4414,"issue_id":"gt-wisp-v469gn","new_value":"Fixed: replaced filesystem-based dolt push (cd into data dirs) with SQL-based dolt_push() via running server — no directory access needed","old_value":""}
+{"actor":"deacon/","comment":"Added label: gt:message","created_at":"2026-03-31T04:19:06Z","event_type":"label_added","id":4415,"issue_id":"gt-v8f0","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:16:28Z","event_type":"created","id":4415,"issue_id":"gt-wisp-ewyzm4","new_value":"","old_value":""}
+{"actor":"deacon","comment":null,"created_at":"2026-03-31T04:19:06Z","event_type":"status_changed","id":4416,"issue_id":"gt-v8f0","new_value":"{\"assignee\":\"deacon/\",\"status\":\"hooked\"}","old_value":"{\"id\":\"gt-v8f0\",\"title\":\"🤝 HANDOFF: Routine cycle\",\"description\":\"Completed 20 patrols. Quiet session, no incidents. Cleared alpha(session-hygiene) and bravo(compactor-dog) to idle in cycle 1. All plugins on cooldown. Zombie dolt PID 1941 on port 13381 persists (no kill authority). All rig witnesses/refineries stopped. Mayor alive. Dolt stable 643MB 20conn. Disk 52%. 4 dogs idle. Inbox clean.\",\"status\":\"open\",\"priority\":1,\"issue_type\":\"task\",\"assignee\":\"deacon/\",\"owner\":\"romethorstenson@gmail.com\",\"created_at\":\"2026-03-31T04:19:06Z\",\"created_by\":\"deacon/\",\"updated_at\":\"2026-03-31T04:19:06Z\"}"}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:16:28Z","event_type":"created","id":4416,"issue_id":"gt-wisp-ny49f7","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:16:29Z","event_type":"created","id":4417,"issue_id":"gt-wisp-nyagxp","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T20:16:29Z","event_type":"created","id":4418,"issue_id":"gt-wisp-0bs4l1","new_value":"","old_value":""}
@@ -9547,3 +9551,50 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-31T03:51:46Z","event_type":"created","id":5297,"issue_id":"gt-wisp-toe9rt","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T03:51:46Z","event_type":"created","id":5298,"issue_id":"gt-wisp-orgnc6","new_value":"","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T03:53:06Z","event_type":"closed","id":5299,"issue_id":"gt-wisp-bqz3by","new_value":"patrol cycle complete: Cycle 4: Quiet. Mayor alive. 4 dogs idle. 20 claude procs, 2 dolt (1 zombie PID 1941). No incidents.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T03:54:37Z","event_type":"closed","id":5300,"issue_id":"gt-wisp-mcyz87","new_value":"patrol cycle complete: Cycle 5: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T03:56:22Z","event_type":"closed","id":5301,"issue_id":"gt-wisp-hnq654","new_value":"patrol cycle complete: Cycle 6: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:52Z","event_type":"created","id":5302,"issue_id":"gt-wisp-lcdtsx","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:52Z","event_type":"created","id":5303,"issue_id":"gt-wisp-gnww69","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:53Z","event_type":"created","id":5304,"issue_id":"gt-wisp-0uek9p","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:53Z","event_type":"created","id":5305,"issue_id":"gt-wisp-4qizj6","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:54Z","event_type":"created","id":5306,"issue_id":"gt-wisp-wkxtqf","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:54Z","event_type":"created","id":5307,"issue_id":"gt-wisp-84lf51","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:55Z","event_type":"created","id":5308,"issue_id":"gt-wisp-6zoely","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T03:57:56Z","event_type":"created","id":5309,"issue_id":"gt-wisp-c2xp9c","new_value":"","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T03:58:02Z","event_type":"closed","id":5310,"issue_id":"gt-wisp-egmfs5","new_value":"patrol cycle complete: Cycle 7: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T03:59:32Z","event_type":"closed","id":5311,"issue_id":"gt-wisp-29xeo7","new_value":"patrol cycle complete: Cycle 8: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:01:02Z","event_type":"closed","id":5312,"issue_id":"gt-wisp-vk89js","new_value":"patrol cycle complete: Cycle 9: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:03:03Z","event_type":"closed","id":5313,"issue_id":"gt-wisp-8qpsdn","new_value":"patrol cycle complete: Cycle 10: Deeper check. Dolt 638MB 22conn 1 zombie. 19 claude procs. Disk 52%. Mayor alive. 4 dogs idle. All stable.","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:11Z","event_type":"created","id":5314,"issue_id":"gt-wisp-vp6y1f","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:12Z","event_type":"created","id":5315,"issue_id":"gt-wisp-nxmesg","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:13Z","event_type":"created","id":5316,"issue_id":"gt-wisp-vkqpal","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:15Z","event_type":"created","id":5317,"issue_id":"gt-wisp-m8b5b1","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:16Z","event_type":"created","id":5318,"issue_id":"gt-wisp-vpks0l","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:17Z","event_type":"created","id":5319,"issue_id":"gt-wisp-xc3gj1","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:18Z","event_type":"created","id":5320,"issue_id":"gt-wisp-c7ywru","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:19Z","event_type":"created","id":5321,"issue_id":"gt-wisp-4al8nr","new_value":"","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:04:41Z","event_type":"closed","id":5322,"issue_id":"gt-wisp-ekw1jw","new_value":"patrol cycle complete: Cycle 11: Quiet. Mayor alive. 20 claude procs. All stable.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:06:10Z","event_type":"closed","id":5323,"issue_id":"gt-wisp-fvu04x","new_value":"patrol cycle complete: Cycle 12: Quiet. All stable.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:07:38Z","event_type":"closed","id":5324,"issue_id":"gt-wisp-7n3cuu","new_value":"patrol cycle complete: Cycle 13: Quiet. All stable.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:09:22Z","event_type":"closed","id":5325,"issue_id":"gt-wisp-y78hs9","new_value":"patrol cycle complete: Cycle 14: 21 claude procs (+1). Mayor alive. All stable.","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:52Z","event_type":"created","id":5326,"issue_id":"gt-wisp-mb2qw4","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:53Z","event_type":"created","id":5327,"issue_id":"gt-wisp-57pir6","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:54Z","event_type":"created","id":5328,"issue_id":"gt-wisp-wiw0dt","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:55Z","event_type":"created","id":5329,"issue_id":"gt-wisp-7gg5l7","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:55Z","event_type":"created","id":5330,"issue_id":"gt-wisp-44vp7w","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:55Z","event_type":"created","id":5331,"issue_id":"gt-wisp-px79p0","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:56Z","event_type":"created","id":5332,"issue_id":"gt-wisp-ielkyq","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:10:56Z","event_type":"created","id":5333,"issue_id":"gt-wisp-mmnjc9","new_value":"","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:11:00Z","event_type":"closed","id":5334,"issue_id":"gt-wisp-hz4n2x","new_value":"patrol cycle complete: Cycle 15: Quiet. All stable. Deeper Dolt check next cycle.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:12:34Z","event_type":"closed","id":5335,"issue_id":"gt-wisp-mc7j6x","new_value":"patrol cycle complete: Cycle 16: Dolt 641MB 20conn. Mayor alive. All stable.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:14:05Z","event_type":"closed","id":5336,"issue_id":"gt-wisp-vsfwa2","new_value":"patrol cycle complete: Cycle 17: Quiet. All stable.","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:15:48Z","event_type":"closed","id":5337,"issue_id":"gt-wisp-5gti89","new_value":"patrol cycle complete: Cycle 18: Quiet. 21 claude procs. All stable.","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:02Z","event_type":"created","id":5338,"issue_id":"gt-wisp-gqsg3e","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:03Z","event_type":"created","id":5339,"issue_id":"gt-wisp-nf66g3","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:04Z","event_type":"created","id":5340,"issue_id":"gt-wisp-bhyp9q","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:05Z","event_type":"created","id":5341,"issue_id":"gt-wisp-icoxrc","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:07Z","event_type":"created","id":5342,"issue_id":"gt-wisp-yeymxx","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:08Z","event_type":"created","id":5343,"issue_id":"gt-wisp-s5e5q8","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:10Z","event_type":"created","id":5344,"issue_id":"gt-wisp-x2pz87","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T04:17:11Z","event_type":"created","id":5345,"issue_id":"gt-wisp-gq7ofa","new_value":"","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-03-31T04:17:27Z","event_type":"closed","id":5346,"issue_id":"gt-wisp-ztz3h7","new_value":"patrol cycle complete: Cycle 19: Quiet. All stable. Next cycle is 20 - handoff threshold.","old_value":""}
