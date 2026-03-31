@@ -9786,65 +9786,125 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:47:01Z","event_type":"created","id":4974,"issue_id":"gt-wisp-gstl4j","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-db4b50dee3ee","created_at":"2026-03-31T21:14:30Z","event_type":"label_added","id":4975,"issue_id":"gt-r2id","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:47:02Z","event_type":"created","id":4975,"issue_id":"gt-wisp-ta3cz6","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:19:17Z","event_type":"created","id":4976,"issue_id":"gt-95xm","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:47:03Z","event_type":"created","id":4976,"issue_id":"gt-wisp-1khg86","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:19:17Z","event_type":"label_added","id":4977,"issue_id":"gt-95xm","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:47:18Z","event_type":"closed","id":4977,"issue_id":"gt-wisp-dxd4n5","new_value":"patrol cycle complete: Cycle 3: Quiet. Dolt 643MB 23conn. All rigs stopped. Plugins on cooldown. 4 dogs idle. 187 wisps within TTL. Zombie PID 1941. No incidents. 25/26 steps (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:19:17Z","event_type":"label_added","id":4978,"issue_id":"gt-95xm","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:47:44Z","event_type":"created","id":4978,"issue_id":"gt-wisp-iognxn","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:19:17Z","event_type":"label_added","id":4979,"issue_id":"gt-95xm","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:47:44Z","event_type":"created","id":4979,"issue_id":"gt-wisp-qnw0u3","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:19:17Z","event_type":"label_added","id":4980,"issue_id":"gt-95xm","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:48:12Z","event_type":"closed","id":4980,"issue_id":"gt-wisp-prczpy","new_value":"patrol cycle complete: Cycle 4: Dolt 644MB 21conn. Plugins dispatched: stuck-agent-dog, github-sheriff. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 claude procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-4cb69499145c","created_at":"2026-03-31T21:19:17Z","event_type":"label_added","id":4981,"issue_id":"gt-95xm","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:49:03Z","event_type":"closed","id":4981,"issue_id":"gt-wisp-5ya0lu","new_value":"patrol cycle complete: Cycle 5: Quiet. Dolt 644MB 20conn. All rigs stopped. Plugins cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:19:26Z","event_type":"created","id":4982,"issue_id":"gt-mm01","new_value":"","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:49:52Z","event_type":"closed","id":4982,"issue_id":"gt-wisp-vpkcbf","new_value":"patrol cycle complete: Cycle 6: Quiet. Dolt 645MB 22conn. All rigs stopped. All plugins cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:19:26Z","event_type":"label_added","id":4983,"issue_id":"gt-mm01","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:50:46Z","event_type":"closed","id":4983,"issue_id":"gt-wisp-okt39c","new_value":"patrol cycle complete: Cycle 7: Quiet. Dolt 645MB 20conn. All rigs stopped. Plugins cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:19:26Z","event_type":"label_added","id":4984,"issue_id":"gt-mm01","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:51:45Z","event_type":"closed","id":4984,"issue_id":"gt-wisp-dqkrps","new_value":"patrol cycle complete: Cycle 8: Quiet. Dolt 645MB 22conn. All rigs stopped. Plugins cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:19:26Z","event_type":"label_added","id":4985,"issue_id":"gt-mm01","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:22Z","event_type":"created","id":4985,"issue_id":"gt-wisp-m7nzc8","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:19:26Z","event_type":"label_added","id":4986,"issue_id":"gt-mm01","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:24Z","event_type":"created","id":4986,"issue_id":"gt-wisp-wcounk","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-9e576175f1ad","created_at":"2026-03-31T21:19:26Z","event_type":"label_added","id":4987,"issue_id":"gt-mm01","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:25Z","event_type":"created","id":4987,"issue_id":"gt-wisp-tg82xp","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:19:36Z","event_type":"created","id":4988,"issue_id":"gt-ea70","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:26Z","event_type":"created","id":4988,"issue_id":"gt-wisp-vyqqp2","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:19:36Z","event_type":"label_added","id":4989,"issue_id":"gt-ea70","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:27Z","event_type":"created","id":4989,"issue_id":"gt-wisp-7g45gy","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:19:36Z","event_type":"label_added","id":4990,"issue_id":"gt-ea70","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:28Z","event_type":"created","id":4990,"issue_id":"gt-wisp-dhfve8","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:19:36Z","event_type":"label_added","id":4991,"issue_id":"gt-ea70","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:28Z","event_type":"created","id":4991,"issue_id":"gt-wisp-vzuxvs","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:19:36Z","event_type":"label_added","id":4992,"issue_id":"gt-ea70","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:52:29Z","event_type":"created","id":4992,"issue_id":"gt-wisp-rhuuzf","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-74bf64bd3174","created_at":"2026-03-31T21:19:36Z","event_type":"label_added","id":4993,"issue_id":"gt-ea70","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:52:44Z","event_type":"closed","id":4993,"issue_id":"gt-wisp-uqfsq3","new_value":"patrol cycle complete: Cycle 9: Quiet. Dolt 645MB 22conn. All rigs stopped. Plugins cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:24:26Z","event_type":"created","id":4994,"issue_id":"gt-idjc","new_value":"","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:53:09Z","event_type":"created","id":4994,"issue_id":"gt-wisp-zzn5rn","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:24:26Z","event_type":"label_added","id":4995,"issue_id":"gt-idjc","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:53:10Z","event_type":"created","id":4995,"issue_id":"gt-wisp-cq6m4l","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:24:26Z","event_type":"label_added","id":4996,"issue_id":"gt-idjc","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:53:41Z","event_type":"closed","id":4996,"issue_id":"gt-wisp-zo20g9","new_value":"patrol cycle complete: Cycle 10: Dolt 646MB 20conn. Plugins dispatched: stuck-agent-dog, github-sheriff. session-hygiene/compactor cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 21 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:24:26Z","event_type":"label_added","id":4997,"issue_id":"gt-idjc","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:54:36Z","event_type":"closed","id":4997,"issue_id":"gt-wisp-q81igw","new_value":"patrol cycle complete: Cycle 11: Quiet. Dolt 647MB 20conn. All rigs stopped. Plugins cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:24:26Z","event_type":"label_added","id":4998,"issue_id":"gt-idjc","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:55:36Z","event_type":"closed","id":4998,"issue_id":"gt-wisp-myq0u9","new_value":"patrol cycle complete: Cycle 12: Quiet. Dolt 647MB 21conn. All rigs stopped. Plugins cooldown. 4 dogs idle. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-42acc267e571","created_at":"2026-03-31T21:24:26Z","event_type":"label_added","id":4999,"issue_id":"gt-idjc","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:56:09Z","event_type":"created","id":4999,"issue_id":"gt-wisp-q4fvw7","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:24:37Z","event_type":"created","id":5000,"issue_id":"gt-l9ef","new_value":"","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:56:48Z","event_type":"closed","id":5000,"issue_id":"gt-wisp-t9f5is","new_value":"patrol cycle complete: Cycle 13: Dolt 647MB 20conn. dolt-archive dispatched. 3 dogs idle, 1 working. 187 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:24:37Z","event_type":"label_added","id":5001,"issue_id":"gt-l9ef","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:57:48Z","event_type":"closed","id":5001,"issue_id":"gt-wisp-o3cq64","new_value":"patrol cycle complete: Cycle 14: Quiet. Dolt 648MB 21conn. dolt-archive complete. 4 dogs idle. 188 wisps TTL. Zombie PID 1941. 21 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:24:37Z","event_type":"label_added","id":5002,"issue_id":"gt-l9ef","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:09Z","event_type":"created","id":5002,"issue_id":"gt-wisp-vhipgj","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:24:37Z","event_type":"label_added","id":5003,"issue_id":"gt-l9ef","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:09Z","event_type":"created","id":5003,"issue_id":"gt-wisp-rsjpfi","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:24:37Z","event_type":"label_added","id":5004,"issue_id":"gt-l9ef","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:10Z","event_type":"created","id":5004,"issue_id":"gt-wisp-p1ah4p","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-75bf43af4af6","created_at":"2026-03-31T21:24:37Z","event_type":"label_added","id":5005,"issue_id":"gt-l9ef","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:12Z","event_type":"created","id":5005,"issue_id":"gt-wisp-aixttt","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:24:48Z","event_type":"created","id":5006,"issue_id":"gt-d5l7","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:13Z","event_type":"created","id":5006,"issue_id":"gt-wisp-syqx96","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:24:48Z","event_type":"label_added","id":5007,"issue_id":"gt-d5l7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:13Z","event_type":"created","id":5007,"issue_id":"gt-wisp-qjgvqf","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:24:48Z","event_type":"label_added","id":5008,"issue_id":"gt-d5l7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:14Z","event_type":"created","id":5008,"issue_id":"gt-wisp-6smp79","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:24:48Z","event_type":"label_added","id":5009,"issue_id":"gt-d5l7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T01:58:15Z","event_type":"created","id":5009,"issue_id":"gt-wisp-vgumng","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:24:48Z","event_type":"label_added","id":5010,"issue_id":"gt-d5l7","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:58:17Z","event_type":"created","id":5010,"issue_id":"gt-wisp-ifdtiq","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-0067ea5d613b","created_at":"2026-03-31T21:24:48Z","event_type":"label_added","id":5011,"issue_id":"gt-d5l7","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:58:18Z","event_type":"created","id":5011,"issue_id":"gt-wisp-zsrtsc","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:24:58Z","event_type":"created","id":5012,"issue_id":"gt-ox4s","new_value":"","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:58:46Z","event_type":"closed","id":5012,"issue_id":"gt-wisp-jta31c","new_value":"patrol cycle complete: Cycle 15: Dolt 648MB 23conn. stuck-agent-dog + github-sheriff dispatched. 4 dogs idle. 188 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:24:59Z","event_type":"label_added","id":5013,"issue_id":"gt-ox4s","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T01:59:39Z","event_type":"closed","id":5013,"issue_id":"gt-wisp-ikgtk5","new_value":"patrol cycle complete: Cycle 16: Quiet. Dolt 650MB 21conn. All plugins cooldown. 4 dogs idle. 188 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:24:59Z","event_type":"label_added","id":5014,"issue_id":"gt-ox4s","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:00:36Z","event_type":"closed","id":5014,"issue_id":"gt-wisp-y81kmx","new_value":"patrol cycle complete: Cycle 17: Quiet. Dolt 650MB 20conn. All rigs stopped. Plugins cooldown. 4 dogs idle. 188 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:24:59Z","event_type":"label_added","id":5015,"issue_id":"gt-ox4s","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:01:34Z","event_type":"closed","id":5015,"issue_id":"gt-wisp-6pr3qh","new_value":"patrol cycle complete: Cycle 18: Quiet. Dolt 650MB 20conn. All rigs stopped. All plugins cooldown. 4 dogs idle. 188 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:24:59Z","event_type":"label_added","id":5016,"issue_id":"gt-ox4s","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:02:42Z","event_type":"closed","id":5016,"issue_id":"gt-wisp-6e4lzx","new_value":"patrol cycle complete: Cycle 19: Dolt 650MB 39conn (dog active, connection spike expected). 3 dogs idle, 1 working. 188 wisps TTL. Zombie PID 1941. 20 procs. No incidents. 25/26 (costs DISABLED).","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-3f0ad0999295","created_at":"2026-03-31T21:24:59Z","event_type":"label_added","id":5017,"issue_id":"gt-ox4s","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:45Z","event_type":"created","id":5017,"issue_id":"gt-wisp-1er8wy","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:29:46Z","event_type":"created","id":5018,"issue_id":"gt-9zoy","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:46Z","event_type":"created","id":5018,"issue_id":"gt-wisp-qiev0t","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:29:46Z","event_type":"label_added","id":5019,"issue_id":"gt-9zoy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:48Z","event_type":"created","id":5019,"issue_id":"gt-wisp-fjmyvh","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:29:46Z","event_type":"label_added","id":5020,"issue_id":"gt-9zoy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:49Z","event_type":"created","id":5020,"issue_id":"gt-wisp-yite7c","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:29:46Z","event_type":"label_added","id":5021,"issue_id":"gt-9zoy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:50Z","event_type":"created","id":5021,"issue_id":"gt-wisp-w2xkp7","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:29:46Z","event_type":"label_added","id":5022,"issue_id":"gt-9zoy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:51Z","event_type":"created","id":5022,"issue_id":"gt-wisp-id3pkd","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-e9402a3042b8","created_at":"2026-03-31T21:29:46Z","event_type":"label_added","id":5023,"issue_id":"gt-9zoy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:52Z","event_type":"created","id":5023,"issue_id":"gt-wisp-v5occe","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:29:54Z","event_type":"created","id":5024,"issue_id":"gt-3bju","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:03:53Z","event_type":"created","id":5024,"issue_id":"gt-wisp-60l8an","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:29:55Z","event_type":"label_added","id":5025,"issue_id":"gt-3bju","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:04:34Z","event_type":"closed","id":5025,"issue_id":"gt-wisp-ptqe1t","new_value":"burned: replaced by new patrol cycle","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:29:55Z","event_type":"label_added","id":5026,"issue_id":"gt-3bju","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:06:46Z","event_type":"created","id":5026,"issue_id":"gt-wisp-v477x7","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:29:55Z","event_type":"label_added","id":5027,"issue_id":"gt-3bju","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:08:27Z","event_type":"closed","id":5027,"issue_id":"gt-wisp-esy00o","new_value":"patrol cycle complete: Cycle 1: All 26 steps executed. Quiet - all rigs stopped, Dolt stable 652MB/21conn, 4 dogs idle, 190 wisps within TTL. Zombie dolt PID 1941 persists (no kill auth). No incidents.","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:29:55Z","event_type":"label_added","id":5028,"issue_id":"gt-3bju","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:12Z","event_type":"created","id":5028,"issue_id":"gt-wisp-s627uf","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-7e33572b3274","created_at":"2026-03-31T21:29:55Z","event_type":"label_added","id":5029,"issue_id":"gt-3bju","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:13Z","event_type":"created","id":5029,"issue_id":"gt-wisp-x4jdlx","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-03-31T21:30:06Z","event_type":"created","id":5030,"issue_id":"gt-n7f9","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:14Z","event_type":"created","id":5030,"issue_id":"gt-wisp-jsfa03","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-03-31T21:30:06Z","event_type":"label_added","id":5031,"issue_id":"gt-n7f9","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:15Z","event_type":"created","id":5031,"issue_id":"gt-wisp-f8egvp","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-03-31T21:30:06Z","event_type":"label_added","id":5032,"issue_id":"gt-n7f9","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:16Z","event_type":"created","id":5032,"issue_id":"gt-wisp-luo4hq","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-03-31T21:30:06Z","event_type":"label_added","id":5033,"issue_id":"gt-n7f9","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:17Z","event_type":"created","id":5033,"issue_id":"gt-wisp-ibvbgd","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-03-31T21:30:06Z","event_type":"label_added","id":5034,"issue_id":"gt-n7f9","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:18Z","event_type":"created","id":5034,"issue_id":"gt-wisp-b0w9h1","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-9c28535bb845","created_at":"2026-03-31T21:30:06Z","event_type":"label_added","id":5035,"issue_id":"gt-n7f9","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T02:09:19Z","event_type":"created","id":5035,"issue_id":"gt-wisp-withuy","new_value":"","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:09:51Z","event_type":"closed","id":5036,"issue_id":"gt-wisp-koeys6","new_value":"patrol cycle complete: Cycle 2: Quiet. Dolt 653MB/23conn stable. 4 dogs idle, all rigs stopped. 190 wisps within TTL. Zombie dolt PID 1941 persists. No incidents.","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T02:10:45Z","event_type":"closed","id":5037,"issue_id":"gt-wisp-x8glr3","new_value":"patrol cycle complete: Cycle 3: Quiet. Dolt 655MB/21conn. 4 dogs idle, all rigs stopped. 190 wisps within TTL. No incidents.","old_value":""}
@@ -11590,3 +11650,30 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-31T21:10:48Z","event_type":"created","id":6777,"issue_id":"gt-wisp-u5b25g","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T21:10:49Z","event_type":"created","id":6778,"issue_id":"gt-wisp-mv78w8","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T21:10:49Z","event_type":"created","id":6779,"issue_id":"gt-wisp-2739mu","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:49Z","event_type":"created","id":6780,"issue_id":"gt-wisp-igw15x","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:49Z","event_type":"created","id":6781,"issue_id":"gt-wisp-87eo1n","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:50Z","event_type":"created","id":6782,"issue_id":"gt-wisp-3sxmv7","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:50Z","event_type":"created","id":6783,"issue_id":"gt-wisp-2wxcgd","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:51Z","event_type":"created","id":6784,"issue_id":"gt-wisp-brmk3t","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:51Z","event_type":"created","id":6785,"issue_id":"gt-wisp-tjuva0","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:52Z","event_type":"created","id":6786,"issue_id":"gt-wisp-9oe2d7","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:52Z","event_type":"created","id":6787,"issue_id":"gt-wisp-pqmoa3","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:15:54Z","event_type":"created","id":6788,"issue_id":"gt-wisp-3vwh8v","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:20:56Z","event_type":"created","id":6789,"issue_id":"gt-wisp-epwg61","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:20:57Z","event_type":"created","id":6790,"issue_id":"gt-wisp-m31ipg","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:20:57Z","event_type":"created","id":6791,"issue_id":"gt-wisp-p94rvd","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:20:58Z","event_type":"created","id":6792,"issue_id":"gt-wisp-c346l6","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:20:58Z","event_type":"created","id":6793,"issue_id":"gt-wisp-izt5kb","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:20:59Z","event_type":"created","id":6794,"issue_id":"gt-wisp-mzt0o1","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:20:59Z","event_type":"created","id":6795,"issue_id":"gt-wisp-ctqnjy","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:21:00Z","event_type":"created","id":6796,"issue_id":"gt-wisp-aqrd5t","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:21:07Z","event_type":"created","id":6797,"issue_id":"gt-wisp-dkxa3w","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:23Z","event_type":"created","id":6798,"issue_id":"gt-wisp-rh9jk5","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:24Z","event_type":"created","id":6799,"issue_id":"gt-wisp-pmaxyn","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:24Z","event_type":"created","id":6800,"issue_id":"gt-wisp-m91r4s","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:25Z","event_type":"created","id":6801,"issue_id":"gt-wisp-v6ly2v","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:25Z","event_type":"created","id":6802,"issue_id":"gt-wisp-596cal","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:25Z","event_type":"created","id":6803,"issue_id":"gt-wisp-00pjae","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:26Z","event_type":"created","id":6804,"issue_id":"gt-wisp-31dogh","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:26Z","event_type":"created","id":6805,"issue_id":"gt-wisp-sokpwq","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-03-31T21:26:29Z","event_type":"created","id":6806,"issue_id":"gt-wisp-bjo7im","new_value":"","old_value":""}
