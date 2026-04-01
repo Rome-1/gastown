@@ -10458,17 +10458,29 @@
 {"actor":"deacon","comment":"","created_at":"2026-03-31T03:58:02Z","event_type":"closed","id":5310,"issue_id":"gt-wisp-egmfs5","new_value":"patrol cycle complete: Cycle 7: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-995ab51dfc5d","created_at":"2026-04-01T01:15:53Z","event_type":"label_added","id":5311,"issue_id":"gt-j3st","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T03:59:32Z","event_type":"closed","id":5311,"issue_id":"gt-wisp-29xeo7","new_value":"patrol cycle complete: Cycle 8: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T01:22:13Z","event_type":"created","id":5312,"issue_id":"gt-ihho","new_value":"","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T04:01:02Z","event_type":"closed","id":5312,"issue_id":"gt-wisp-vk89js","new_value":"patrol cycle complete: Cycle 9: Quiet. Mayor alive. All stable. No incidents.","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T01:22:13Z","event_type":"label_added","id":5313,"issue_id":"gt-ihho","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T04:03:03Z","event_type":"closed","id":5313,"issue_id":"gt-wisp-8qpsdn","new_value":"patrol cycle complete: Cycle 10: Deeper check. Dolt 638MB 22conn 1 zombie. 19 claude procs. Disk 52%. Mayor alive. 4 dogs idle. All stable.","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T01:22:13Z","event_type":"label_added","id":5314,"issue_id":"gt-ihho","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:11Z","event_type":"created","id":5314,"issue_id":"gt-wisp-vp6y1f","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T01:22:13Z","event_type":"label_added","id":5315,"issue_id":"gt-ihho","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:12Z","event_type":"created","id":5315,"issue_id":"gt-wisp-nxmesg","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T01:22:13Z","event_type":"label_added","id":5316,"issue_id":"gt-ihho","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:13Z","event_type":"created","id":5316,"issue_id":"gt-wisp-vkqpal","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-25f480cd9ee9","created_at":"2026-04-01T01:22:13Z","event_type":"label_added","id":5317,"issue_id":"gt-ihho","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:15Z","event_type":"created","id":5317,"issue_id":"gt-wisp-m8b5b1","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T01:28:30Z","event_type":"created","id":5318,"issue_id":"gt-2bis","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:16Z","event_type":"created","id":5318,"issue_id":"gt-wisp-vpks0l","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T01:28:30Z","event_type":"label_added","id":5319,"issue_id":"gt-2bis","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:17Z","event_type":"created","id":5319,"issue_id":"gt-wisp-xc3gj1","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T01:28:31Z","event_type":"label_added","id":5320,"issue_id":"gt-2bis","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:18Z","event_type":"created","id":5320,"issue_id":"gt-wisp-c7ywru","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T01:28:31Z","event_type":"label_added","id":5321,"issue_id":"gt-2bis","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T04:04:19Z","event_type":"created","id":5321,"issue_id":"gt-wisp-4al8nr","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T01:28:31Z","event_type":"label_added","id":5322,"issue_id":"gt-2bis","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T04:04:41Z","event_type":"closed","id":5322,"issue_id":"gt-wisp-ekw1jw","new_value":"patrol cycle complete: Cycle 11: Quiet. Mayor alive. 20 claude procs. All stable.","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-5c79a91e4645","created_at":"2026-04-01T01:28:31Z","event_type":"label_added","id":5323,"issue_id":"gt-2bis","new_value":null,"old_value":null}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T04:06:10Z","event_type":"closed","id":5323,"issue_id":"gt-wisp-fvu04x","new_value":"patrol cycle complete: Cycle 12: Quiet. All stable.","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T04:07:38Z","event_type":"closed","id":5324,"issue_id":"gt-wisp-7n3cuu","new_value":"patrol cycle complete: Cycle 13: Quiet. All stable.","old_value":""}
 {"actor":"deacon","comment":"","created_at":"2026-03-31T04:09:22Z","event_type":"closed","id":5325,"issue_id":"gt-wisp-y78hs9","new_value":"patrol cycle complete: Cycle 14: 21 claude procs (+1). Mayor alive. All stable.","old_value":""}
@@ -12282,3 +12294,29 @@
 {"actor":"overseer","comment":"","created_at":"2026-04-01T01:12:18Z","event_type":"created","id":7133,"issue_id":"gt-wisp-pu6j9e","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T01:12:19Z","event_type":"created","id":7134,"issue_id":"gt-wisp-1m6mqe","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T01:12:20Z","event_type":"created","id":7135,"issue_id":"gt-wisp-4k6go9","new_value":"","old_value":""}
+{"actor":"dog","comment":"","created_at":"2026-04-01T01:16:18Z","event_type":"created","id":7136,"issue_id":"gt-wisp-41sz07","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:37Z","event_type":"created","id":7137,"issue_id":"gt-wisp-eb33rm","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:39Z","event_type":"created","id":7138,"issue_id":"gt-wisp-12uzay","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:40Z","event_type":"created","id":7139,"issue_id":"gt-wisp-8mvjpc","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:41Z","event_type":"created","id":7140,"issue_id":"gt-wisp-19z80c","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:42Z","event_type":"created","id":7141,"issue_id":"gt-wisp-8se6yu","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:44Z","event_type":"created","id":7142,"issue_id":"gt-wisp-hq6alt","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:45Z","event_type":"created","id":7143,"issue_id":"gt-wisp-2lyop8","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:18:46Z","event_type":"created","id":7144,"issue_id":"gt-wisp-apgl5o","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:52Z","event_type":"created","id":7145,"issue_id":"gt-wisp-hxzcr0","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:53Z","event_type":"created","id":7146,"issue_id":"gt-wisp-kexfgr","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:54Z","event_type":"created","id":7147,"issue_id":"gt-wisp-tirwib","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:55Z","event_type":"created","id":7148,"issue_id":"gt-wisp-6pnknj","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:56Z","event_type":"created","id":7149,"issue_id":"gt-wisp-v80v7f","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:57Z","event_type":"created","id":7150,"issue_id":"gt-wisp-z6t956","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:58Z","event_type":"created","id":7151,"issue_id":"gt-wisp-m4qy9u","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:24:59Z","event_type":"created","id":7152,"issue_id":"gt-wisp-bhiozf","new_value":"","old_value":""}
+{"actor":"dog","comment":"","created_at":"2026-04-01T01:30:28Z","event_type":"created","id":7153,"issue_id":"gt-wisp-v8o5i7","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:24Z","event_type":"created","id":7154,"issue_id":"gt-wisp-riyxw2","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:25Z","event_type":"created","id":7155,"issue_id":"gt-wisp-7zdody","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:25Z","event_type":"created","id":7156,"issue_id":"gt-wisp-9hqraa","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:26Z","event_type":"created","id":7157,"issue_id":"gt-wisp-qptixt","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:27Z","event_type":"created","id":7158,"issue_id":"gt-wisp-pjwruk","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:28Z","event_type":"created","id":7159,"issue_id":"gt-wisp-bc1wf9","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:29Z","event_type":"created","id":7160,"issue_id":"gt-wisp-ohiwe0","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T01:31:30Z","event_type":"created","id":7161,"issue_id":"gt-wisp-46qbd0","new_value":"","old_value":""}
