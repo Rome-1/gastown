@@ -2835,23 +2835,14 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:10:02Z","event_type":"created","id":1503,"issue_id":"gt-wisp-5hnu0p","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-8a30c85e6119","created_at":"2026-03-29T06:00:21Z","event_type":"label_added","id":1504,"issue_id":"gt-0rf8","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:10:03Z","event_type":"created","id":1504,"issue_id":"gt-wisp-t6b6fi","new_value":"","old_value":""}
-{"actor":"deacon/dogs/alpha","comment":null,"created_at":"2026-03-29T06:00:39Z","event_type":"created","id":1505,"issue_id":"gt-k4cv","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:10:03Z","event_type":"created","id":1505,"issue_id":"gt-wisp-gk7qdy","new_value":"","old_value":""}
-{"actor":"deacon/dogs/alpha","comment":"Added label: gt:message","created_at":"2026-03-29T06:00:39Z","event_type":"label_added","id":1506,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:10:04Z","event_type":"created","id":1506,"issue_id":"gt-wisp-p4la23","new_value":"","old_value":""}
-{"actor":"deacon/dogs/alpha","comment":"Added label: gt:escalation","created_at":"2026-03-29T06:00:40Z","event_type":"label_added","id":1507,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:10:05Z","event_type":"created","id":1507,"issue_id":"gt-wisp-vllyt3","new_value":"","old_value":""}
-{"actor":"deacon/dogs/alpha","comment":"Added label: from:deacon/dogs/alpha","created_at":"2026-03-29T06:00:40Z","event_type":"label_added","id":1508,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:10:06Z","event_type":"created","id":1508,"issue_id":"gt-wisp-d01thh","new_value":"","old_value":""}
-{"actor":"deacon/dogs/alpha","comment":"Added label: msg-type:escalation","created_at":"2026-03-29T06:00:40Z","event_type":"label_added","id":1509,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:10:07Z","event_type":"created","id":1509,"issue_id":"gt-wisp-tbmao3","new_value":"","old_value":""}
-{"actor":"deacon/dogs/alpha","comment":"Added label: delivery:pending","created_at":"2026-03-29T06:00:40Z","event_type":"label_added","id":1510,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:13:59Z","event_type":"created","id":1510,"issue_id":"gt-wisp-gtrznd","new_value":"","old_value":""}
-{"actor":"deacon/dogs/alpha","comment":"Added label: thread:gt-wisp-cqzj","created_at":"2026-03-29T06:00:40Z","event_type":"label_added","id":1511,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:14:00Z","event_type":"created","id":1511,"issue_id":"gt-wisp-tcvr4f","new_value":"","old_value":""}
-{"actor":"dog","comment":"Added label: severity:high","created_at":"2026-03-29T06:00:41Z","event_type":"label_added","id":1512,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:14:00Z","event_type":"created","id":1512,"issue_id":"gt-wisp-016glu","new_value":"","old_value":""}
-{"actor":"dog","comment":"Added label: escalation:gt-wisp-cqzj","created_at":"2026-03-29T06:00:41Z","event_type":"label_added","id":1513,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:14:01Z","event_type":"created","id":1513,"issue_id":"gt-wisp-0hogvk","new_value":"","old_value":""}
 {"actor":"daemon","comment":null,"created_at":"2026-03-29T06:04:22Z","event_type":"created","id":1514,"issue_id":"gt-qij7","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T17:14:02Z","event_type":"created","id":1514,"issue_id":"gt-wisp-1s8ek6","new_value":"","old_value":""}
@@ -3726,23 +3717,14 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:42:20Z","event_type":"created","id":1951,"issue_id":"gt-wisp-vospl7","new_value":"","old_value":""}
 {"actor":"deacon","comment":null,"created_at":"2026-03-29T07:43:22Z","event_type":"closed","id":1952,"issue_id":"hq-cv-ffyuu","new_value":"All tracked issues completed","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:42:21Z","event_type":"created","id":1952,"issue_id":"gt-wisp-egnxi4","new_value":"","old_value":""}
-{"actor":"deacon/dogs/delta","comment":null,"created_at":"2026-03-29T07:44:36Z","event_type":"created","id":1953,"issue_id":"gt-j0b3","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:42:21Z","event_type":"created","id":1953,"issue_id":"gt-wisp-2xzk0n","new_value":"","old_value":""}
-{"actor":"deacon/dogs/delta","comment":"Added label: gt:message","created_at":"2026-03-29T07:44:36Z","event_type":"label_added","id":1954,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:42:22Z","event_type":"created","id":1954,"issue_id":"gt-wisp-uimrt3","new_value":"","old_value":""}
-{"actor":"deacon/dogs/delta","comment":"Added label: gt:escalation","created_at":"2026-03-29T07:44:36Z","event_type":"label_added","id":1955,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:21Z","event_type":"created","id":1955,"issue_id":"gt-wisp-8m9dgj","new_value":"","old_value":""}
-{"actor":"deacon/dogs/delta","comment":"Added label: from:deacon/dogs/delta","created_at":"2026-03-29T07:44:36Z","event_type":"label_added","id":1956,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:21Z","event_type":"created","id":1956,"issue_id":"gt-wisp-01u0pa","new_value":"","old_value":""}
-{"actor":"deacon/dogs/delta","comment":"Added label: msg-type:escalation","created_at":"2026-03-29T07:44:36Z","event_type":"label_added","id":1957,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:22Z","event_type":"created","id":1957,"issue_id":"gt-wisp-8660au","new_value":"","old_value":""}
-{"actor":"deacon/dogs/delta","comment":"Added label: delivery:pending","created_at":"2026-03-29T07:44:36Z","event_type":"label_added","id":1958,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:23Z","event_type":"created","id":1958,"issue_id":"gt-wisp-t4ufi3","new_value":"","old_value":""}
-{"actor":"deacon/dogs/delta","comment":"Added label: thread:gt-wisp-nhdu","created_at":"2026-03-29T07:44:37Z","event_type":"label_added","id":1959,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:23Z","event_type":"created","id":1959,"issue_id":"gt-wisp-pvvpu5","new_value":"","old_value":""}
-{"actor":"dog","comment":"Added label: severity:medium","created_at":"2026-03-29T07:44:40Z","event_type":"label_added","id":1960,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:23Z","event_type":"created","id":1960,"issue_id":"gt-wisp-9p9yve","new_value":"","old_value":""}
-{"actor":"dog","comment":"Added label: escalation:gt-wisp-nhdu","created_at":"2026-03-29T07:44:40Z","event_type":"label_added","id":1961,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:24Z","event_type":"created","id":1961,"issue_id":"gt-wisp-w0a9tt","new_value":"","old_value":""}
 {"actor":"daemon","comment":null,"created_at":"2026-03-29T07:51:30Z","event_type":"created","id":1962,"issue_id":"gt-njwk","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-29T20:46:24Z","event_type":"created","id":1962,"issue_id":"gt-wisp-nh9mip","new_value":"","old_value":""}
@@ -4619,17 +4601,11 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:22:53Z","event_type":"created","id":2398,"issue_id":"gt-wisp-70rljo","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-187b7ed42442","created_at":"2026-03-29T10:27:05Z","event_type":"label_added","id":2399,"issue_id":"gt-qqmb","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:22:53Z","event_type":"created","id":2399,"issue_id":"gt-wisp-t2n7x6","new_value":"","old_value":""}
-{"actor":"mayor","comment":null,"created_at":"2026-03-29T17:01:54Z","event_type":"updated","id":2400,"issue_id":"gt-k4cv","new_value":"{\"description\":\"[HIGH] Dolt: bd (beads) database export failed during dolt-archive plugin execution at 2026-03-29 0600. Server healthy (latency 0s, 28 connections, 616.2MB). Orphan cleanup returned no issues. Git push succeeded but bd export returned exit code 1. Requires investigation.\\n\\nseverity: high\\nreason: \\nsource: null\\nescalated_by: \\nescalated_at: \\nacked_by: null\\nacked_at: null\\nclosed_by: mayor/\\nclosed_reason: Server healthy, transient failure during 6am archive\\nrelated_bead: null\\noriginal_severity: null\\nreescalation_count: 0\\nlast_reescalated_at: null\\nlast_reescalated_by: null\"}","old_value":"{\"id\":\"gt-k4cv\",\"title\":\"[HIGH] Dolt: bd (beads) database export failed during dolt-archive plugin execution at 2026-03-29 0600. Server healthy (latency 0s, 28 connections, 616.2MB). Orphan cleanup returned no issues. Git push succeeded but bd export returned exit code 1. Requires investigation.\",\"description\":\"Escalation ID: gt-wisp-cqzj\\nSeverity: high\\nFrom: deacon/dogs/alpha\\n\\n---\\nTo acknowledge: gt escalate ack gt-wisp-cqzj\\nTo close: gt escalate close gt-wisp-cqzj --reason \\\"resolution\\\"\",\"status\":\"open\",\"priority\":1,\"issue_type\":\"task\",\"assignee\":\"mayor/\",\"owner\":\"romethorstenson@gmail.com\",\"created_at\":\"2026-03-29T06:00:40Z\",\"created_by\":\"deacon/dogs/alpha\",\"updated_at\":\"2026-03-29T06:00:40Z\"}"}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:22:54Z","event_type":"created","id":2400,"issue_id":"gt-wisp-42bnkk","new_value":"","old_value":""}
-{"actor":"mayor","comment":"Added label: resolved","created_at":"2026-03-29T17:01:54Z","event_type":"label_added","id":2401,"issue_id":"gt-k4cv","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:22:54Z","event_type":"created","id":2401,"issue_id":"gt-wisp-mogir2","new_value":"","old_value":""}
-{"actor":"mayor","comment":null,"created_at":"2026-03-29T17:01:55Z","event_type":"closed","id":2402,"issue_id":"gt-k4cv","new_value":"Server healthy, transient failure during 6am archive","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:22:55Z","event_type":"created","id":2402,"issue_id":"gt-wisp-f7wtxu","new_value":"","old_value":""}
-{"actor":"mayor","comment":null,"created_at":"2026-03-29T17:01:55Z","event_type":"updated","id":2403,"issue_id":"gt-j0b3","new_value":"{\"description\":\"[MEDIUM] compactor-dog: gt database flatten commit failed during compaction cycle\\n\\nseverity: medium\\nreason: \\nsource: null\\nescalated_by: \\nescalated_at: \\nacked_by: null\\nacked_at: null\\nclosed_by: mayor/\\nclosed_reason: Server healthy, transient compaction failure\\nrelated_bead: null\\noriginal_severity: null\\nreescalation_count: 0\\nlast_reescalated_at: null\\nlast_reescalated_by: null\"}","old_value":"{\"id\":\"gt-j0b3\",\"title\":\"[MEDIUM] compactor-dog: gt database flatten commit failed during compaction cycle\",\"description\":\"Escalation ID: gt-wisp-nhdu\\nSeverity: medium\\nFrom: deacon/dogs/delta\\n\\n---\\nTo acknowledge: gt escalate ack gt-wisp-nhdu\\nTo close: gt escalate close gt-wisp-nhdu --reason \\\"resolution\\\"\",\"status\":\"open\",\"priority\":2,\"issue_type\":\"task\",\"assignee\":\"mayor/\",\"owner\":\"romethorstenson@gmail.com\",\"created_at\":\"2026-03-29T07:44:36Z\",\"created_by\":\"deacon/dogs/delta\",\"updated_at\":\"2026-03-29T07:44:36Z\"}"}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:26:55Z","event_type":"created","id":2403,"issue_id":"gt-wisp-0401du","new_value":"","old_value":""}
-{"actor":"mayor","comment":"Added label: resolved","created_at":"2026-03-29T17:01:55Z","event_type":"label_added","id":2404,"issue_id":"gt-j0b3","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:26:55Z","event_type":"created","id":2404,"issue_id":"gt-wisp-x2y2oa","new_value":"","old_value":""}
-{"actor":"mayor","comment":null,"created_at":"2026-03-29T17:01:55Z","event_type":"closed","id":2405,"issue_id":"gt-j0b3","new_value":"Server healthy, transient compaction failure","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:26:56Z","event_type":"created","id":2405,"issue_id":"gt-wisp-p6m2qr","new_value":"","old_value":""}
 {"actor":"foundry/einstein","comment":null,"created_at":"2026-03-29T17:11:25Z","event_type":"created","id":2406,"issue_id":"gt-f4wi","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-30T00:26:56Z","event_type":"created","id":2406,"issue_id":"gt-wisp-dvdap9","new_value":"","old_value":""}
@@ -13889,78 +13865,151 @@
 {"actor":"overseer","comment":"","created_at":"2026-03-31T23:53:55Z","event_type":"created","id":7033,"issue_id":"gt-wisp-jjrrso","new_value":"","old_value":""}
 {"actor":"daemon","comment":"Added label: thread:thread-62095d820f7f","created_at":"2026-04-01T17:15:32Z","event_type":"label_added","id":7034,"issue_id":"gt-9w48t","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T23:53:56Z","event_type":"created","id":7034,"issue_id":"gt-wisp-vz8f98","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:21:47Z","event_type":"created","id":7035,"issue_id":"gt-1smyx","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-03-31T23:53:57Z","event_type":"created","id":7035,"issue_id":"gt-wisp-f5eo7o","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:21:48Z","event_type":"label_added","id":7036,"issue_id":"gt-1smyx","new_value":null,"old_value":null}
 {"actor":"dog","comment":"","created_at":"2026-03-31T23:57:56Z","event_type":"created","id":7036,"issue_id":"gt-wisp-mayvbl","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:21:48Z","event_type":"label_added","id":7037,"issue_id":"gt-1smyx","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:20Z","event_type":"created","id":7037,"issue_id":"gt-wisp-eobq8e","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:21:48Z","event_type":"label_added","id":7038,"issue_id":"gt-1smyx","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:21Z","event_type":"created","id":7038,"issue_id":"gt-wisp-xt6d88","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:21:48Z","event_type":"label_added","id":7039,"issue_id":"gt-1smyx","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:22Z","event_type":"created","id":7039,"issue_id":"gt-wisp-chamz6","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-a094a6e45409","created_at":"2026-04-01T17:21:48Z","event_type":"label_added","id":7040,"issue_id":"gt-1smyx","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:23Z","event_type":"created","id":7040,"issue_id":"gt-wisp-m7eo99","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:22:07Z","event_type":"created","id":7041,"issue_id":"gt-tyioo","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:23Z","event_type":"created","id":7041,"issue_id":"gt-wisp-a4djvo","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:22:07Z","event_type":"label_added","id":7042,"issue_id":"gt-tyioo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:24Z","event_type":"created","id":7042,"issue_id":"gt-wisp-j7i63q","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:22:07Z","event_type":"label_added","id":7043,"issue_id":"gt-tyioo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:25Z","event_type":"created","id":7043,"issue_id":"gt-wisp-6ymyad","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:22:07Z","event_type":"label_added","id":7044,"issue_id":"gt-tyioo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:00:26Z","event_type":"created","id":7044,"issue_id":"gt-wisp-mfndaf","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:22:07Z","event_type":"label_added","id":7045,"issue_id":"gt-tyioo","new_value":null,"old_value":null}
 {"actor":"dog","comment":"","created_at":"2026-04-01T00:04:13Z","event_type":"created","id":7045,"issue_id":"gt-wisp-j8keel","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-96de2241cc47","created_at":"2026-04-01T17:22:07Z","event_type":"label_added","id":7046,"issue_id":"gt-tyioo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:31Z","event_type":"created","id":7046,"issue_id":"gt-wisp-vx77mk","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:22:18Z","event_type":"created","id":7047,"issue_id":"gt-9dibm","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:33Z","event_type":"created","id":7047,"issue_id":"gt-wisp-x4uaat","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:22:18Z","event_type":"label_added","id":7048,"issue_id":"gt-9dibm","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:34Z","event_type":"created","id":7048,"issue_id":"gt-wisp-cyt13g","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:22:19Z","event_type":"label_added","id":7049,"issue_id":"gt-9dibm","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:35Z","event_type":"created","id":7049,"issue_id":"gt-wisp-wzspbf","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:22:19Z","event_type":"label_added","id":7050,"issue_id":"gt-9dibm","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:36Z","event_type":"created","id":7050,"issue_id":"gt-wisp-33drvy","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:22:19Z","event_type":"label_added","id":7051,"issue_id":"gt-9dibm","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:37Z","event_type":"created","id":7051,"issue_id":"gt-wisp-2u87x0","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-da44afad5363","created_at":"2026-04-01T17:22:19Z","event_type":"label_added","id":7052,"issue_id":"gt-9dibm","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:37Z","event_type":"created","id":7052,"issue_id":"gt-wisp-5vdkk7","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:22:37Z","event_type":"created","id":7053,"issue_id":"gt-c0nax","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:06:39Z","event_type":"created","id":7053,"issue_id":"gt-wisp-rorir3","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:22:37Z","event_type":"label_added","id":7054,"issue_id":"gt-c0nax","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:47Z","event_type":"created","id":7054,"issue_id":"gt-wisp-9gt1ca","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:22:37Z","event_type":"label_added","id":7055,"issue_id":"gt-c0nax","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:48Z","event_type":"created","id":7055,"issue_id":"gt-wisp-6e4nfz","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:22:37Z","event_type":"label_added","id":7056,"issue_id":"gt-c0nax","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:48Z","event_type":"created","id":7056,"issue_id":"gt-wisp-ks6ncf","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:22:37Z","event_type":"label_added","id":7057,"issue_id":"gt-c0nax","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:49Z","event_type":"created","id":7057,"issue_id":"gt-wisp-8e71dh","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-168067a20fcb","created_at":"2026-04-01T17:22:38Z","event_type":"label_added","id":7058,"issue_id":"gt-c0nax","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:50Z","event_type":"created","id":7058,"issue_id":"gt-wisp-cybsob","new_value":"","old_value":""}
+{"actor":"Rome-1","comment":null,"created_at":"2026-04-01T17:25:24Z","event_type":"closed","id":7059,"issue_id":"gt-6iyq","new_value":"Pinterest adapter (pkg/post/pinterest.go) implemented by alice and merged into main. Platform interface supports it via -p pinterest flag.","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:51Z","event_type":"created","id":7059,"issue_id":"gt-wisp-zho2n0","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:28:07Z","event_type":"created","id":7060,"issue_id":"gt-4o5eo","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:52Z","event_type":"created","id":7060,"issue_id":"gt-wisp-144nwc","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:28:07Z","event_type":"label_added","id":7061,"issue_id":"gt-4o5eo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:12:53Z","event_type":"created","id":7061,"issue_id":"gt-wisp-nhfdqa","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:28:07Z","event_type":"label_added","id":7062,"issue_id":"gt-4o5eo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:01Z","event_type":"created","id":7062,"issue_id":"gt-wisp-du33oz","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:28:07Z","event_type":"label_added","id":7063,"issue_id":"gt-4o5eo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:02Z","event_type":"created","id":7063,"issue_id":"gt-wisp-hi3nve","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:28:07Z","event_type":"label_added","id":7064,"issue_id":"gt-4o5eo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:04Z","event_type":"created","id":7064,"issue_id":"gt-wisp-zzwsb7","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-1fb026342e49","created_at":"2026-04-01T17:28:07Z","event_type":"label_added","id":7065,"issue_id":"gt-4o5eo","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:05Z","event_type":"created","id":7065,"issue_id":"gt-wisp-v9bpuy","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:28:18Z","event_type":"created","id":7066,"issue_id":"gt-vvhbz","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:06Z","event_type":"created","id":7066,"issue_id":"gt-wisp-2c5x3f","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:28:18Z","event_type":"label_added","id":7067,"issue_id":"gt-vvhbz","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:07Z","event_type":"created","id":7067,"issue_id":"gt-wisp-01s69a","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:28:18Z","event_type":"label_added","id":7068,"issue_id":"gt-vvhbz","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:08Z","event_type":"created","id":7068,"issue_id":"gt-wisp-e1ok2b","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:28:18Z","event_type":"label_added","id":7069,"issue_id":"gt-vvhbz","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:19:09Z","event_type":"created","id":7069,"issue_id":"gt-wisp-9llv8x","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:28:18Z","event_type":"label_added","id":7070,"issue_id":"gt-vvhbz","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:38Z","event_type":"created","id":7070,"issue_id":"gt-wisp-flztbk","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-fb9be0b792a8","created_at":"2026-04-01T17:28:18Z","event_type":"label_added","id":7071,"issue_id":"gt-vvhbz","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:39Z","event_type":"created","id":7071,"issue_id":"gt-wisp-l3nrdc","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:28:35Z","event_type":"created","id":7072,"issue_id":"gt-p3rk7","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:40Z","event_type":"created","id":7072,"issue_id":"gt-wisp-jktkkp","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:28:35Z","event_type":"label_added","id":7073,"issue_id":"gt-p3rk7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:42Z","event_type":"created","id":7073,"issue_id":"gt-wisp-cdcvlj","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:28:35Z","event_type":"label_added","id":7074,"issue_id":"gt-p3rk7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:44Z","event_type":"created","id":7074,"issue_id":"gt-wisp-0s8m0z","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:28:35Z","event_type":"label_added","id":7075,"issue_id":"gt-p3rk7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:45Z","event_type":"created","id":7075,"issue_id":"gt-wisp-gb03gg","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:28:35Z","event_type":"label_added","id":7076,"issue_id":"gt-p3rk7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:46Z","event_type":"created","id":7076,"issue_id":"gt-wisp-9eo2us","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-dd1a4f83899b","created_at":"2026-04-01T17:28:35Z","event_type":"label_added","id":7077,"issue_id":"gt-p3rk7","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:25:48Z","event_type":"created","id":7077,"issue_id":"gt-wisp-jkblv9","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:28:47Z","event_type":"created","id":7078,"issue_id":"gt-n99pr","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:13Z","event_type":"created","id":7078,"issue_id":"gt-wisp-jwmtog","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:28:47Z","event_type":"label_added","id":7079,"issue_id":"gt-n99pr","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:14Z","event_type":"created","id":7079,"issue_id":"gt-wisp-7nnb1w","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:28:47Z","event_type":"label_added","id":7080,"issue_id":"gt-n99pr","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:16Z","event_type":"created","id":7080,"issue_id":"gt-wisp-lwmxvu","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:28:47Z","event_type":"label_added","id":7081,"issue_id":"gt-n99pr","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:17Z","event_type":"created","id":7081,"issue_id":"gt-wisp-d29m8y","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:28:47Z","event_type":"label_added","id":7082,"issue_id":"gt-n99pr","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:17Z","event_type":"created","id":7082,"issue_id":"gt-wisp-k988q3","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-8be9f0fa7eda","created_at":"2026-04-01T17:28:47Z","event_type":"label_added","id":7083,"issue_id":"gt-n99pr","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:18Z","event_type":"created","id":7083,"issue_id":"gt-wisp-qarxt6","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:34:33Z","event_type":"created","id":7084,"issue_id":"gt-nhe6w","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:19Z","event_type":"created","id":7084,"issue_id":"gt-wisp-k03bp7","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:34:33Z","event_type":"label_added","id":7085,"issue_id":"gt-nhe6w","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:32:20Z","event_type":"created","id":7085,"issue_id":"gt-wisp-a1y2ji","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:34:33Z","event_type":"label_added","id":7086,"issue_id":"gt-nhe6w","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:29Z","event_type":"created","id":7086,"issue_id":"gt-wisp-jn0yxv","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:34:33Z","event_type":"label_added","id":7087,"issue_id":"gt-nhe6w","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:29Z","event_type":"created","id":7087,"issue_id":"gt-wisp-v1x6js","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:34:33Z","event_type":"label_added","id":7088,"issue_id":"gt-nhe6w","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:30Z","event_type":"created","id":7088,"issue_id":"gt-wisp-l9u2u1","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-faddb3c5f6fe","created_at":"2026-04-01T17:34:33Z","event_type":"label_added","id":7089,"issue_id":"gt-nhe6w","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:31Z","event_type":"created","id":7089,"issue_id":"gt-wisp-dvq06c","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:34:46Z","event_type":"created","id":7090,"issue_id":"gt-pc1fb","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:32Z","event_type":"created","id":7090,"issue_id":"gt-wisp-iqcvvk","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:34:46Z","event_type":"label_added","id":7091,"issue_id":"gt-pc1fb","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:34Z","event_type":"created","id":7091,"issue_id":"gt-wisp-ufa2al","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:34:46Z","event_type":"label_added","id":7092,"issue_id":"gt-pc1fb","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:35Z","event_type":"created","id":7092,"issue_id":"gt-wisp-z5hv9j","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:34:46Z","event_type":"label_added","id":7093,"issue_id":"gt-pc1fb","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:38:36Z","event_type":"created","id":7093,"issue_id":"gt-wisp-80ptis","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:34:46Z","event_type":"label_added","id":7094,"issue_id":"gt-pc1fb","new_value":null,"old_value":null}
 {"actor":"dog","comment":"","created_at":"2026-04-01T00:42:43Z","event_type":"created","id":7094,"issue_id":"gt-wisp-3rsj4y","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-008a4992de12","created_at":"2026-04-01T17:34:46Z","event_type":"label_added","id":7095,"issue_id":"gt-pc1fb","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:35Z","event_type":"created","id":7095,"issue_id":"gt-wisp-ha4yy1","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:35:04Z","event_type":"created","id":7096,"issue_id":"gt-o6m6r","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:37Z","event_type":"created","id":7096,"issue_id":"gt-wisp-714gxv","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:35:04Z","event_type":"label_added","id":7097,"issue_id":"gt-o6m6r","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:38Z","event_type":"created","id":7097,"issue_id":"gt-wisp-8xjq5i","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:35:04Z","event_type":"label_added","id":7098,"issue_id":"gt-o6m6r","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:39Z","event_type":"created","id":7098,"issue_id":"gt-wisp-vzbyx9","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:35:04Z","event_type":"label_added","id":7099,"issue_id":"gt-o6m6r","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:40Z","event_type":"created","id":7099,"issue_id":"gt-wisp-a64b9a","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:35:04Z","event_type":"label_added","id":7100,"issue_id":"gt-o6m6r","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:43Z","event_type":"created","id":7100,"issue_id":"gt-wisp-19mw8u","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-0f383d90747e","created_at":"2026-04-01T17:35:04Z","event_type":"label_added","id":7101,"issue_id":"gt-o6m6r","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:45Z","event_type":"created","id":7101,"issue_id":"gt-wisp-mbf3ar","new_value":"","old_value":""}
+{"actor":"daemon","comment":null,"created_at":"2026-04-01T17:35:17Z","event_type":"created","id":7102,"issue_id":"gt-hsdmy","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:45:46Z","event_type":"created","id":7102,"issue_id":"gt-wisp-aflkq7","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: gt:message","created_at":"2026-04-01T17:35:17Z","event_type":"label_added","id":7103,"issue_id":"gt-hsdmy","new_value":null,"old_value":null}
 {"actor":"getresearch/crew/alice","comment":"","created_at":"2026-04-01T00:46:20Z","event_type":"created","id":7103,"issue_id":"gt-wisp-u1cnra","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: from:daemon","created_at":"2026-04-01T17:35:17Z","event_type":"label_added","id":7104,"issue_id":"gt-hsdmy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:52:36Z","event_type":"created","id":7104,"issue_id":"gt-wisp-nf10j1","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: msg-type:task","created_at":"2026-04-01T17:35:17Z","event_type":"label_added","id":7105,"issue_id":"gt-hsdmy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:52:38Z","event_type":"created","id":7105,"issue_id":"gt-wisp-bh93b4","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: delivery:pending","created_at":"2026-04-01T17:35:17Z","event_type":"label_added","id":7106,"issue_id":"gt-hsdmy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:52:39Z","event_type":"created","id":7106,"issue_id":"gt-wisp-1d1htj","new_value":"","old_value":""}
+{"actor":"daemon","comment":"Added label: thread:thread-d179c5dc5d80","created_at":"2026-04-01T17:35:17Z","event_type":"label_added","id":7107,"issue_id":"gt-hsdmy","new_value":null,"old_value":null}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:52:41Z","event_type":"created","id":7107,"issue_id":"gt-wisp-ghoijj","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:52:42Z","event_type":"created","id":7108,"issue_id":"gt-wisp-wloj0z","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T00:52:44Z","event_type":"created","id":7109,"issue_id":"gt-wisp-adsc3u","new_value":"","old_value":""}
@@ -15984,3 +16033,22 @@
 {"actor":"overseer","comment":"","created_at":"2026-04-01T17:18:23Z","event_type":"created","id":9127,"issue_id":"gt-wisp-5nc6k7","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T17:18:24Z","event_type":"created","id":9128,"issue_id":"gt-wisp-2agrlq","new_value":"","old_value":""}
 {"actor":"overseer","comment":"","created_at":"2026-04-01T17:18:26Z","event_type":"created","id":9129,"issue_id":"gt-wisp-cdqnr7","new_value":"","old_value":""}
+{"actor":"obsidian/crew/nova","comment":"","created_at":"2026-04-01T17:20:33Z","event_type":"created","id":9130,"issue_id":"gt-wisp-4erntq","new_value":"","old_value":""}
+{"actor":"deacon/dogs/delta","comment":"","created_at":"2026-04-01T17:23:08Z","event_type":"created","id":9131,"issue_id":"gt-wisp-qxgrwg","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:27Z","event_type":"created","id":9132,"issue_id":"gt-wisp-9mt51w","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:28Z","event_type":"created","id":9133,"issue_id":"gt-wisp-o7q9k0","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:29Z","event_type":"created","id":9134,"issue_id":"gt-wisp-72cll7","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:30Z","event_type":"created","id":9135,"issue_id":"gt-wisp-uvoetl","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:31Z","event_type":"created","id":9136,"issue_id":"gt-wisp-apqz6o","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:32Z","event_type":"created","id":9137,"issue_id":"gt-wisp-cqr0b7","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:33Z","event_type":"created","id":9138,"issue_id":"gt-wisp-nsrtcn","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:24:33Z","event_type":"created","id":9139,"issue_id":"gt-wisp-9kp5a9","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:30:56Z","event_type":"created","id":9140,"issue_id":"gt-wisp-3xsgay","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:30:57Z","event_type":"created","id":9141,"issue_id":"gt-wisp-pibeei","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:30:58Z","event_type":"created","id":9142,"issue_id":"gt-wisp-501hyy","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:31:00Z","event_type":"created","id":9143,"issue_id":"gt-wisp-mu23de","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:31:02Z","event_type":"created","id":9144,"issue_id":"gt-wisp-dov2p8","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:31:02Z","event_type":"created","id":9145,"issue_id":"gt-wisp-qnscml","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:31:03Z","event_type":"created","id":9146,"issue_id":"gt-wisp-1y62k1","new_value":"","old_value":""}
+{"actor":"overseer","comment":"","created_at":"2026-04-01T17:31:04Z","event_type":"created","id":9147,"issue_id":"gt-wisp-tk8bdo","new_value":"","old_value":""}
+{"actor":"deacon","comment":"","created_at":"2026-04-01T17:32:17Z","event_type":"created","id":9148,"issue_id":"gt-wisp-0yxjml","new_value":"","old_value":""}
