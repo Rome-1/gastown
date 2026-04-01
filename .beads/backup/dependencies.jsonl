@@ -13,6 +13,8 @@
 {"created_at":"2026-03-31T22:39:08Z","created_by":"Rome-1","depends_on_id":"external:neuralcodec:ne-pci","issue_id":"hq-cv-a4wbq","type":"tracks"}
 {"created_at":"2026-03-29T08:34:47Z","created_by":"Rome-1","depends_on_id":"external:pgolf:pg-2g5","issue_id":"hq-cv-avxvk","type":"tracks"}
 {"created_at":"2026-03-31T15:34:55Z","created_by":"Rome-1","depends_on_id":"external:neuralcodec:ne-2fz","issue_id":"hq-cv-b5fho","type":"tracks"}
+{"created_at":"2026-04-01T06:02:55Z","created_by":"Rome-1","depends_on_id":"external:securable:sb-vgm","issue_id":"hq-cv-bkh76","type":"tracks"}
+{"created_at":"2026-04-01T06:00:18Z","created_by":"Rome-1","depends_on_id":"external:securable:sb-307","issue_id":"hq-cv-clyjw","type":"tracks"}
 {"created_at":"2026-03-29T03:26:35Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-j4n","issue_id":"hq-cv-cogqa","type":"tracks"}
 {"created_at":"2026-03-29T05:46:02Z","created_by":"Rome-1","depends_on_id":"external:dimensional:di-hgu","issue_id":"hq-cv-crabk","type":"tracks"}
 {"created_at":"2026-03-31T19:08:55Z","created_by":"Rome-1","depends_on_id":"external:securable:sb-1lr","issue_id":"hq-cv-cstbe","type":"tracks"}
@@ -56,6 +58,7 @@
 {"created_at":"2026-03-29T02:33:36Z","created_by":"crucible/crew/charlie","depends_on_id":"external:crucible:cr-xrg","issue_id":"hq-cv-svulo","type":"tracks"}
 {"created_at":"2026-03-29T00:02:28Z","created_by":"pgolf/crew/nova","depends_on_id":"external:pgolf:pg-2e4","issue_id":"hq-cv-tvmms","type":"tracks"}
 {"created_at":"2026-03-28T21:06:33Z","created_by":"secbolt/crew/nora","depends_on_id":"external:secbolt:se-r0nh","issue_id":"hq-cv-uvfa6","type":"tracks"}
+{"created_at":"2026-04-01T06:01:45Z","created_by":"Rome-1","depends_on_id":"external:securable:sb-6ts","issue_id":"hq-cv-vdbpa","type":"tracks"}
 {"created_at":"2026-03-28T19:20:01Z","created_by":"rcabench/crew/atlas","depends_on_id":"external:rcabench:rc-1vc","issue_id":"hq-cv-vk6j2","type":"tracks"}
 {"created_at":"2026-03-29T03:26:10Z","created_by":"getresearch/crew/alice","depends_on_id":"external:getresearch:ge-u93","issue_id":"hq-cv-wf6d6","type":"tracks"}
 {"created_at":"2026-03-31T19:08:24Z","created_by":"Rome-1","depends_on_id":"external:securable:sb-372","issue_id":"hq-cv-wi2hc","type":"tracks"}
