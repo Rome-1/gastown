@@ -60,6 +60,7 @@
 {"created_at":"2026-03-31T19:08:24Z","created_by":"Rome-1","depends_on_id":"external:securable:sb-372","issue_id":"hq-cv-wi2hc","type":"tracks"}
 {"created_at":"2026-03-29T21:18:03Z","created_by":"mayor","depends_on_id":"external:anteroom:an-opq","issue_id":"hq-cv-wi6ec","type":"tracks"}
 {"created_at":"2026-03-31T22:39:45Z","created_by":"Rome-1","depends_on_id":"external:neuralcodec:ne-ho1","issue_id":"hq-cv-x5ay6","type":"tracks"}
+{"created_at":"2026-04-01T00:47:16Z","created_by":"crucible/crew/delta","depends_on_id":"external:crucible:cr-434","issue_id":"hq-cv-xj3ko","type":"tracks"}
 {"created_at":"2026-03-27T16:15:04Z","created_by":"foundry/crew/einstein","depends_on_id":"external:foundry:fo-m2y","issue_id":"hq-cv-xkhhk","type":"tracks"}
 {"created_at":"2026-03-29T07:24:17Z","created_by":"Rome-1","depends_on_id":"external:getresearch:ge-x15","issue_id":"hq-cv-ziyxk","type":"tracks"}
 {"created_at":"2026-03-27T16:33:31Z","created_by":"obsidian/crew/alice","depends_on_id":"gt-83et","issue_id":"hq-cv-zr4oi","type":"tracks"}
