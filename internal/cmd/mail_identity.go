@@ -138,8 +138,13 @@ func detectSenderFromRole(role string) string {
 		}
 		return detectSenderFromCwd()
 	default:
-		// Unknown role, try cwd detection
-		return detectSenderFromCwd()
+		// Unknown role name (e.g. custom agent template like "recurse").
+		// GT_ROLE is authoritative when set — use it directly as the address.
+		// This is correct: if the session manager set GT_ROLE, the role name IS
+		// the agent's identity and a valid inbox address (e.g. "recurse" routes
+		// to the recurse session's mailbox). Falling through to cwd detection
+		// would produce "overseer" for any agent whose cwd is not a known path.
+		return role
 	}
 }
 
@@ -208,6 +213,13 @@ func detectSenderFromCwd() string {
 	// If in the town's mayor directory
 	if strings.Contains(cwd, "/mayor") {
 		return "mayor"
+	}
+
+	// Last resort: check Gas Town session env vars. GC_SESSION_NAME is set by
+	// the session manager for all agent sessions and is a valid inbox address.
+	// This handles agents (e.g. custom templates) that don't set GT_ROLE.
+	if sessionName := os.Getenv("GC_SESSION_NAME"); sessionName != "" {
+		return sessionName
 	}
 
 	// Default to overseer (human)
