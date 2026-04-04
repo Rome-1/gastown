@@ -1053,6 +1053,10 @@ func runRigAdopt(_ *cobra.Command, args []string) error {
 			Prefix: result.BeadsPrefix + "-",
 			Path:   routePath,
 		}
+		// Check for prefix collision before registering
+		if err := beads.CheckPrefixAvailable(townRoot, route.Prefix, route.Path); err != nil {
+			return fmt.Errorf("prefix collision: %w", err)
+		}
 		if err := beads.AppendRoute(townRoot, route); err != nil {
 			fmt.Printf("  %s Could not update routes.jsonl: %v\n", style.Warning.Render("!"), err)
 		}

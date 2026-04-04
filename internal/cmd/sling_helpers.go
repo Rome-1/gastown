@@ -45,6 +45,8 @@ func resolveBeadDir(beadID string) string {
 	prefix := parts[0] + "-"
 
 	// Check if the town root's routes.jsonl handles this prefix.
+	// If the route has a path, resolve the rig directory from it so bd
+	// runs against the correct beads database (not always town-level).
 	routesPath := filepath.Join(townRoot, ".beads", "routes.jsonl")
 	if data, err := os.ReadFile(routesPath); err == nil {
 		for _, line := range strings.Split(string(data), "\n") {
@@ -54,9 +56,13 @@ func resolveBeadDir(beadID string) string {
 			}
 			var route struct {
 				Prefix string `json:"prefix"`
+				Path   string `json:"path"`
 			}
 			if json.Unmarshal([]byte(line), &route) == nil && route.Prefix == prefix {
-				return townRoot // Town root can route this prefix
+				if route.Path == "" || route.Path == "." {
+					return townRoot // Town-level bead
+				}
+				return filepath.Join(townRoot, route.Path)
 			}
 		}
 	}
