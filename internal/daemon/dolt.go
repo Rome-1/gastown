@@ -384,7 +384,10 @@ func (m *DoltServerManager) EnsureRunning() error {
 	if running {
 		// Already running, check health
 		m.lastCheck = m.now()
-		if err := m.checkHealthLocked(); err != nil {
+		// Retry transient failures (EOF, momentary connection refused) before
+		// declaring the server unhealthy — a single blip does not justify
+		// restarting Dolt and severing every agent's connection (GH#663).
+		if err := m.checkHealthWithRetryLocked(); err != nil {
 			m.logger("Dolt server unhealthy: %v, restarting...", err)
 			m.sendUnhealthyAlert(err)
 			m.writeUnhealthySignal("health_check_failed", err.Error())
@@ -927,10 +930,11 @@ func (m *DoltServerManager) stopLocked() {
 }
 
 // checkHealth checks if the Dolt server is healthy (can accept connections).
+// Retries transient errors before reporting the server as unhealthy (GH#663).
 func (m *DoltServerManager) checkHealth() error {
 	m.mu.Lock()
 	defer m.mu.Unlock()
-	return m.checkHealthLocked()
+	return m.checkHealthWithRetryLocked()
 }
 
 // checkHealthLocked checks health. Must be called with m.mu held.
