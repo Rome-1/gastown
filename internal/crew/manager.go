@@ -872,6 +872,15 @@ func (m *Manager) Start(name string, opts StartOptions) error {
 				style.PrintWarning("timeout waiting for agent to start: %v", err)
 			}
 			_ = t.AcceptStartupDialogs(sessionID)
+
+			// Block on the SessionStart-hook readiness sentinel so callers that
+			// nudge/mail the freshly-started session don't race the boot sequence
+			// and lose their keystrokes. Scoped to agents whose hook wiring calls
+			// gt prime --hook (which signals GT_AGENT_READY=1); other agents would
+			// time out here without ever setting it. (gt-eurn)
+			if err := t.WaitForAgentReady(sessionID, constants.ClaudeStartTimeout); err != nil {
+				style.PrintWarning("timeout waiting for agent SessionStart hook: %v", err)
+			}
 		}
 
 		// Start background nudge-queue poller for agents that lack turn-boundary

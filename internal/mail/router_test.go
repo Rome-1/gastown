@@ -1538,6 +1538,14 @@ func TestNotifyRecipient_IdleAgent(t *testing.T) {
 	// Wait briefly for printf output to appear in the pane.
 	time.Sleep(500 * time.Millisecond)
 
+	// Mark the session as agent-ready: WaitForIdle requires GT_AGENT_READY=1
+	// (set in production by gt prime --hook) before it will treat a visible
+	// prompt as genuinely idle. Without this, the test simulates a session
+	// mid-boot and delivery would correctly queue instead of fire directly.
+	if err := exec.Command("tmux", "-L", socket, "set-environment", "-t", sessionName, tmux.EnvAgentReady, "1").Run(); err != nil {
+		t.Fatalf("set GT_AGENT_READY: %v", err)
+	}
+
 	townRoot := t.TempDir()
 	r := &Router{
 		workDir:           t.TempDir(),

@@ -1787,6 +1787,85 @@ func TestWaitForIdle_Timeout(t *testing.T) {
 	}
 }
 
+// TestWaitForIdle_RequiresAgentReadySentinel verifies that WaitForIdle refuses
+// to return success until GT_AGENT_READY=1 is set on the session, even if the
+// pane happens to show the prompt prefix. Prevents the gt-eurn race where
+// keystrokes fire during a freshly-spawned session's boot sequence.
+func TestWaitForIdle_RequiresAgentReadySentinel(t *testing.T) {
+	if os.Getenv("TMUX") == "" {
+		t.Skip("not inside tmux")
+	}
+	if runtime.GOOS != "darwin" && runtime.GOOS != "linux" {
+		t.Skip("test requires unix")
+	}
+
+	tm := newTestTmux(t)
+
+	// Create a session whose pane immediately displays the ❯ prompt prefix
+	// but which never sets GT_AGENT_READY. This simulates a fresh Claude
+	// session during boot: the prompt character is briefly visible but the
+	// agent is not yet accepting input.
+	sessionName := fmt.Sprintf("gt-test-idle-gate-%d", time.Now().UnixNano())
+	if err := tm.NewSessionWithCommand(sessionName, os.TempDir(), "printf '❯ '; sleep 60"); err != nil {
+		t.Fatalf("NewSessionWithCommand: %v", err)
+	}
+	defer func() { _ = tm.KillSession(sessionName) }()
+
+	time.Sleep(400 * time.Millisecond)
+
+	// Sentinel unset → WaitForIdle must NOT succeed despite the prompt.
+	err := tm.WaitForIdle(sessionName, 600*time.Millisecond)
+	if !errors.Is(err, ErrIdleTimeout) {
+		t.Fatalf("expected ErrIdleTimeout while sentinel unset, got: %v", err)
+	}
+
+	// Set sentinel → WaitForIdle should now succeed.
+	if err := tm.SetEnvironment(sessionName, EnvAgentReady, "1"); err != nil {
+		t.Fatalf("SetEnvironment: %v", err)
+	}
+	if err := tm.WaitForIdle(sessionName, 2*time.Second); err != nil {
+		t.Fatalf("WaitForIdle after sentinel set: %v", err)
+	}
+}
+
+// TestWaitForAgentReady verifies the sentinel primitive: blocks until
+// GT_AGENT_READY=1, times out otherwise.
+func TestWaitForAgentReady(t *testing.T) {
+	if os.Getenv("TMUX") == "" {
+		t.Skip("not inside tmux")
+	}
+	if runtime.GOOS != "darwin" && runtime.GOOS != "linux" {
+		t.Skip("test requires unix")
+	}
+
+	tm := newTestTmux(t)
+
+	sessionName := fmt.Sprintf("gt-test-ready-%d", time.Now().UnixNano())
+	if err := tm.NewSessionWithCommand(sessionName, os.TempDir(), "sleep 60"); err != nil {
+		t.Fatalf("NewSessionWithCommand: %v", err)
+	}
+	defer func() { _ = tm.KillSession(sessionName) }()
+
+	// No sentinel set yet → should time out.
+	if err := tm.WaitForAgentReady(sessionName, 300*time.Millisecond); !errors.Is(err, ErrIdleTimeout) {
+		t.Fatalf("expected ErrIdleTimeout before sentinel, got: %v", err)
+	}
+
+	// Set sentinel concurrently; WaitForAgentReady should observe and return nil.
+	go func() {
+		time.Sleep(200 * time.Millisecond)
+		_ = tm.SetEnvironment(sessionName, EnvAgentReady, "1")
+	}()
+	if err := tm.WaitForAgentReady(sessionName, 3*time.Second); err != nil {
+		t.Fatalf("WaitForAgentReady should succeed once sentinel is set: %v", err)
+	}
+
+	// IsAgentReady should now return true.
+	if !tm.IsAgentReady(sessionName) {
+		t.Error("IsAgentReady should be true after sentinel set")
+	}
+}
+
 func TestDefaultReadyPromptPrefix(t *testing.T) {
 	t.Parallel()
 	// Verify the constant is set correctly

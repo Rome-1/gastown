@@ -2461,6 +2461,43 @@ func (t *Tmux) WaitForRuntimeReady(session string, rc *config.RuntimeConfig, tim
 // Claude Code uses ❯ (U+276F) as the prompt character.
 const DefaultReadyPromptPrefix = "❯ "
 
+// IsAgentReady reports whether the agent's SessionStart hook has signaled
+// readiness via GT_AGENT_READY=1. The hook (gt prime --hook) sets this
+// after it finishes running, confirming the agent has booted past its
+// splash/loading screens and is accepting input at the prompt.
+//
+// Sessions that were never managed by gt (no SessionStart hook wired up)
+// will return false here forever. Callers that care about non-gastown
+// sessions should fall back to best-effort behavior rather than block.
+func (t *Tmux) IsAgentReady(session string) bool {
+	ready, err := t.GetEnvironment(session, EnvAgentReady)
+	return err == nil && ready == "1"
+}
+
+// WaitForAgentReady blocks until GT_AGENT_READY=1 appears in the session's
+// environment, or the timeout expires. The sentinel is set by gt prime --hook
+// when the agent's SessionStart hook completes. This eliminates the race
+// where keystrokes are sent during an agent's boot sequence and are either
+// swallowed by the loading screen or dropped on the shell before exec. (gt-eurn)
+//
+// Returns nil once the sentinel is observed. Returns ErrIdleTimeout if the
+// timeout expires. Returns ErrSessionNotFound or ErrNoServer if the session
+// disappears during polling.
+func (t *Tmux) WaitForAgentReady(session string, timeout time.Duration) error {
+	deadline := time.Now().Add(timeout)
+	for time.Now().Before(deadline) {
+		ready, err := t.GetEnvironment(session, EnvAgentReady)
+		if err == nil && ready == "1" {
+			return nil
+		}
+		if errors.Is(err, ErrSessionNotFound) || errors.Is(err, ErrNoServer) {
+			return err
+		}
+		time.Sleep(constants.PollInterval)
+	}
+	return ErrIdleTimeout
+}
+
 // WaitForIdle polls until the agent appears to be at an idle prompt.
 // Unlike WaitForRuntimeReady (which is for bootstrap), this is for steady-state
 // idle detection — used to avoid interrupting agents mid-work.
@@ -2480,6 +2517,17 @@ func (t *Tmux) WaitForIdle(session string, timeout time.Duration) error {
 
 	deadline := time.Now().Add(timeout)
 	for time.Now().Before(deadline) {
+		// Gate on the SessionStart-hook readiness sentinel. Without this,
+		// a freshly-started session's pane can briefly show a prompt-like
+		// character during boot (cached shell prompt, Claude splash, etc.)
+		// causing WaitForIdle to succeed before the agent can accept input.
+		// Callers then send-keys into the boot sequence and lose the input. (gt-eurn)
+		if !t.IsAgentReady(session) {
+			consecutiveIdle = 0
+			time.Sleep(200 * time.Millisecond)
+			continue
+		}
+
 		lines, err := t.CapturePaneLines(session, 5)
 		if err != nil {
 			// Distinguish terminal errors from transient ones.
