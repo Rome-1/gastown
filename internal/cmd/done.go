@@ -973,8 +973,10 @@ notifyWitness:
 			MRFailed:       mrFailed,
 			CompletionTime: time.Now().UTC().Format(time.RFC3339),
 		}
-		if err := completionBd.UpdateAgentCompletion(agentBeadID, meta); err != nil {
-			style.PrintWarning("could not write completion metadata to agent bead: %v", err)
+		if err := retryAgentBeadWrite(fmt.Sprintf("agent completion-metadata write %s", agentBeadID), func() error {
+			return completionBd.UpdateAgentCompletion(agentBeadID, meta)
+		}); err != nil {
+			style.PrintWarning("could not write completion metadata to agent bead after 3 attempts: %v", err)
 		}
 	}
 
@@ -1141,7 +1143,31 @@ const (
 	CheckpointPushed          DoneCheckpoint = "pushed"
 	CheckpointMRCreated       DoneCheckpoint = "mr-created"
 	CheckpointWitnessNotified DoneCheckpoint = "witness-notified"
+	// CheckpointStateUpdated marks that agent_state was successfully written
+	// during gt done. If gt done is interrupted after this checkpoint, a
+	// re-run skips the state write to avoid stomping a manual reconcile.
+	// See gt-j3hj/A.
+	CheckpointStateUpdated DoneCheckpoint = "state-updated"
 )
+
+// retryAgentBeadWrite wraps an agent-bead write with backoff to survive
+// transient Dolt outages. Mirrors the bd.ForceCloseWithReason pattern at
+// done.go:457-466. 3 attempts with 2s/4s backoff. Returns the final error
+// (nil on success). See gt-j3hj/A.
+func retryAgentBeadWrite(label string, fn func() error) error {
+	var err error
+	for attempt := 1; attempt <= 3; attempt++ {
+		err = fn()
+		if err == nil {
+			return nil
+		}
+		if attempt < 3 {
+			style.PrintWarning("%s attempt %d/3 failed: %v (retrying in %ds)", label, attempt, err, attempt*2)
+			time.Sleep(time.Duration(attempt*2) * time.Second)
+		}
+	}
+	return err
+}
 
 // writeDoneCheckpoint writes a checkpoint label on the agent bead.
 // Format: done-cp:<stage>:<value>:<unix-ts>
@@ -1366,8 +1392,26 @@ doneStateUpdate:
 	if exitType == ExitEscalated {
 		doneState = "stuck"
 	}
-	if _, err := bd.Run("agent", "state", agentBeadID, doneState); err != nil {
-		fmt.Fprintf(os.Stderr, "Warning: couldn't set agent %s to %s: %v\n", agentBeadID, doneState, err)
+
+	// Idempotency: if a prior gt done attempt already wrote agent_state,
+	// skip the write (resume from CheckpointStateUpdated). See gt-j3hj/A.
+	checkpoints := readDoneCheckpoints(bd, agentBeadID)
+	_, stateAlreadyUpdated := checkpoints[CheckpointStateUpdated]
+
+	stateWriteFailed := false
+	if !stateAlreadyUpdated {
+		stateErr := retryAgentBeadWrite(fmt.Sprintf("agent state write %s=%s", agentBeadID, doneState), func() error {
+			_, err := bd.Run("agent", "state", agentBeadID, doneState)
+			return err
+		})
+		if stateErr != nil {
+			fmt.Fprintf(os.Stderr, "Warning: couldn't set agent %s to %s after 3 attempts: %v\n", agentBeadID, doneState, stateErr)
+			stateWriteFailed = true
+		} else {
+			// Checkpoint AFTER successful state write so a future gt done
+			// resumes from this point and doesn't redo the work.
+			writeDoneCheckpoint(bd, agentBeadID, CheckpointStateUpdated, doneState)
+		}
 	}
 
 	// ZFC #10: Self-report cleanup status
@@ -1375,18 +1419,24 @@ doneStateUpdate:
 	if doneCleanupStatus != "" {
 		cleanupStatus := parseCleanupStatus(doneCleanupStatus)
 		if cleanupStatus != polecat.CleanupUnknown {
-			if err := bd.UpdateAgentCleanupStatus(agentBeadID, string(cleanupStatus)); err != nil {
-				fmt.Fprintf(os.Stderr, "Warning: couldn't update agent %s cleanup status: %v\n", agentBeadID, err)
+			cleanupErr := retryAgentBeadWrite(fmt.Sprintf("agent cleanup-status write %s=%s", agentBeadID, cleanupStatus), func() error {
+				return bd.UpdateAgentCleanupStatus(agentBeadID, string(cleanupStatus))
+			})
+			if cleanupErr != nil {
+				fmt.Fprintf(os.Stderr, "Warning: couldn't update agent %s cleanup status after 3 attempts: %v\n", agentBeadID, cleanupErr)
 				return
 			}
 		}
 	}
 
-	// Clear done-intent label and checkpoints on clean exit — gt done completed
-	// successfully. If we don't reach here (crash/stuck), the Witness uses the
-	// lingering labels to detect the zombie and resume from checkpoints.
-	clearDoneIntentLabel(bd, agentBeadID)
-	clearDoneCheckpoints(bd, agentBeadID)
+	// Clear done-intent label and checkpoints ONLY on clean exit. If the
+	// state write exhausted retries, leave them in place so the witness
+	// reconciler (gt-j3hj/B) or 'gt polecat reconcile' (gt-j3hj/C) can
+	// finish the job from CheckpointWitnessNotified.
+	if !stateWriteFailed {
+		clearDoneIntentLabel(bd, agentBeadID)
+		clearDoneCheckpoints(bd, agentBeadID)
+	}
 }
 
 // findHookedBeadForAgent queries for beads with status=hooked assigned to this agent.

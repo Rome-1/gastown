@@ -274,7 +274,7 @@ func TestFindHookedBeadForAgent(t *testing.T) {
 			setupBeads: func(t *testing.T, bd *beads.Beads) {
 				// Create a task and set it to hooked with assignee
 				_, err := bd.CreateWithID("test-456", beads.CreateOptions{
-					Title: "Task to be hooked",
+					Title:  "Task to be hooked",
 					Labels: []string{"gt:task"},
 				})
 				if err != nil {
@@ -537,9 +537,9 @@ func TestSessionKillGateGuardLogic(t *testing.T) {
 func TestMRVerificationSetsMRFailed(t *testing.T) {
 	tests := []struct {
 		name         string
-		createErr    error  // error from bd.Create
-		showErr      error  // error from bd.Show (verification)
-		showReturns  bool   // whether Show returns a non-nil issue
+		createErr    error // error from bd.Create
+		showErr      error // error from bd.Show (verification)
+		showReturns  bool  // whether Show returns a non-nil issue
 		wantMRFailed bool
 	}{
 		{
@@ -904,6 +904,7 @@ func TestDoneCheckpointLabelFormat(t *testing.T) {
 		{CheckpointPushed, "polecat/furiosa-abc", "done-cp:pushed:polecat/furiosa-abc:"},
 		{CheckpointMRCreated, "gt-xyz123", "done-cp:mr-created:gt-xyz123:"},
 		{CheckpointWitnessNotified, "ok", "done-cp:witness-notified:ok:"},
+		{CheckpointStateUpdated, "idle", "done-cp:state-updated:idle:"},
 	}
 
 	for _, tt := range tests {
@@ -976,7 +977,7 @@ func TestReadDoneCheckpoints(t *testing.T) {
 			},
 		},
 		{
-			name:   "mixed with done-intent and other labels",
+			name: "mixed with done-intent and other labels",
 			labels: []string{
 				"gt:agent",
 				"done-intent:COMPLETED:1738972800",
@@ -984,6 +985,21 @@ func TestReadDoneCheckpoints(t *testing.T) {
 				"idle:2",
 			},
 			want: map[DoneCheckpoint]string{CheckpointPushed: "mybranch"},
+		},
+		{
+			name: "state-updated checkpoint (gt-j3hj/A)",
+			labels: []string{
+				"done-cp:pushed:branch:1738972800",
+				"done-cp:mr-created:gt-mr1:1738972801",
+				"done-cp:witness-notified:ok:1738972803",
+				"done-cp:state-updated:idle:1738972804",
+			},
+			want: map[DoneCheckpoint]string{
+				CheckpointPushed:          "branch",
+				CheckpointMRCreated:       "gt-mr1",
+				CheckpointWitnessNotified: "ok",
+				CheckpointStateUpdated:    "idle",
+			},
 		},
 	}
 
@@ -1122,12 +1138,12 @@ func TestCheckpointNilMapSafe(t *testing.T) {
 // convoy merge=direct was not propagated because cross-rig dep resolution failed.
 func TestConvoyInfoFallbackChain(t *testing.T) {
 	tests := []struct {
-		name            string
-		attachmentInfo  *ConvoyInfo // Result from getConvoyInfoFromIssue
-		depInfo         *ConvoyInfo // Result from getConvoyInfoForIssue
-		wantConvoyID    string
-		wantMerge       string
-		wantNil         bool
+		name           string
+		attachmentInfo *ConvoyInfo // Result from getConvoyInfoFromIssue
+		depInfo        *ConvoyInfo // Result from getConvoyInfoForIssue
+		wantConvoyID   string
+		wantMerge      string
+		wantNil        bool
 	}{
 		{
 			name:           "attachment fields provide convoy info",
@@ -1193,9 +1209,9 @@ func TestConvoyInfoFallbackChain(t *testing.T) {
 // closing and caused infinite dispatch loops.
 func TestHookedBeadCloseNotRestrictedToHookedStatus(t *testing.T) {
 	tests := []struct {
-		name       string
-		status     string
-		wantClose  bool
+		name      string
+		status    string
+		wantClose bool
 	}{
 		{"status hooked → close", "hooked", true},
 		{"status in_progress → close", "in_progress", true},
@@ -1336,6 +1352,57 @@ func TestPushSubmoduleChanges_NoSubmodules(t *testing.T) {
 	// Should not panic or error — just a no-op
 	g := gitpkg.NewGit(parent)
 	pushSubmoduleChanges(g, "main")
+}
+
+// TestRetryAgentBeadWrite_SuccessFirstAttempt verifies that retryAgentBeadWrite
+// returns nil and only invokes fn once when the first attempt succeeds. (gt-j3hj/A)
+func TestRetryAgentBeadWrite_SuccessFirstAttempt(t *testing.T) {
+	calls := 0
+	err := retryAgentBeadWrite("test", func() error {
+		calls++
+		return nil
+	})
+	if err != nil {
+		t.Errorf("expected nil error, got %v", err)
+	}
+	if calls != 1 {
+		t.Errorf("expected 1 call, got %d", calls)
+	}
+}
+
+// TestRetryAgentBeadWrite_RetriesTransientFailure verifies retry-with-backoff
+// recovers from transient failures within the 3-attempt budget. (gt-j3hj/A)
+func TestRetryAgentBeadWrite_RetriesTransientFailure(t *testing.T) {
+	calls := 0
+	err := retryAgentBeadWrite("test", func() error {
+		calls++
+		if calls < 3 {
+			return fmt.Errorf("transient")
+		}
+		return nil
+	})
+	if err != nil {
+		t.Errorf("expected eventual success, got %v", err)
+	}
+	if calls != 3 {
+		t.Errorf("expected 3 calls, got %d", calls)
+	}
+}
+
+// TestRetryAgentBeadWrite_GivesUpAfterRetries verifies retry-with-backoff
+// returns the final error once the budget is exhausted. (gt-j3hj/A)
+func TestRetryAgentBeadWrite_GivesUpAfterRetries(t *testing.T) {
+	calls := 0
+	err := retryAgentBeadWrite("test", func() error {
+		calls++
+		return fmt.Errorf("dolt unhealthy")
+	})
+	if err == nil {
+		t.Error("expected error after retries exhausted")
+	}
+	if calls != 3 {
+		t.Errorf("expected 3 calls, got %d", calls)
+	}
 }
 
 func testRunGit(t *testing.T, dir string, args ...string) {

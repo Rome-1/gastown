@@ -1685,7 +1685,6 @@ func TestClearCompletionMetadata_NoBd(t *testing.T) {
 	}
 }
 
-
 // --- Heartbeat v2 tests (gt-3vr5) ---
 
 func TestHeartbeatV2_ExitingStateSkipsZombieDetection(t *testing.T) {
@@ -1891,5 +1890,130 @@ func TestNotifyRefineryMergeReady_EmitsChannelEvent(t *testing.T) {
 	}
 	if payload["rig"] != "dashboard" {
 		t.Errorf("payload.rig = %v, want dashboard", payload["rig"])
+	}
+}
+
+func TestShouldReconcileAgentState(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		state string
+		want  bool
+	}{
+		{"working", true},
+		{"running", true},
+		{"spawning", true},
+		{"done", true},
+		{"idle", false},
+		{"stuck", false},
+		{"awaiting-gate", false},
+		{"nuked", false},
+		{"escalated", false},
+		{"", false},
+		{"unknown-state", false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.state, func(t *testing.T) {
+			if got := shouldReconcileAgentState(tt.state); got != tt.want {
+				t.Errorf("shouldReconcileAgentState(%q) = %v, want %v", tt.state, got, tt.want)
+			}
+		})
+	}
+}
+
+func TestReconcileStuckAgentState_WritesIdleAndStripsLabels(t *testing.T) {
+	t.Parallel()
+	bd, mock := mockBd(
+		func(args []string) (string, error) { return "", nil },
+		func(args []string) error { return nil },
+	)
+	snap := &agentBeadSnapshot{
+		AgentState: "working",
+		Labels: []string{
+			"gt:agent",
+			"done-cp:pushed:branch:1700000000",
+			"done-cp:witness-notified:ok:1700000001",
+			"done-intent:COMPLETED:1700000002",
+			"unrelated-label",
+		},
+	}
+	if err := reconcileStuckAgentState(bd, "/tmp", "wa-test123", snap); err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	var foundIdleWrite bool
+	for _, call := range mock.calls {
+		if strings.Contains(call, "agent state wa-test123 idle") {
+			foundIdleWrite = true
+		}
+	}
+	if !foundIdleWrite {
+		t.Errorf("expected agent state idle write, got calls: %v", mock.calls)
+	}
+
+	// Each done-cp:* and done-intent:* label should be removed individually.
+	wantRemoved := []string{
+		"done-cp:pushed:branch:1700000000",
+		"done-cp:witness-notified:ok:1700000001",
+		"done-intent:COMPLETED:1700000002",
+	}
+	for _, label := range wantRemoved {
+		var found bool
+		for _, call := range mock.calls {
+			if strings.Contains(call, "update wa-test123 --remove-label "+label) {
+				found = true
+				break
+			}
+		}
+		if !found {
+			t.Errorf("expected --remove-label %s, got calls: %v", label, mock.calls)
+		}
+	}
+
+	// "unrelated-label" must NOT be touched.
+	for _, call := range mock.calls {
+		if strings.Contains(call, "unrelated-label") {
+			t.Errorf("unrelated label should not be removed, got call: %s", call)
+		}
+	}
+}
+
+func TestReconcileStuckAgentState_RetriesTransientFailure(t *testing.T) {
+	t.Parallel()
+	calls := 0
+	bd, _ := mockBd(
+		func(args []string) (string, error) { return "", nil },
+		func(args []string) error {
+			if len(args) >= 2 && args[0] == "agent" && args[1] == "state" {
+				calls++
+				if calls < 3 {
+					return fmt.Errorf("transient dolt failure")
+				}
+				return nil
+			}
+			return nil
+		},
+	)
+	if err := reconcileStuckAgentState(bd, "/tmp", "wa-x", &agentBeadSnapshot{}); err != nil {
+		t.Fatalf("expected eventual success, got: %v", err)
+	}
+	if calls != 3 {
+		t.Errorf("expected 3 attempts, got %d", calls)
+	}
+}
+
+func TestReconcileStuckAgentState_GivesUpAfterRetries(t *testing.T) {
+	t.Parallel()
+	bd, _ := mockBd(
+		func(args []string) (string, error) { return "", nil },
+		func(args []string) error {
+			if len(args) >= 2 && args[0] == "agent" && args[1] == "state" {
+				return fmt.Errorf("dolt unhealthy")
+			}
+			return nil
+		},
+	)
+	err := reconcileStuckAgentState(bd, "/tmp", "wa-x", &agentBeadSnapshot{})
+	if err == nil {
+		t.Error("expected error after retries exhausted")
 	}
 }

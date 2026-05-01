@@ -952,6 +952,10 @@ const (
 	ZombieSessionDeadActive ZombieClassification = "session-dead-active"
 	// ZombieAgentSelfReportedStuck: agent self-reported stuck via heartbeat v2 (gt-3vr5).
 	ZombieAgentSelfReportedStuck ZombieClassification = "agent-self-reported-stuck"
+	// ZombieStateReconciled: hook bead was closed but agent_state still active —
+	// the polecat completed gt done but failed the final state write (likely a
+	// transient Dolt outage). Witness reconciled agent_state to idle. See gt-j3hj/B.
+	ZombieStateReconciled ZombieClassification = "state-reconciled"
 )
 
 // ImpliesActiveWork returns true if this classification indicates the polecat
@@ -961,7 +965,8 @@ const (
 func (c ZombieClassification) ImpliesActiveWork() bool {
 	switch c {
 	case ZombieStuckInDone, ZombieAgentDeadInSession, ZombieBeadClosedStillRunning,
-		ZombieDoneIntentDead, ZombieSessionDeadActive, ZombieAgentSelfReportedStuck:
+		ZombieDoneIntentDead, ZombieSessionDeadActive, ZombieAgentSelfReportedStuck,
+		ZombieStateReconciled:
 		return true
 	default:
 		return false
@@ -1103,7 +1108,7 @@ func DetectZombiePolecats(bd *BdCli, workDir, rigName string, router *mail.Route
 			continue // Either handled or not a zombie
 		}
 
-		if zombie, found := detectZombieDeadSession(bd, workDir, townRoot, rigName, polecatName, sessionName, t, doneIntent, detectedAt, witCfg, snap); found {
+		if zombie, found := detectZombieDeadSession(bd, workDir, townRoot, rigName, polecatName, agentBeadID, sessionName, t, doneIntent, detectedAt, witCfg, snap); found {
 			result.Zombies = append(result.Zombies, zombie)
 		}
 	}
@@ -1236,12 +1241,77 @@ func detectZombieLiveSession(bd *BdCli, workDir, townRoot, rigName, polecatName,
 	return ZombieResult{}, false
 }
 
+// reconcileStuckAgentState resets a polecat's agent_state to idle when the
+// witness has evidence the polecat completed (hook bead closed) but the final
+// state write failed during gt done — typically a transient Dolt outage.
+// See gt-j3hj/B.
+//
+// Retry-with-backoff mirrors the gt done write helper (gt-j3hj/A): 3 attempts
+// with 2s/4s sleeps between attempts. Returns nil on success.
+//
+// On success, also strips lingering done-cp:* and done-intent:* labels so the
+// polecat returns to a clean state and can be re-slung. Label removal is
+// best-effort (logged but not fatal).
+func reconcileStuckAgentState(bd *BdCli, workDir, agentBeadID string, snap *agentBeadSnapshot) error {
+	if agentBeadID == "" {
+		return fmt.Errorf("agentBeadID is empty")
+	}
+
+	var stateErr error
+	for attempt := 1; attempt <= 3; attempt++ {
+		stateErr = bd.Run(workDir, "agent", "state", agentBeadID, string(AgentStateIdle))
+		if stateErr == nil {
+			break
+		}
+		if attempt < 3 {
+			time.Sleep(time.Duration(attempt*2) * time.Second)
+		}
+	}
+	if stateErr != nil {
+		return fmt.Errorf("writing agent_state=idle to %s after 3 attempts: %w", agentBeadID, stateErr)
+	}
+
+	// Best-effort label cleanup. The state write is the load-bearing step;
+	// if labels linger, the next reconcile attempt is idempotent (state is
+	// already idle, no-op write).
+	if snap != nil && len(snap.Labels) > 0 {
+		var toRemove []string
+		for _, label := range snap.Labels {
+			if strings.HasPrefix(label, "done-cp:") || strings.HasPrefix(label, "done-intent:") {
+				toRemove = append(toRemove, label)
+			}
+		}
+		for _, label := range toRemove {
+			if err := bd.Run(workDir, "update", agentBeadID, "--remove-label", label); err != nil {
+				fmt.Fprintf(os.Stderr, "witness: best-effort remove-label %s on %s: %v\n", label, agentBeadID, err)
+			}
+		}
+	}
+
+	return nil
+}
+
+// shouldReconcileAgentState returns true if the snapshot's agent_state value
+// indicates the polecat completed work (hook bead closed) but the final state
+// write didn't land. The snap.AgentState is the raw string from beads, which
+// may be one of: working, running, spawning, done. We do not reconcile from
+// stuck/awaiting-gate (intentional pauses) or idle/nuked (already terminal).
+func shouldReconcileAgentState(state string) bool {
+	switch beads.AgentState(state) {
+	case beads.AgentStateWorking, beads.AgentStateRunning,
+		beads.AgentStateSpawning, beads.AgentStateDone:
+		return true
+	default:
+		return false
+	}
+}
+
 // detectZombieDeadSession checks a polecat with a dead tmux session for zombie indicators:
 // stale done-intent, or active agent state / hooked bead with no session.
 //
 // gt-dsgp: Uses restart-first policy. Instead of nuking polecats with dead sessions,
 // restarts them to preserve worktrees and branches.
-func detectZombieDeadSession(bd *BdCli, workDir, townRoot, rigName, polecatName, sessionName string, t *tmux.Tmux, doneIntent *DoneIntent, detectedAt time.Time, witCfg *config.WitnessThresholds, snap *agentBeadSnapshot) (ZombieResult, bool) {
+func detectZombieDeadSession(bd *BdCli, workDir, townRoot, rigName, polecatName, agentBeadID, sessionName string, t *tmux.Tmux, doneIntent *DoneIntent, detectedAt time.Time, witCfg *config.WitnessThresholds, snap *agentBeadSnapshot) (ZombieResult, bool) {
 	// gt-2gra: Agent state and hook bead are read from the pre-fetched snapshot.
 	snapState, snapHook := "", ""
 	snapActiveMR := ""
@@ -1273,6 +1343,26 @@ func detectZombieDeadSession(bd *BdCli, workDir, townRoot, rigName, polecatName,
 		// The dead session is expected (gt done kills it). Leave it alone. (gt-sy8)
 		beadAlreadyClosed := snapHook != "" && getBeadStatus(bd, workDir, snapHook) == "closed"
 		if beadAlreadyClosed {
+			// gt-j3hj/B: Reconcile stale agent_state. Polecat completed gt done
+			// (bead closed) but the final state write failed — likely a Dolt
+			// circuit-breaker outage. Witness has perfect evidence: bead closed
+			// = work done. Reset agent_state to idle so the polecat slot is
+			// freed for re-use.
+			if shouldReconcileAgentState(snapState) {
+				zombie := ZombieResult{
+					PolecatName:    polecatName,
+					AgentState:     snapState,
+					Classification: ZombieStateReconciled,
+					HookBead:       snapHook,
+					WasActive:      true,
+					Action:         fmt.Sprintf("state-reconciled (closed bead %s, prior state=%s, done-intent age=%v)", snapHook, snapState, age.Round(time.Second)),
+				}
+				if err := reconcileStuckAgentState(bd, workDir, agentBeadID, snap); err != nil {
+					zombie.Error = err
+					zombie.Action = fmt.Sprintf("state-reconcile-failed: %v", err)
+				}
+				return zombie, true
+			}
 			// gt-dsgp: Polecat completed its work. Don't nuke, don't restart.
 			// The sandbox is preserved for reuse by future slings.
 			return ZombieResult{}, false
@@ -1327,6 +1417,24 @@ func detectZombieDeadSession(bd *BdCli, workDir, townRoot, rigName, polecatName,
 	// Don't flag as zombie or trigger re-dispatch. (gt-sy8)
 	// gt-dsgp: Don't nuke — sandbox preserved for reuse.
 	if snapHook != "" && getBeadStatus(bd, workDir, snapHook) == "closed" {
+		// gt-j3hj/B: Even without a done-intent label, a closed hook + active
+		// state is the signature of a failed final state write during gt done.
+		// Reconcile to idle so the polecat slot is freed.
+		if shouldReconcileAgentState(snapState) {
+			zombie := ZombieResult{
+				PolecatName:    polecatName,
+				AgentState:     snapState,
+				Classification: ZombieStateReconciled,
+				HookBead:       snapHook,
+				WasActive:      true,
+				Action:         fmt.Sprintf("state-reconciled (closed bead %s, prior state=%s)", snapHook, snapState),
+			}
+			if err := reconcileStuckAgentState(bd, workDir, agentBeadID, snap); err != nil {
+				zombie.Error = err
+				zombie.Action = fmt.Sprintf("state-reconcile-failed: %v", err)
+			}
+			return zombie, true
+		}
 		return ZombieResult{}, false
 	}
 
@@ -1763,12 +1871,12 @@ func processDiscoveredCompletion(bd *BdCli, workDir, rigName string, payload *Po
 // Used to avoid redundant subprocess invocations during zombie detection, where the same
 // agent bead was previously queried 3-5 times per polecat per patrol cycle. (gt-2gra)
 type agentBeadSnapshot struct {
-	AgentState  string
-	HookBead    string
-	Labels      []string
-	UpdatedAt   string
-	ActiveMR    string
-	Fields      *beads.AgentFields // parsed from description
+	AgentState string
+	HookBead   string
+	Labels     []string
+	UpdatedAt  string
+	ActiveMR   string
+	Fields     *beads.AgentFields // parsed from description
 }
 
 // fetchAgentBeadSnapshot fetches all agent bead data in a single bd show call.
@@ -1947,13 +2055,13 @@ func getBeadStatus(bd *BdCli, workDir, beadID string) string {
 
 // resetAbandonedBead resets a dead polecat's hooked bead so it can be re-dispatched.
 // If the bead is in "hooked" or "in_progress" status, it:
-// 0. Checks if the polecat's work is already on main — if so, closes
-//    the bead instead of resetting (prevents re-dispatch of completed work)
-// 1. Records the respawn in the witness spawn-count ledger
-// 2. Resets status to open
-// 3. Clears assignee
-// 4. Sends mail to deacon for re-dispatch (includes respawn count; SPAWN_STORM
-//    prefix and Urgent priority when count exceeds max bead respawns config)
+//  0. Checks if the polecat's work is already on main — if so, closes
+//     the bead instead of resetting (prevents re-dispatch of completed work)
+//  1. Records the respawn in the witness spawn-count ledger
+//  2. Resets status to open
+//  3. Clears assignee
+//  4. Sends mail to deacon for re-dispatch (includes respawn count; SPAWN_STORM
+//     prefix and Urgent priority when count exceeds max bead respawns config)
 //
 // Returns true if the bead was recovered.
 func resetAbandonedBead(bd *BdCli, workDir, rigName, hookBead, polecatName string, router *mail.Router) bool {
