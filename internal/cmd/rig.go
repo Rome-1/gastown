@@ -760,6 +760,12 @@ func runRigList(cmd *cobra.Command, args []string) error {
 		sortPrio int
 	}
 
+	// Snapshot tmux sessions once so per-rig HasSession checks become O(1)
+	// instead of spawning two tmux subprocesses per rig (~86 fork/exec calls
+	// on a 43-rig workspace). The bd-show fanout per rig dominates wall time
+	// here and lives in bd's cross-rig query path; see hq-rxnta / bd-btm.
+	sessionSet, _ := t.GetSessionSet()
+
 	var rigs []rigInfo
 
 	for name := range rigsConfig.Rigs {
@@ -773,10 +779,8 @@ func runRigList(cmd *cobra.Command, args []string) error {
 
 		opState, _ := getRigOperationalState(townRoot, name)
 
-		witnessSession := session.WitnessSessionName(prefix)
-		refinerySession := session.RefinerySessionName(prefix)
-		witnessRunning, _ := t.HasSession(witnessSession)
-		refineryRunning, _ := t.HasSession(refinerySession)
+		witnessRunning := sessionSet.Has(session.WitnessSessionName(prefix))
+		refineryRunning := sessionSet.Has(session.RefinerySessionName(prefix))
 
 		witnessStatus := "stopped"
 		if witnessRunning {
