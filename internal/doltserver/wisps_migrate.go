@@ -3,11 +3,11 @@
 // The wisps table is a dolt_ignored copy of the issues table schema, used for
 // ephemeral operational data (agent beads, patrol wisps, etc.) that should not
 // be version-controlled. This migration:
-//   1. Creates the wisps table and auxiliary tables (wisp_labels, wisp_comments,
-//      wisp_events, wisp_dependencies) if they don't exist
-//   2. Copies existing agent beads (issue_type='agent') from issues to wisps
-//   3. Copies associated labels, comments, events, and dependencies
-//   4. Closes the originals in the issues table
+//  1. Creates the wisps table and auxiliary tables (wisp_labels, wisp_comments,
+//     wisp_events, wisp_dependencies) if they don't exist
+//  2. Copies existing agent beads (issue_type='agent') from issues to wisps
+//  3. Copies associated labels, comments, events, and dependencies
+//  4. Closes the originals in the issues table
 //
 // The migration uses `bd sql` for beads-side operations (copying agent beads between
 // the issues and wisps tables in bd's own database). Additionally, it ensures that
@@ -252,9 +252,10 @@ func copyAuxiliaryData(workDir string, result *MigrateWispsResult) error {
 	cnt, _ = bdSQLCount(workDir, "SELECT COUNT(*) as cnt FROM wisp_events")
 	result.EventsCopied = cnt
 
-	// Copy dependencies
+	// Copy dependencies. bd split the former depends_on_id column into three
+	// typed target columns (issue/wisp/external); copy all three.
 	if err := bdSQL(workDir,
-		"INSERT IGNORE INTO wisp_dependencies (issue_id, depends_on_id, type, created_at, created_by, metadata, thread_id) SELECT d.issue_id, d.depends_on_id, d.type, d.created_at, d.created_by, d.metadata, d.thread_id FROM dependencies d INNER JOIN wisps w ON d.issue_id = w.id"); err != nil {
+		"INSERT IGNORE INTO wisp_dependencies (issue_id, depends_on_issue_id, depends_on_wisp_id, depends_on_external, type, created_at, created_by, metadata, thread_id) SELECT d.issue_id, d.depends_on_issue_id, d.depends_on_wisp_id, d.depends_on_external, d.type, d.created_at, d.created_by, d.metadata, d.thread_id FROM dependencies d INNER JOIN wisps w ON d.issue_id = w.id"); err != nil {
 		if !strings.Contains(err.Error(), "nothing") {
 			return fmt.Errorf("copying dependencies: %w", err)
 		}
@@ -454,16 +455,25 @@ var wispAuxTableDDLs = []wispAuxTableDDL{
 	},
 	{
 		name: "wisp_dependencies",
+		// Legacy fallback schema, only created on a fresh DB where bd has not yet
+		// initialized the wisp tables (existence-guarded below). bd owns the
+		// canonical schema and split the former depends_on_id column into three
+		// typed target columns (issue/wisp/external); mirror that split here so a
+		// fallback table stays compatible with the copy step above.
 		ddl: `CREATE TABLE wisp_dependencies (
   issue_id varchar(255) NOT NULL,
-  depends_on_id varchar(255) NOT NULL,
+  depends_on_issue_id varchar(255),
+  depends_on_wisp_id varchar(255),
+  depends_on_external varchar(255),
   type varchar(32) NOT NULL DEFAULT 'blocks',
   created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   created_by varchar(255) NOT NULL DEFAULT '',
   metadata json,
   thread_id varchar(255) DEFAULT '',
-  PRIMARY KEY (issue_id, depends_on_id),
-  KEY idx_wisp_deps_depends_on (depends_on_id)
+  KEY idx_wisp_deps_issue (issue_id),
+  KEY idx_wisp_deps_issue_target (depends_on_issue_id),
+  KEY idx_wisp_deps_wisp_target (depends_on_wisp_id),
+  KEY idx_wisp_deps_external_target (depends_on_external)
 )`,
 	},
 }

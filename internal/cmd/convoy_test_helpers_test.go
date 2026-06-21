@@ -230,8 +230,9 @@ func (d *testDAG) BdStubScript() string {
 	}
 
 	// --- handle: sql "SELECT ..." --json (bdDepListRawIDs) ---
-	// bdDepListRawIDs calls: bd sql "SELECT depends_on_id FROM dependencies WHERE issue_id = '<id>' AND type = 'tracks'" --json
-	// or: bd sql "SELECT issue_id FROM dependencies WHERE depends_on_id = '<id>' AND type = 'tracks'" --json
+	// bdDepListRawIDs calls (target = COALESCE(depends_on_issue_id, depends_on_wisp_id, depends_on_external)):
+	//   down: bd sql "SELECT <target> AS depends_on_id FROM dependencies WHERE issue_id = '<id>' AND type = 'tracks'" --json
+	//   up:   bd sql "SELECT issue_id FROM dependencies WHERE <target> = '<id>' AND type = 'tracks'" --json
 	sb.WriteString("  sql\\ *)\n")
 	sb.WriteString("    # Handle SQL queries for dependency lookups\n")
 	// For "down" direction (convoy → tracked beads): match on issue_id = '<convoyID>'
@@ -246,12 +247,14 @@ func (d *testDAG) BdStubScript() string {
 			sb.WriteString("    esac\n")
 		}
 	}
-	// For "up" direction (bead → tracking convoys): match on depends_on_id = '<beadID>'
+	// For "up" direction (bead → tracking convoys): match on the dependency
+	// target expression = '<beadID>'. bd split depends_on_id into typed columns,
+	// so the "up" query now filters on COALESCE(...depends_on_external) = '<beadID>'.
 	for id := range d.beads {
 		trackersJSON := d.trackersSQLJSONFor(id)
 		if trackersJSON != "[]" {
 			sb.WriteString(`    case "$ALL_ARGS" in` + "\n")
-			sb.WriteString(fmt.Sprintf("      *\"depends_on_id = '%s'\"*)\n", id))
+			sb.WriteString(fmt.Sprintf("      *\"depends_on_external) = '%s'\"*)\n", id))
 			sb.WriteString(fmt.Sprintf("        echo '%s'\n", trackersJSON))
 			sb.WriteString("        exit 0\n")
 			sb.WriteString("        ;;\n")
@@ -585,7 +588,8 @@ func (d *testDAG) trackedBeadsSQLJSONFor(convoyID string) string {
 }
 
 // trackersSQLJSONFor returns the JSON array for `bd sql "SELECT issue_id
-// FROM dependencies WHERE depends_on_id = '<beadID>' AND type = 'tracks'" --json`.
+// FROM dependencies WHERE COALESCE(depends_on_issue_id, depends_on_wisp_id,
+// depends_on_external) = '<beadID>' AND type = 'tracks'" --json`.
 // Returns [{"issue_id":"<convoyID>"},...] for each convoy tracking this bead.
 func (d *testDAG) trackersSQLJSONFor(beadID string) string {
 	type sqlRow struct {

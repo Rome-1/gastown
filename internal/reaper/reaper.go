@@ -124,9 +124,9 @@ type PurgeResult struct {
 
 // AutoCloseResult holds the results of an auto-close operation.
 type AutoCloseResult struct {
-	Database string    `json:"database"`
-	Closed   int       `json:"closed"`
-	DryRun   bool      `json:"dry_run,omitempty"`
+	Database  string    `json:"database"`
+	Closed    int       `json:"closed"`
+	DryRun    bool      `json:"dry_run,omitempty"`
 	Anomalies []Anomaly `json:"anomalies,omitempty"`
 }
 
@@ -186,7 +186,7 @@ func parentExcludeJoin(dbName string) (joinClause, whereCondition string) {
 	joinClause = `LEFT JOIN (
 		SELECT DISTINCT wd.issue_id
 		FROM wisp_dependencies wd
-		INNER JOIN wisps parent ON parent.id = wd.depends_on_id
+		INNER JOIN wisps parent ON parent.id = COALESCE(wd.depends_on_issue_id, wd.depends_on_wisp_id, wd.depends_on_external)
 		WHERE wd.type = 'parent-child'
 		AND parent.status IN ('open', 'hooked', 'in_progress')
 	) open_parent ON open_parent.issue_id = w.id`
@@ -259,11 +259,11 @@ func Scan(db *sql.DB, dbName string, maxAge, purgeAge, mailDeleteAge, staleIssue
 		AND i.issue_type != 'epic'
 		AND i.id NOT IN (
 			SELECT DISTINCT d.issue_id FROM dependencies d
-			INNER JOIN issues dep ON d.depends_on_id = dep.id
+			INNER JOIN issues dep ON COALESCE(d.depends_on_issue_id, d.depends_on_wisp_id, d.depends_on_external) = dep.id
 			WHERE dep.status IN ('open', 'in_progress')
 		)
 		AND i.id NOT IN (
-			SELECT DISTINCT d.depends_on_id FROM dependencies d
+			SELECT DISTINCT COALESCE(d.depends_on_issue_id, d.depends_on_wisp_id, d.depends_on_external) FROM dependencies d
 			INNER JOIN issues blocker ON d.issue_id = blocker.id
 			WHERE blocker.status IN ('open', 'in_progress')
 		)`
@@ -283,7 +283,7 @@ func Scan(db *sql.DB, dbName string, maxAge, purgeAge, mailDeleteAge, staleIssue
 	// Anomaly detection: dangling parent references.
 	danglingQuery := `
 		SELECT COUNT(*) FROM wisp_dependencies wd
-		LEFT JOIN wisps parent ON parent.id = wd.depends_on_id
+		LEFT JOIN wisps parent ON parent.id = COALESCE(wd.depends_on_issue_id, wd.depends_on_wisp_id, wd.depends_on_external)
 		WHERE wd.type = 'parent-child' AND parent.id IS NULL`
 	var danglingCount int
 	if err := db.QueryRowContext(ctx, danglingQuery).Scan(&danglingCount); err == nil && danglingCount > 0 {
@@ -585,11 +585,11 @@ func AutoClose(db *sql.DB, dbName string, staleAge time.Duration, dryRun bool) (
 		)
 		AND i.id NOT IN (
 			SELECT DISTINCT d.issue_id FROM `+"`%s`"+`.dependencies d
-			INNER JOIN `+"`%s`"+`.issues dep ON d.depends_on_id = dep.id
+			INNER JOIN `+"`%s`"+`.issues dep ON COALESCE(d.depends_on_issue_id, d.depends_on_wisp_id, d.depends_on_external) = dep.id
 			WHERE dep.status IN ('open', 'in_progress')
 		)
 		AND i.id NOT IN (
-			SELECT DISTINCT d.depends_on_id FROM `+"`%s`"+`.dependencies d
+			SELECT DISTINCT COALESCE(d.depends_on_issue_id, d.depends_on_wisp_id, d.depends_on_external) FROM `+"`%s`"+`.dependencies d
 			INNER JOIN `+"`%s`"+`.issues blocker ON d.issue_id = blocker.id
 			WHERE blocker.status IN ('open', 'in_progress')
 		)`, dbName, dbName, dbName, dbName, dbName)
@@ -707,7 +707,7 @@ func batchDeleteRows(ctx context.Context, db *sql.DB, idQuery string, cutoffArg 
 		}
 
 		// Clean up reverse dependency references to prevent dangling parent refs.
-		delReverse := fmt.Sprintf("DELETE FROM wisp_dependencies WHERE depends_on_id IN %s", inClause)
+		delReverse := fmt.Sprintf("DELETE FROM wisp_dependencies WHERE COALESCE(depends_on_issue_id, depends_on_wisp_id, depends_on_external) IN %s", inClause)
 		if _, err := db.ExecContext(ctx, delReverse, args...); err != nil {
 			// Non-fatal.
 		}
