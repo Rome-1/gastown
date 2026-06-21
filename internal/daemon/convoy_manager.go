@@ -18,8 +18,8 @@ import (
 
 const (
 	defaultStrandedScanInterval = 30 * time.Second
-	eventPollInterval    = 5 * time.Second
-	eventPollMaxBackoff = 60 * time.Second
+	eventPollInterval           = 5 * time.Second
+	eventPollMaxBackoff         = 60 * time.Second
 
 	// convoyGracePeriod is how long after creation a convoy is immune from
 	// auto-close. This prevents a race where the daemon's stranded scan
@@ -86,9 +86,12 @@ type ConvoyManager struct {
 	// duplicate convoy checks for the same stranded convoy.
 	scanMu sync.Mutex
 
-	// lastEventIDs tracks per-store high-water marks for event polling.
+	// lastEventTimes tracks per-store high-water marks for event polling.
+	// As of beads v1.0.5 events are keyed by creation time (Event.ID became a
+	// string hash and GetAllEventsSince filters on created_at), so the
+	// high-water mark is the max CreatedAt seen, not a monotonic int64 ID.
 	// Key matches stores map keys ("hq", "gastown", etc.).
-	lastEventIDs sync.Map // map[string]int64
+	lastEventTimes sync.Map // map[string]time.Time
 
 	// seeded is true once the first poll cycle has run (warm-up).
 	// The first cycle advances high-water marks without processing events,
@@ -261,10 +264,10 @@ func (m *ConvoyManager) pollStoresSnapshot(stores map[string]beadsdk.Storage) bo
 // The seen set deduplicates issueIDs across stores within a poll cycle.
 // Returns an error if the poll failed (used by caller for backoff decisions).
 func (m *ConvoyManager) pollStore(name string, store beadsdk.Storage, stores map[string]beadsdk.Storage, seen map[string]bool) error {
-	// Load per-store high-water mark
-	var highWater int64
-	if v, ok := m.lastEventIDs.Load(name); ok {
-		highWater = v.(int64)
+	// Load per-store high-water mark (max event CreatedAt seen so far).
+	var highWater time.Time
+	if v, ok := m.lastEventTimes.Load(name); ok {
+		highWater = v.(time.Time)
 	}
 
 	events, err := store.GetAllEventsSince(m.ctx, highWater)
@@ -276,13 +279,20 @@ func (m *ConvoyManager) pollStore(name string, store beadsdk.Storage, stores map
 		return err
 	}
 
-	// Advance high-water mark from all events
+	// Advance high-water mark to the max event CreatedAt seen. GetAllEventsSince
+	// filters on created_at > highWater (strict) and created_at is whole-second
+	// DATETIME, so a close event sharing its second with the high-water mark and
+	// committed after this poll is not re-fetched by event polling. That only
+	// delays the convoy check, never drops it: runStrandedScan re-derives convoy
+	// readiness from live issue status (not events) on its own interval and is
+	// the correctness backstop. processedCloses guards against re-processing when
+	// the same close is seen from multiple stores or across cycles.
 	for _, e := range events {
-		if e.ID > highWater {
-			highWater = e.ID
+		if e.CreatedAt.After(highWater) {
+			highWater = e.CreatedAt
 		}
 	}
-	m.lastEventIDs.Store(name, highWater)
+	m.lastEventTimes.Store(name, highWater)
 
 	// First poll cycle is warm-up only: advance marks, skip processing.
 	// This prevents replaying the entire event history on daemon restart.
