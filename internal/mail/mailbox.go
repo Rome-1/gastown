@@ -248,64 +248,47 @@ func (m *Mailbox) listFromDir(beadsDir string) ([]*Message, error) {
 func (m *Mailbox) listWispMessages(beadsDir string, identities []string, seen map[string]bool) []*Message {
 	var messages []*Message
 
-	// Query 3a: assignee match via SQL on wisps table
+	// One SQL query per identity matches both assignee and CC wisps in a single
+	// `bd sql` round trip. Each `bd sql` spawn carries multi-second startup
+	// overhead, so collapsing the former separate assignee + CC queries into a
+	// single OR'd query halves the wisp-table cost on the mail hot path
+	// (hq-rxnta: gt mail inbox >15s).
 	for _, id := range identities {
-		wispMsgs := m.queryWispMessagesByAssignee(beadsDir, id)
+		wispMsgs := m.queryWispMessages(beadsDir, id)
 		for _, bm := range wispMsgs {
 			if seen[bm.ID] {
 				continue
 			}
-			if bm.Status == "open" || bm.Status == "hooked" {
-				seen[bm.ID] = true
-				messages = append(messages, bm.ToMessage())
-			}
-		}
-	}
-
-	// Query 3b: CC match via SQL on wisps table
-	for _, id := range identities {
-		wispMsgs := m.queryWispMessagesByCC(beadsDir, id)
-		for _, bm := range wispMsgs {
-			if seen[bm.ID] {
+			// Assignee matches surface open OR hooked wisps; CC-only matches
+			// surface open wisps only (a hooked wisp belongs to its assignee).
+			// The query returns the union of both; distinguish by assignee.
+			if bm.Assignee != id && bm.Status != "open" {
 				continue
 			}
-			if bm.Status == "open" {
-				seen[bm.ID] = true
-				messages = append(messages, bm.ToMessage())
-			}
+			seen[bm.ID] = true
+			messages = append(messages, bm.ToMessage())
 		}
 	}
 
 	return messages
 }
 
-// queryWispMessagesByAssignee queries wisps table for messages assigned to identity.
-func (m *Mailbox) queryWispMessagesByAssignee(beadsDir, identity string) []BeadsMessage {
-	query := fmt.Sprintf(
-		"SELECT w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at, "+
-			"GROUP_CONCAT(al.label) as labels_csv "+
-			"FROM wisps w "+
-			"JOIN wisp_labels l ON w.id = l.issue_id "+
-			"JOIN wisp_labels al ON w.id = al.issue_id "+
-			"WHERE l.label = 'gt:message' AND w.status IN ('open', 'hooked') AND w.assignee = '%s' "+
-			"GROUP BY w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at",
-		escapeSQLString(identity))
-	return m.runWispSQL(beadsDir, query)
-}
-
-// queryWispMessagesByCC queries wisps table for messages where identity is CC'd.
-func (m *Mailbox) queryWispMessagesByCC(beadsDir, identity string) []BeadsMessage {
+// queryWispMessages queries the wisps table for gt:message wisps where the
+// identity is either the assignee or a CC recipient, in a single round trip.
+// The status filter (assignee: open|hooked, CC-only: open) is applied by the
+// caller, which distinguishes the match type via the returned assignee field.
+func (m *Mailbox) queryWispMessages(beadsDir, identity string) []BeadsMessage {
 	ccLabel := "cc:" + identity
 	query := fmt.Sprintf(
 		"SELECT w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at, "+
-			"GROUP_CONCAT(al.label) as labels_csv "+
+			"GROUP_CONCAT(DISTINCT al.label) as labels_csv "+
 			"FROM wisps w "+
-			"JOIN wisp_labels l1 ON w.id = l1.issue_id "+
-			"JOIN wisp_labels l2 ON w.id = l2.issue_id "+
 			"JOIN wisp_labels al ON w.id = al.issue_id "+
-			"WHERE l1.label = 'gt:message' AND l2.label = '%s' AND w.status IN ('open', 'hooked') "+
+			"WHERE w.status IN ('open', 'hooked') "+
+			"AND EXISTS (SELECT 1 FROM wisp_labels gm WHERE gm.issue_id = w.id AND gm.label = 'gt:message') "+
+			"AND (w.assignee = '%s' OR EXISTS (SELECT 1 FROM wisp_labels cc WHERE cc.issue_id = w.id AND cc.label = '%s')) "+
 			"GROUP BY w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at",
-		escapeSQLString(ccLabel))
+		escapeSQLString(identity), escapeSQLString(ccLabel))
 	return m.runWispSQL(beadsDir, query)
 }
 

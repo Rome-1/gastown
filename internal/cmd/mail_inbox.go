@@ -53,17 +53,35 @@ func runMailInbox(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	// Get messages
-	// --all is the default behavior (shows all messages)
-	// --unread filters to only unread messages
-	var messages []*mail.Message
-	if mailInboxUnread {
-		messages, err = mailbox.ListUnread()
-	} else {
-		messages, err = mailbox.List()
-	}
+	// Fetch the full inbox once. Both the display set and the total/unread
+	// counts are derived from this single fanout. Previously the human path
+	// called mailbox.Count() separately, which re-ran the entire multi-
+	// subprocess List() fanout (several slow `bd sql`/`bd list` spawns) — a
+	// redundant second pass that roughly doubled the cost of this hot path
+	// (hq-rxnta: gt mail inbox >15s).
+	allMessages, err := mailbox.List()
 	if err != nil {
 		return fmt.Errorf("listing messages: %w", err)
+	}
+
+	total := len(allMessages)
+	unread := 0
+	for _, msg := range allMessages {
+		if !msg.Read {
+			unread++
+		}
+	}
+
+	// --all is the default behavior (shows all messages).
+	// --unread filters the display set to only unread messages.
+	messages := allMessages
+	if mailInboxUnread {
+		messages = make([]*mail.Message, 0, unread)
+		for _, msg := range allMessages {
+			if !msg.Read {
+				messages = append(messages, msg)
+			}
+		}
 	}
 	if messages == nil {
 		messages = make([]*mail.Message, 0)
@@ -84,10 +102,6 @@ func runMailInbox(cmd *cobra.Command, args []string) error {
 	}
 
 	// Human-readable output
-	total, unread, err := mailbox.Count()
-	if err != nil {
-		style.PrintWarning("could not count messages: %v", err)
-	}
 	fmt.Printf("%s Inbox: %s (%d messages, %d unread)\n\n",
 		style.Bold.Render("📬"), address, total, unread)
 
