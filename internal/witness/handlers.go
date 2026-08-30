@@ -1259,7 +1259,7 @@ func reconcileStuckAgentState(bd *BdCli, workDir, agentBeadID string, snap *agen
 
 	var stateErr error
 	for attempt := 1; attempt <= 3; attempt++ {
-		stateErr = bd.Run(workDir, "agent", "state", agentBeadID, string(AgentStateIdle))
+		stateErr = bd.Run(workDir, "set-state", agentBeadID, "agent_state="+string(AgentStateIdle))
 		if stateErr == nil {
 			break
 		}

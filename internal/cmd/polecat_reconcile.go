@@ -266,7 +266,7 @@ func applyPolecatReconcile(bd *beads.Beads, r *rig.Rig, polecatName string, res 
 
 	var stateErr error
 	for attempt := 1; attempt <= 3; attempt++ {
-		_, stateErr = bd.Run("agent", "state", agentBeadID, res.NewState)
+		_, stateErr = bd.Run("set-state", agentBeadID, "agent_state="+res.NewState)
 		if stateErr == nil {
 			break
 		}

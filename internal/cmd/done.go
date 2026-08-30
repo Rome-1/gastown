@@ -1401,7 +1401,7 @@ doneStateUpdate:
 	stateWriteFailed := false
 	if !stateAlreadyUpdated {
 		stateErr := retryAgentBeadWrite(fmt.Sprintf("agent state write %s=%s", agentBeadID, doneState), func() error {
-			_, err := bd.Run("agent", "state", agentBeadID, doneState)
+			_, err := bd.Run("set-state", agentBeadID, "agent_state="+doneState)
 			return err
 		})
 		if stateErr != nil {
