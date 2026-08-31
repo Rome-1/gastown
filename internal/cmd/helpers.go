@@ -14,6 +14,7 @@ import (
 	"github.com/steveyegge/gastown/internal/rig"
 	"github.com/steveyegge/gastown/internal/style"
 	"github.com/steveyegge/gastown/internal/tmux"
+	"github.com/steveyegge/gastown/internal/workspace"
 )
 
 // inferRigFromCwd tries to determine the rig from the current directory.
@@ -38,6 +39,26 @@ func inferRigFromCwd(townRoot string) (string, error) {
 	}
 
 	return "", fmt.Errorf("could not infer rig from current directory")
+}
+
+// atTownRoot reports whether the current directory is the town root itself,
+// i.e. not inside any rig. This is the one place where "could not infer rig"
+// is an ordinary situation rather than an ambiguity: commands that have a
+// sensible town-wide reading can use it to pick that instead of erroring.
+func atTownRoot() bool {
+	townRoot, err := workspace.FindFromCwdOrError()
+	if err != nil {
+		return false
+	}
+	cwd, err := filepath.Abs(".")
+	if err != nil {
+		return false
+	}
+	rel, err := filepath.Rel(townRoot, cwd)
+	if err != nil {
+		return false
+	}
+	return rel == "."
 }
 
 // inferRigFromCrewName scans all rigs in the town root for a crew member

@@ -36,6 +36,14 @@ func runCrewList(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("cannot use --all with a rig filter (--rig flag or positional argument)")
 	}
 
+	// At the town root there is no rig to infer, and "every rig" is the only
+	// sensible reading of a bare `gt crew list` there — so do that rather than
+	// erroring. Anywhere else a failed inference is genuine ambiguity and still
+	// deserves the error below.
+	if !crewListAll && crewRig == "" && atTownRoot() {
+		crewListAll = true
+	}
+
 	var rigs []*rig.Rig
 	if crewListAll {
 		allRigs, err := getAllRigs()
@@ -46,7 +54,9 @@ func runCrewList(cmd *cobra.Command, args []string) error {
 	} else {
 		_, r, err := getCrewManager(crewRig)
 		if err != nil {
-			return err
+			// getCrewManager only knows about --rig; --all is equally valid here
+			// and is often what the caller actually wants.
+			return fmt.Errorf("%w\nUse --all to list crew across every rig", err)
 		}
 		rigs = []*rig.Rig{r}
 	}
