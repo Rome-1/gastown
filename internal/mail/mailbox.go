@@ -248,82 +248,91 @@ func (m *Mailbox) listFromDir(beadsDir string) ([]*Message, error) {
 func (m *Mailbox) listWispMessages(beadsDir string, identities []string, seen map[string]bool) []*Message {
 	var messages []*Message
 
-	// Query 3a: assignee match via SQL on wisps table
-	for _, id := range identities {
-		wispMsgs := m.queryWispMessagesByAssignee(beadsDir, id)
-		for _, bm := range wispMsgs {
-			if seen[bm.ID] {
+	// One bd sql invocation covering assignee and CC across every identity
+	// variant. This used to be 2*len(identities) separate invocations. bd sql
+	// carries roughly 3s of fixed per-invocation overhead — 30x what bd list
+	// costs for an equivalent query — so the number of invocations dominates,
+	// not the complexity of any one of them.
+	for _, bm := range m.queryWispMessages(beadsDir, identities) {
+		if seen[bm.ID] {
+			continue
+		}
+		// Assignee matches accept both open and hooked; CC-only matches accept
+		// open alone. Preserved from the two-query form, where the assignee
+		// pass ran first and claimed the ID before the CC pass saw it.
+		if bm.matchedAssignee {
+			if bm.Status != "open" && bm.Status != "hooked" {
 				continue
 			}
-			if bm.Status == "open" || bm.Status == "hooked" {
-				seen[bm.ID] = true
-				messages = append(messages, bm.ToMessage())
-			}
+		} else if bm.Status != "open" {
+			continue
 		}
-	}
-
-	// Query 3b: CC match via SQL on wisps table
-	for _, id := range identities {
-		wispMsgs := m.queryWispMessagesByCC(beadsDir, id)
-		for _, bm := range wispMsgs {
-			if seen[bm.ID] {
-				continue
-			}
-			if bm.Status == "open" {
-				seen[bm.ID] = true
-				messages = append(messages, bm.ToMessage())
-			}
-		}
+		seen[bm.ID] = true
+		messages = append(messages, bm.ToMessage())
 	}
 
 	return messages
 }
 
-// queryWispMessagesByAssignee queries wisps table for messages assigned to identity.
-func (m *Mailbox) queryWispMessagesByAssignee(beadsDir, identity string) []BeadsMessage {
-	query := fmt.Sprintf(
-		"SELECT w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at, "+
-			"GROUP_CONCAT(al.label) as labels_csv "+
-			"FROM wisps w "+
-			"JOIN wisp_labels l ON w.id = l.issue_id "+
-			"JOIN wisp_labels al ON w.id = al.issue_id "+
-			"WHERE l.label = 'gt:message' AND w.status IN ('open', 'hooked') AND w.assignee = '%s' "+
-			"GROUP BY w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at",
-		escapeSQLString(identity))
-	return m.runWispSQL(beadsDir, query)
-}
+// queryWispMessages queries the wisps table for messages where any of the given
+// identities is the assignee or is CC'd, in a single bd sql invocation.
+//
+// matched_assignee is carried back per row so the caller can apply the
+// status rule that used to be implicit in running two queries in order.
+func (m *Mailbox) queryWispMessages(beadsDir string, identities []string) []wispMatch {
+	if len(identities) == 0 {
+		return nil
+	}
 
-// queryWispMessagesByCC queries wisps table for messages where identity is CC'd.
-func (m *Mailbox) queryWispMessagesByCC(beadsDir, identity string) []BeadsMessage {
-	ccLabel := "cc:" + identity
+	assigneeList := make([]string, 0, len(identities))
+	ccList := make([]string, 0, len(identities))
+	for _, id := range identities {
+		assigneeList = append(assigneeList, "'"+escapeSQLString(id)+"'")
+		ccList = append(ccList, "'"+escapeSQLString("cc:"+id)+"'")
+	}
+	assigneeIn := strings.Join(assigneeList, ", ")
+	ccIn := strings.Join(ccList, ", ")
+
+	// GROUP_CONCAT is DISTINCT because the LEFT JOIN on cc labels can multiply
+	// rows; without it a CC'd message would report each of its labels twice.
 	query := fmt.Sprintf(
 		"SELECT w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at, "+
-			"GROUP_CONCAT(al.label) as labels_csv "+
+			"GROUP_CONCAT(DISTINCT al.label) as labels_csv, "+
+			"MAX(CASE WHEN w.assignee IN (%s) THEN 1 ELSE 0 END) as matched_assignee "+
 			"FROM wisps w "+
-			"JOIN wisp_labels l1 ON w.id = l1.issue_id "+
-			"JOIN wisp_labels l2 ON w.id = l2.issue_id "+
+			"JOIN wisp_labels l ON w.id = l.issue_id AND l.label = 'gt:message' "+
 			"JOIN wisp_labels al ON w.id = al.issue_id "+
-			"WHERE l1.label = 'gt:message' AND l2.label = '%s' AND w.status IN ('open', 'hooked') "+
+			"LEFT JOIN wisp_labels cc ON w.id = cc.issue_id AND cc.label IN (%s) "+
+			"WHERE w.status IN ('open', 'hooked') AND (w.assignee IN (%s) OR cc.label IS NOT NULL) "+
 			"GROUP BY w.id, w.title, w.description, w.status, w.priority, w.assignee, w.created_at, w.updated_at",
-		escapeSQLString(ccLabel))
+		assigneeIn, ccIn, assigneeIn)
+
 	return m.runWispSQL(beadsDir, query)
 }
 
 // wispSQLRow represents a row from the wisps SQL query with aggregated labels.
 type wispSQLRow struct {
-	ID          string `json:"id"`
-	Title       string `json:"title"`
-	Description string `json:"description"`
-	Status      string `json:"status"`
-	Priority    int    `json:"priority"`
-	Assignee    string `json:"assignee"`
-	CreatedAt   string `json:"created_at"`
-	UpdatedAt   string `json:"updated_at"`
-	LabelsCSV   string `json:"labels_csv"`
+	ID              string `json:"id"`
+	Title           string `json:"title"`
+	Description     string `json:"description"`
+	Status          string `json:"status"`
+	Priority        int    `json:"priority"`
+	Assignee        string `json:"assignee"`
+	CreatedAt       string `json:"created_at"`
+	UpdatedAt       string `json:"updated_at"`
+	LabelsCSV       string `json:"labels_csv"`
+	MatchedAssignee int    `json:"matched_assignee"`
 }
 
-// runWispSQL executes a bd sql --json query and converts results to BeadsMessages.
-func (m *Mailbox) runWispSQL(beadsDir, query string) []BeadsMessage {
+// wispMatch is a BeadsMessage plus why it matched, so the caller can apply the
+// assignee-vs-CC status rule without running two separate queries.
+type wispMatch struct {
+	BeadsMessage
+	matchedAssignee bool
+}
+
+// runWispSQL executes a bd sql --json query and converts results to wispMatches.
+func (m *Mailbox) runWispSQL(beadsDir, query string) []wispMatch {
 	args := []string{"sql", "--json", query}
 	ctx, cancel := bdReadCtx()
 	stdout, err := runBdCommand(ctx, args, m.workDir, beadsDir)
@@ -340,7 +349,7 @@ func (m *Mailbox) runWispSQL(beadsDir, query string) []BeadsMessage {
 		return nil
 	}
 
-	msgs := make([]BeadsMessage, 0, len(rows))
+	msgs := make([]wispMatch, 0, len(rows))
 	for _, row := range rows {
 		bm := BeadsMessage{
 			ID:          row.ID,
@@ -359,7 +368,7 @@ func (m *Mailbox) runWispSQL(beadsDir, query string) []BeadsMessage {
 		if row.LabelsCSV != "" {
 			bm.Labels = strings.Split(row.LabelsCSV, ",")
 		}
-		msgs = append(msgs, bm)
+		msgs = append(msgs, wispMatch{BeadsMessage: bm, matchedAssignee: row.MatchedAssignee != 0})
 	}
 	return msgs
 }
@@ -1003,12 +1012,23 @@ func (m *Mailbox) Search(opts SearchOptions) ([]*Message, error) {
 }
 
 // Count returns the total and unread message counts.
+//
+// This fetches the mailbox. Callers that already hold the result of List()
+// must use CountMessages instead — Count() re-runs the whole listing, which
+// costs several bd subprocesses, and it never needed anything List() had not
+// already produced.
 func (m *Mailbox) Count() (total, unread int, err error) {
 	messages, err := m.List()
 	if err != nil {
 		return 0, 0, err
 	}
+	total, unread = CountMessages(messages)
+	return total, unread, nil
+}
 
+// CountMessages returns the total and unread counts for an already-fetched
+// message slice. Count() is the fetching wrapper around it.
+func CountMessages(messages []*Message) (total, unread int) {
 	total = len(messages)
 	// Count messages that are NOT marked as read (including via "read" label)
 	for _, msg := range messages {
@@ -1016,15 +1036,22 @@ func (m *Mailbox) Count() (total, unread int, err error) {
 			unread++
 		}
 	}
-
-	return total, unread, nil
+	return total, unread
 }
 
 // AcknowledgeDeliveries marks delivery receipt for unread messages where this
 // mailbox is the primary recipient. This is phase-2 of two-phase delivery
 // tracking (phase-1 is written at send time as delivery:pending).
-// Acks are run concurrently (bounded to 8) to avoid N+1 sequential subprocess
-// spawns on the hot path.
+//
+// The common case — a message that has never been acked — is written as three
+// batched `bd label add <id>... <label>` invocations for the whole set. That
+// replaces four subprocesses per message (one `bd show` to read existing
+// labels, then three `bd label add`), which at inbox scale was the larger half
+// of a 25s `gt mail inbox`.
+//
+// Messages that already carry ack labels are rare (retry after a partial write,
+// or a claim-release-reclaim cycle) and keep the per-message path, because
+// their timestamp-reuse semantics depend on reading their existing labels.
 func (m *Mailbox) AcknowledgeDeliveries(recipientAddress string, messages []*Message) error {
 	if m.legacy || len(messages) == 0 {
 		return nil
@@ -1032,8 +1059,9 @@ func (m *Mailbox) AcknowledgeDeliveries(recipientAddress string, messages []*Mes
 
 	recipientIdentity := AddressToIdentity(recipientAddress)
 
-	// Collect messages that need acking.
-	var toAck []*Message
+	// Collect messages that need acking, split by whether a prior ack exists.
+	var freshIDs []string
+	var priorAckIDs []string
 	for _, msg := range messages {
 		if msg == nil || msg.ID == "" {
 			continue
@@ -1044,33 +1072,48 @@ func (m *Mailbox) AcknowledgeDeliveries(recipientAddress string, messages []*Mes
 		if msg.DeliveryState == "" || msg.DeliveryState == DeliveryStateAcked {
 			continue
 		}
-		toAck = append(toAck, msg)
+		// DeliveryAckedBy/At are already parsed from the labels this listing
+		// fetched, so "has it been acked before" needs no extra bd call.
+		if msg.DeliveryAckedBy == "" && msg.DeliveryAckedAt == nil {
+			freshIDs = append(freshIDs, msg.ID)
+		} else {
+			priorAckIDs = append(priorAckIDs, msg.ID)
+		}
 	}
-	if len(toAck) == 0 {
+	if len(freshIDs) == 0 && len(priorAckIDs) == 0 {
 		return nil
 	}
 
-	// Run acks concurrently with bounded parallelism.
-	const maxConcurrentAckOps = 8
-	sem := make(chan struct{}, maxConcurrentAckOps)
-	var mu sync.Mutex
 	var errs []string
-	var wg sync.WaitGroup
 
-	for _, msg := range toAck {
-		wg.Add(1)
-		sem <- struct{}{} // acquire
-		go func(id string) {
-			defer wg.Done()
-			defer func() { <-sem }() // release
-			if err := AcknowledgeDeliveryBead(m.workDir, m.beadsDir, id, recipientIdentity); err != nil {
-				mu.Lock()
-				errs = append(errs, fmt.Sprintf("%s: %v", id, err))
-				mu.Unlock()
-			}
-		}(msg.ID)
+	if len(freshIDs) > 0 {
+		if err := AcknowledgeDeliveryBeadsBatch(m.workDir, m.beadsDir, freshIDs, recipientIdentity, timeNow().UTC()); err != nil {
+			errs = append(errs, err.Error())
+		}
 	}
-	wg.Wait()
+
+	// Prior-ack messages keep the concurrent per-message path.
+	if len(priorAckIDs) > 0 {
+		const maxConcurrentAckOps = 8
+		sem := make(chan struct{}, maxConcurrentAckOps)
+		var mu sync.Mutex
+		var wg sync.WaitGroup
+
+		for _, id := range priorAckIDs {
+			wg.Add(1)
+			sem <- struct{}{} // acquire
+			go func(id string) {
+				defer wg.Done()
+				defer func() { <-sem }() // release
+				if err := AcknowledgeDeliveryBead(m.workDir, m.beadsDir, id, recipientIdentity); err != nil {
+					mu.Lock()
+					errs = append(errs, fmt.Sprintf("%s: %v", id, err))
+					mu.Unlock()
+				}
+			}(id)
+		}
+		wg.Wait()
+	}
 
 	if len(errs) > 0 {
 		return fmt.Errorf("acknowledging deliveries failed: %s", strings.Join(errs, "; "))

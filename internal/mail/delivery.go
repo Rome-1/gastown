@@ -2,6 +2,7 @@ package mail
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -102,6 +103,71 @@ func AcknowledgeDeliveryBead(workDir, beadsDir, beadID, recipientIdentity string
 			return ErrMessageNotFound
 		}
 		return err
+	}
+	return nil
+}
+
+// AcknowledgeDeliveryBeadsBatch writes the phase-2 ack label sequence for many
+// beads at once, using one `bd label add <id>... <label>` invocation per label
+// instead of three per bead.
+//
+// It is only valid for beads with no prior ack labels, where
+// DeliveryAckLabelSequenceIdempotent would produce a fresh timestamp anyway and
+// therefore the same three labels for every bead in the batch. Callers must
+// route beads that already carry ack labels to AcknowledgeDeliveryBead, which
+// reads their existing labels and preserves the timestamp-reuse semantics.
+//
+// Label ordering is preserved across the batch: acked-by for all beads, then
+// acked-at for all, then acked for all. Every bead therefore stays in the
+// pending state until its final label lands, which is the crash-safety
+// property the per-bead sequence was written for.
+func AcknowledgeDeliveryBeadsBatch(workDir, beadsDir string, beadIDs []string, recipientIdentity string, at time.Time) error {
+	if len(beadIDs) == 0 {
+		return nil
+	}
+
+	// bd resolves a bead's store from its ID prefix, so a batch can only span
+	// one store. Group first, then write.
+	byDir := make(map[string][]string)
+	for _, id := range beadIDs {
+		dir := beads.ResolveBeadsDirForID(beadsDir, id)
+		byDir[dir] = append(byDir[dir], id)
+	}
+
+	for dir, ids := range byDir {
+		for _, label := range DeliveryAckLabelSequence(recipientIdentity, at) {
+			args := append(append([]string{"label", "add"}, ids...), label)
+			ctx, cancel := bdWriteCtx()
+			_, err := runBdCommand(ctx, args, workDir, dir)
+			cancel()
+			if err == nil {
+				continue // bd label add silently succeeds on duplicate labels.
+			}
+			// A missing bead in a batch would fail the whole invocation and
+			// strand the rest. Fall back to per-bead acks for this group so a
+			// single stale ID cannot block its neighbours.
+			if bdErr, ok := err.(*bdError); ok && bdErr.ContainsError("not found") {
+				return acknowledgeDeliveryBeadsIndividually(workDir, dir, ids, recipientIdentity)
+			}
+			return err
+		}
+	}
+	return nil
+}
+
+// acknowledgeDeliveryBeadsIndividually is the per-bead fallback for a batch that
+// hit a missing ID. Beads that are genuinely gone are skipped, not fatal.
+func acknowledgeDeliveryBeadsIndividually(workDir, beadsDir string, beadIDs []string, recipientIdentity string) error {
+	var errs []string
+	for _, id := range beadIDs {
+		err := AcknowledgeDeliveryBead(workDir, beadsDir, id, recipientIdentity)
+		if err == nil || errors.Is(err, ErrMessageNotFound) {
+			continue
+		}
+		errs = append(errs, fmt.Sprintf("%s: %v", id, err))
+	}
+	if len(errs) > 0 {
+		return fmt.Errorf("acknowledging deliveries failed: %s", strings.Join(errs, "; "))
 	}
 	return nil
 }
