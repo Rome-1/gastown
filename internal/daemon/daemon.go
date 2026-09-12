@@ -290,7 +290,16 @@ func (d *Daemon) Run() error {
 
 	// Repair metadata.json for all rigs on startup.
 	// This ensures all rigs have proper Dolt server configuration.
-	if _, errs := doltserver.EnsureAllMetadata(d.config.TownRoot); len(errs) > 0 {
+	// Log the rigs actually rewritten, not only the failures. This used to
+	// discard `updated` and report errors alone, so the damaging case was the
+	// silent one: rewriting a rig's metadata.json succeeded quietly, and the
+	// rig found out when a human read an empty `bd list`. A repair that
+	// changes a rig's data plane should say so. (hq-ifijc)
+	if updated, errs := doltserver.EnsureAllMetadata(d.config.TownRoot); len(updated) > 0 || len(errs) > 0 {
+		if len(updated) > 0 {
+			d.logger.Printf("metadata repair: rewrote metadata.json for %d rig(s): %s",
+				len(updated), strings.Join(updated, ", "))
+		}
 		for _, e := range errs {
 			d.logger.Printf("Warning: metadata repair: %v", e)
 		}

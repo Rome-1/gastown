@@ -2740,7 +2740,16 @@ func RepairWorkspace(townRoot string, ws BrokenWorkspace) (string, error) {
 // correct for rigs whose Dolt database name matches their directory name.
 // Callers that know the rig uses a short DB prefix (e.g. "be" for "beads_el")
 // should pass it as doltDatabase so metadata.json gets the right value.
-func EnsureMetadata(townRoot, rigName string, doltDatabase ...string) error {
+// ensureMetadata is EnsureMetadata with one extra fact: whether it actually
+// rewrote anything. EnsureAllMetadata needs that to report truthfully —
+// its `updated` list used to be appended on every nil return, so it meant
+// "processed without error", not "changed". A caller logging it as changes
+// would name every rig in the town on every daemon startup, and a log that
+// cries wolf on a quiet run is how the silence this bead is about survives.
+//
+// The exported wrapper below keeps the original signature so none of the
+// other call sites change.
+func ensureMetadata(townRoot, rigName string, doltDatabase ...string) (bool, error) {
 	// Determine the Dolt database name to write when the field is absent.
 	// Default: rigName (correct when db-name == rig-dir-name, e.g. "gastown_el").
 	// Callers from EnsureAllMetadata pass the actual DB prefix ("be", "sw") so
@@ -2756,7 +2765,7 @@ func EnsureMetadata(townRoot, rigName string, doltDatabase ...string) error {
 	// FindRigBeadsDir's Stat check and our subsequent file operations.
 	beadsDir, err := FindOrCreateRigBeadsDir(townRoot, rigName)
 	if err != nil {
-		return fmt.Errorf("resolving beads directory for rig %q: %w", rigName, err)
+		return false, fmt.Errorf("resolving beads directory for rig %q: %w", rigName, err)
 	}
 
 	metadataPath := filepath.Join(beadsDir, "metadata.json")
@@ -2774,6 +2783,37 @@ func EnsureMetadata(townRoot, rigName string, doltDatabase ...string) error {
 		_ = json.Unmarshal(data, &existing) // best effort
 	}
 
+	// Never coerce a rig that is genuinely running embedded Dolt back to server
+	// mode. The rig set repaired here comes from listDatabasesLocal, a raw
+	// os.ReadDir of the shared server's data dir — not a query against the
+	// running server — so a same-named leftover store (e.g. from an aborted
+	// server-mode init) keeps "repairing" a healthy embedded rig on every
+	// daemon startup, forever.
+	//
+	// The damage presents as total data loss: bd reads dolt_mode from
+	// metadata.json, connects to the shared server, finds the stale empty
+	// husk, and reports "No issues found" against a store that is fully intact
+	// on disk at <beadsDir>/embeddeddolt. That cost igr's crew four sessions
+	// and produced two HIGH escalations. Worse, the obvious recovery from an
+	// apparently-empty store is `bd bootstrap`, which destroys the real data.
+	//
+	// This is not gt preferring server mode over embedded. "embeddeddolt"
+	// appears nowhere in gastown's non-test source: gt has no concept of
+	// embedded mode, so it cannot see that a choice exists. Until it does,
+	// on-disk evidence is the authority — an embeddeddolt directory plus
+	// metadata already saying "embedded" means the rig meant it.
+	//
+	// Deliberately narrow, so genuinely broken rigs still self-heal: it
+	// defers only when metadata ALREADY says embedded AND the directory is
+	// really there. Metadata wrongly claiming embedded with no store, or a
+	// store with server-mode metadata, still gets repaired as before.
+	// Bead hq-ifijc; evidence on hq-ipdz2.
+	if existing["dolt_mode"] == "embedded" {
+		if info, err := os.Stat(filepath.Join(beadsDir, "embeddeddolt")); err == nil && info.IsDir() {
+			return false, nil
+		}
+	}
+
 	// Resolve the authoritative server config (config.yaml > env > daemon.json > default).
 	config := DefaultConfig(townRoot)
 
@@ -2789,6 +2829,22 @@ func EnsureMetadata(townRoot, rigName string, doltDatabase ...string) error {
 		changed = true
 	}
 	if existing["dolt_mode"] != "server" {
+		// Say it out loud, naming the rig and BOTH modes. This line is the
+		// entire audit trail for a change that redirects a rig's data plane,
+		// and its absence is what made hq-ifijc cost four sessions: on EPERM
+		// the daemon logged a warning and moved on, but on SUCCESS it said
+		// nothing at all, so the rig found out only when a human read an empty
+		// `bd list`. Removing a silent corruption while leaving the silence
+		// intact would just wait for the next instance.
+		//
+		// Only an actual transition is logged. A rig with no metadata yet is
+		// being initialized, not coerced, and logging that would be noise that
+		// trains readers to skip the line.
+		if prev, ok := existing["dolt_mode"].(string); ok && prev != "" {
+			fmt.Fprintf(os.Stderr,
+				"gt: WARNING rig %q dolt_mode %q -> \"server\" (rewriting %s); if this rig runs embedded Dolt its beads will read as empty\n",
+				rigName, prev, metadataPath)
+		}
 		existing["dolt_mode"] = "server"
 		changed = true
 	}
@@ -2814,19 +2870,25 @@ func EnsureMetadata(townRoot, rigName string, doltDatabase ...string) error {
 
 	// Fast path: avoid rewriting metadata.json when already correct.
 	if !changed {
-		return nil
+		return false, nil
 	}
 
 	data, err := json.MarshalIndent(existing, "", "  ")
 	if err != nil {
-		return fmt.Errorf("marshaling metadata: %w", err)
+		return false, fmt.Errorf("marshaling metadata: %w", err)
 	}
 
 	if err := util.AtomicWriteFile(metadataPath, append(data, '\n'), 0600); err != nil {
-		return fmt.Errorf("writing metadata.json: %w", err)
+		return false, fmt.Errorf("writing metadata.json: %w", err)
 	}
 
-	return nil
+	return true, nil
+}
+
+// EnsureMetadata repairs a rig's metadata.json so bd can reach its beads.
+func EnsureMetadata(townRoot, rigName string, doltDatabase ...string) error {
+	_, err := ensureMetadata(townRoot, rigName, doltDatabase...)
+	return err
 }
 
 // buildRigPrefixMap reads rigs.json and returns a map from Dolt database name
@@ -2893,9 +2955,13 @@ func EnsureAllMetadata(townRoot string) (updated []string, errs []error) {
 		}
 		// Pass dbName explicitly so EnsureMetadata writes the correct
 		// dolt_database value ("be") rather than the rig dir name ("beads_el").
-		if err := EnsureMetadata(townRoot, rigName, dbName); err != nil {
+		// `updated` must list rigs actually rewritten, not rigs merely processed
+		// without error. It previously appended on every nil return, so a caller
+		// treating it as a change list would name the whole town on every daemon
+		// startup and be ignored within a week.
+		if changed, err := ensureMetadata(townRoot, rigName, dbName); err != nil {
 			errs = append(errs, fmt.Errorf("%s: %w", dbName, err))
-		} else {
+		} else if changed {
 			updated = append(updated, dbName)
 		}
 	}

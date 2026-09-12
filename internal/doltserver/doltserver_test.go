@@ -1871,8 +1871,15 @@ func TestFindAndMigrateAll_Idempotent(t *testing.T) {
 	if len(errs1) > 0 {
 		t.Errorf("pass 1 metadata errors: %v", errs1)
 	}
-	if len(updated1) != 2 {
-		t.Errorf("pass 1: expected 2 metadata updates, got %d", len(updated1))
+	// Zero, not two. EnsureAllMetadata's `updated` now reports rigs it actually
+	// REWROTE; it used to append on every nil return, so it meant "processed
+	// without error". MigrateRigFromBeads already calls EnsureMetadata itself
+	// (see its body), so by the time we get here the metadata is correct and a
+	// repair pass has nothing to do. Asserting 0 is the stronger claim: it
+	// verifies migration leaves metadata in a good state rather than merely
+	// that this call did not error. (hq-ifijc)
+	if len(updated1) != 0 {
+		t.Errorf("pass 1: expected 0 metadata rewrites (migration already wrote them), got %d: %v", len(updated1), updated1)
 	}
 
 	// Second pass: find should return empty, metadata update should be harmless
@@ -1885,8 +1892,13 @@ func TestFindAndMigrateAll_Idempotent(t *testing.T) {
 	if len(errs2) > 0 {
 		t.Errorf("pass 2 metadata errors: %v", errs2)
 	}
-	if len(updated2) != 2 {
-		t.Errorf("pass 2: expected 2 metadata updates (idempotent), got %d", len(updated2))
+	// Idempotence now means what the word means: a second repair pass changes
+	// nothing, so it reports nothing. Under the old semantics this asserted 2
+	// on both passes and called the unchanging count idempotent, which is why a
+	// caller logging `updated` as a change list would have named every rig in
+	// the town on every daemon startup. (hq-ifijc)
+	if len(updated2) != 0 {
+		t.Errorf("pass 2: expected 0 metadata rewrites (idempotent), got %d: %v", len(updated2), updated2)
 	}
 
 	// Verify data integrity after two passes
@@ -4139,4 +4151,194 @@ func TestCleanStaleSocket_RemovesStaleFile(t *testing.T) {
 func TestCleanStaleSocket_NoopWhenMissing(t *testing.T) {
 	// Should not panic or error when socket doesn't exist
 	cleanStaleSocket(filepath.Join(t.TempDir(), "nonexistent.sock"))
+}
+
+// --- hq-ifijc: EnsureMetadata must not coerce genuinely-embedded rigs -------
+//
+// The rig set repaired by EnsureAllMetadata comes from a raw os.ReadDir of the
+// shared server's data dir, so a same-named leftover store kept rewriting
+// healthy embedded rigs to server mode on every daemon startup. bd then
+// connected to the empty husk and reported "No issues found" against intact
+// data. These three cases pin both halves: the guard fires when it should, and
+// does not fire when it should not.
+
+// writeMetadata is a helper: seed a rig's metadata.json with the given fields.
+func writeMetadata(t *testing.T, beadsDir string, fields map[string]interface{}) []byte {
+	t.Helper()
+	if err := os.MkdirAll(beadsDir, 0755); err != nil {
+		t.Fatal(err)
+	}
+	data, err := json.MarshalIndent(fields, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	data = append(data, '\n')
+	if err := os.WriteFile(filepath.Join(beadsDir, "metadata.json"), data, 0600); err != nil {
+		t.Fatal(err)
+	}
+	return data
+}
+
+func readMetadataMap(t *testing.T, beadsDir string) map[string]interface{} {
+	t.Helper()
+	raw, err := os.ReadFile(filepath.Join(beadsDir, "metadata.json"))
+	if err != nil {
+		t.Fatalf("reading metadata: %v", err)
+	}
+	var m map[string]interface{}
+	if err := json.Unmarshal(raw, &m); err != nil {
+		t.Fatalf("parsing metadata: %v", err)
+	}
+	return m
+}
+
+// The regression test. Delete the guard in EnsureMetadata and this fails.
+func TestEnsureMetadata_LeavesEmbeddedRigAlone(t *testing.T) {
+	townRoot := t.TempDir()
+	beadsDir := filepath.Join(townRoot, "embrig", "mayor", "rig", ".beads")
+
+	before := writeMetadata(t, beadsDir, map[string]interface{}{
+		"dolt_mode":     "embedded",
+		"dolt_database": "embrig",
+		"sentinel":      "must-survive",
+	})
+	// The on-disk evidence that the rig means it.
+	if err := os.MkdirAll(filepath.Join(beadsDir, "embeddeddolt"), 0755); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := EnsureMetadata(townRoot, "embrig"); err != nil {
+		t.Fatalf("EnsureMetadata failed: %v", err)
+	}
+
+	after, err := os.ReadFile(filepath.Join(beadsDir, "metadata.json"))
+	if err != nil {
+		t.Fatalf("reading metadata: %v", err)
+	}
+	// Byte-identical, not merely "dolt_mode is still embedded" — the guard is
+	// supposed to return before anything is written at all.
+	if !bytes.Equal(before, after) {
+		t.Errorf("metadata.json was rewritten for an embedded rig.\nbefore: %s\nafter:  %s", before, after)
+	}
+	if m := readMetadataMap(t, beadsDir); m["dolt_mode"] != "embedded" {
+		t.Errorf("dolt_mode = %v, want embedded (rig was coerced to server mode)", m["dolt_mode"])
+	}
+}
+
+// Guard must NOT fire on metadata that claims embedded with no store behind it
+// — that rig is genuinely broken and self-heal is the right behavior.
+func TestEnsureMetadata_RepairsEmbeddedClaimWithoutStore(t *testing.T) {
+	townRoot := t.TempDir()
+	beadsDir := filepath.Join(townRoot, "brokenrig", "mayor", "rig", ".beads")
+
+	writeMetadata(t, beadsDir, map[string]interface{}{
+		"dolt_mode":     "embedded",
+		"dolt_database": "brokenrig",
+	})
+	// Deliberately no embeddeddolt directory.
+
+	if err := EnsureMetadata(townRoot, "brokenrig"); err != nil {
+		t.Fatalf("EnsureMetadata failed: %v", err)
+	}
+
+	if m := readMetadataMap(t, beadsDir); m["dolt_mode"] != "server" {
+		t.Errorf("dolt_mode = %v, want server — a rig claiming embedded with no embeddeddolt dir must still be repaired", m["dolt_mode"])
+	}
+}
+
+// Guard requires BOTH conditions: a store present but metadata saying server is
+// not an embedded rig, and must keep being treated as server mode.
+func TestEnsureMetadata_StoreWithServerMetadataStaysServer(t *testing.T) {
+	townRoot := t.TempDir()
+	beadsDir := filepath.Join(townRoot, "serverrig", "mayor", "rig", ".beads")
+
+	writeMetadata(t, beadsDir, map[string]interface{}{
+		"dolt_mode":     "server",
+		"dolt_database": "serverrig",
+	})
+	if err := os.MkdirAll(filepath.Join(beadsDir, "embeddeddolt"), 0755); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := EnsureMetadata(townRoot, "serverrig"); err != nil {
+		t.Fatalf("EnsureMetadata failed: %v", err)
+	}
+
+	if m := readMetadataMap(t, beadsDir); m["dolt_mode"] != "server" {
+		t.Errorf("dolt_mode = %v, want server", m["dolt_mode"])
+	}
+}
+
+// TestEnsureAllMetadata_EmbeddedRigSurvivesDaemonStartup reproduces hq-ifijc
+// end-to-end through the function the daemon actually calls at startup
+// (daemon.go Run -> EnsureAllMetadata), rather than asserting about
+// EnsureMetadata in isolation. The bug was only ever visible in that
+// composition: EnsureAllMetadata enumerates rigs from a raw os.ReadDir of
+// <townRoot>/.dolt-data, so an orphaned leftover store drags a healthy embedded
+// rig into the repair loop that then coerces it.
+//
+// Layout built below mirrors the real failure:
+//   <townRoot>/.dolt-data/embrig/.dolt/noms/manifest   leftover server-mode husk
+//   <townRoot>/embrig/mayor/rig/.beads/metadata.json   dolt_mode: embedded
+//   <townRoot>/embrig/mayor/rig/.beads/embeddeddolt/   the real data
+func TestEnsureAllMetadata_EmbeddedRigSurvivesDaemonStartup(t *testing.T) {
+	townRoot := t.TempDir()
+
+	// The orphaned husk under the shared server's data dir. listDatabasesLocal
+	// requires .dolt/noms/manifest before it will report a directory as a
+	// database, so build that exactly or the rig is never enumerated and the
+	// test passes for the wrong reason.
+	husk := filepath.Join(townRoot, ".dolt-data", "embrig", ".dolt", "noms")
+	if err := os.MkdirAll(husk, 0755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(husk, "manifest"), []byte("fake"), 0600); err != nil {
+		t.Fatal(err)
+	}
+
+	// The genuinely embedded rig.
+	beadsDir := filepath.Join(townRoot, "embrig", "mayor", "rig", ".beads")
+	before := writeMetadata(t, beadsDir, map[string]interface{}{
+		"dolt_mode":     "embedded",
+		"dolt_database": "embrig",
+	})
+	if err := os.MkdirAll(filepath.Join(beadsDir, "embeddeddolt"), 0755); err != nil {
+		t.Fatal(err)
+	}
+
+	// Guard the test itself: if config resolution ever sends this at the live
+	// shared server, ListDatabases returns the real town's databases and the
+	// assertions below would be meaningless. Fail loudly instead.
+	dbs, err := ListDatabases(townRoot)
+	if err != nil {
+		t.Fatalf("ListDatabases: %v", err)
+	}
+	if len(dbs) != 1 || dbs[0] != "embrig" {
+		t.Fatalf("ListDatabases(%q) = %v, want exactly [embrig] — test is not hermetic, refusing to assert", townRoot, dbs)
+	}
+
+	updated, errs := EnsureAllMetadata(townRoot)
+	for _, e := range errs {
+		t.Errorf("EnsureAllMetadata error: %v", e)
+	}
+
+	after, err := os.ReadFile(filepath.Join(beadsDir, "metadata.json"))
+	if err != nil {
+		t.Fatalf("reading metadata: %v", err)
+	}
+	if !bytes.Equal(before, after) {
+		t.Errorf("daemon startup path rewrote an embedded rig's metadata.json.\nbefore: %s\nafter:  %s", before, after)
+	}
+	if m := readMetadataMap(t, beadsDir); m["dolt_mode"] != "embedded" {
+		t.Errorf("dolt_mode = %v, want embedded — this is the data-loss bug: bd would now read the empty husk", m["dolt_mode"])
+	}
+	for _, u := range updated {
+		if u == "embrig" {
+			t.Errorf("EnsureAllMetadata reported embrig as updated; it should have been left untouched")
+		}
+	}
+	// The real store must still be there.
+	if info, err := os.Stat(filepath.Join(beadsDir, "embeddeddolt")); err != nil || !info.IsDir() {
+		t.Errorf("embeddeddolt directory missing after repair pass")
+	}
 }
