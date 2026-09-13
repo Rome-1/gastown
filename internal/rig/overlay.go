@@ -250,6 +250,22 @@ func matchesGitignorePattern(line, pattern string) bool {
 		return true
 	}
 
+	// A glob over a directory's contents already covers the bare directory
+	// requirement: ".claude/*" ignores everything ".claude/" would.
+	//
+	// This case matters because the glob form exists precisely so that
+	// negations can re-include something underneath it — ".claude/*" followed
+	// by "!.claude/skills/". Treating it as absent appends a bare ".claude/"
+	// BELOW those negations, and git does not re-include a path under an
+	// excluded directory, so the negation stops working and authored skills
+	// become silently uncommittable while the tree still reads clean.
+	if strings.HasSuffix(normLine, "*") {
+		if base := strings.TrimRight(normLine, "*"); base != "" &&
+			strings.TrimSuffix(base, "/") == strings.TrimSuffix(normPattern, "/") {
+			return true
+		}
+	}
+
 	return false
 }
 

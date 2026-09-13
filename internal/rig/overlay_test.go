@@ -553,3 +553,64 @@ func splitLines(content string) []string {
 	}
 	return lines
 }
+
+// TestMatchesGitignorePattern_GlobCoversDirectory pins the glob-covers-directory
+// rule directly. ".claude/*" must satisfy a required ".claude/".
+func TestMatchesGitignorePattern_GlobCoversDirectory(t *testing.T) {
+	cases := []struct {
+		line    string
+		pattern string
+		want    bool
+	}{
+		{".claude/*", ".claude/", true},
+		{".claude/**", ".claude/", true},
+		{"/.claude/*", ".claude/", true},
+		{".claude/*", ".claude", true},
+		{".runtime/*", ".runtime/", true},
+		// Must not over-match: a glob over a DIFFERENT directory covers nothing.
+		{".claudex/*", ".claude/", false},
+		{".claude/skills/*", ".claude/", false},
+		// A bare "*" is not treated as covering a specific requirement.
+		{"*", ".claude/", false},
+	}
+	for _, c := range cases {
+		if got := matchesGitignorePattern(c.line, c.pattern); got != c.want {
+			t.Errorf("matchesGitignorePattern(%q, %q) = %v, want %v",
+				c.line, c.pattern, got, c.want)
+		}
+	}
+}
+
+// TestEnsureGitignorePatterns_GlobWithNegationsPreserved is the regression test
+// for the bug this fixes: a worktree using the "<dir>/* + !<dir>/<keep>/" idiom
+// had a bare "<dir>/" appended below its negations on every gt crew add /
+// witness start / refinery start. Git will not re-include a path under an
+// excluded directory, so the negation stopped working and authored skills
+// became uncommittable while git status still reported a clean tree.
+func TestEnsureGitignorePatterns_GlobWithNegationsPreserved(t *testing.T) {
+	tmpDir := t.TempDir()
+
+	existing := ".runtime/\n.claude/*\n!.claude/skills/\n.logs/\n__pycache__/\nstate.json\n"
+	if err := os.WriteFile(filepath.Join(tmpDir, ".gitignore"), []byte(existing), 0644); err != nil {
+		t.Fatalf("Failed to create .gitignore: %v", err)
+	}
+
+	if err := EnsureGitignorePatterns(tmpDir); err != nil {
+		t.Fatalf("EnsureGitignorePatterns() error = %v", err)
+	}
+
+	content, err := os.ReadFile(filepath.Join(tmpDir, ".gitignore"))
+	if err != nil {
+		t.Fatalf("Failed to read .gitignore: %v", err)
+	}
+
+	if containsLine(string(content), ".claude/") {
+		t.Errorf("bare .claude/ was appended below the negations; "+
+			"it re-ignores .claude/skills/ and makes authored skills uncommittable.\ngot:\n%s",
+			string(content))
+	}
+	if string(content) != existing {
+		t.Errorf(".gitignore was modified when every required pattern was already covered.\nwant:\n%s\ngot:\n%s",
+			existing, string(content))
+	}
+}
